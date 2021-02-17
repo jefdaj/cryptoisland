@@ -7,11 +7,16 @@ a {
   color: black;
 }
 
+main {
+	border: 1px solid blue;
+	width: calc(100% - 355px);
+}
+
 body {
     color: black;
     font-size: 16px;
     /* margin: 0px auto 0px auto; */
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: auto;
 }
 

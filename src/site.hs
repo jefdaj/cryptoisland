@@ -48,7 +48,7 @@ main = hakyllWith myHakyllConfig $ do
   match "*/index.md" $ do
     route (toRoot $ Just "html")
     compile $ pandocCompiler
-      >>= loadAndApplyTemplate "main.html" defaultContext
+      >>= loadAndApplyTemplate "site.html" defaultContext
       >>= relativizeAllUrls
 
   -- most of the rest is crudely updated whenever a tag changes
@@ -73,7 +73,7 @@ main = hakyllWith myHakyllConfig $ do
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
         >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
-        >>= loadAndApplyTemplate "main.html" (postCtx tags)
+        >>= loadAndApplyTemplate "site.html" (postCtx tags)
         >>= relativizeAllUrls
 
   tagsRules tags $ \tag pattern -> do
@@ -83,7 +83,7 @@ main = hakyllWith myHakyllConfig $ do
         let ctx = tagCtx posts tags tag
         makeItem ""
           >>= loadAndApplyTemplate "tags/tag.html" ctx
-          >>= loadAndApplyTemplate "main.html" ctx
+          >>= loadAndApplyTemplate "site.html" ctx
           >>= relativizeAllUrls
 
   whenAnyTagChanges $ match "index/index.md" $ do
@@ -94,7 +94,7 @@ main = hakyllWith myHakyllConfig $ do
       getResourceBody
         >>= applyAsTemplate ctx
         -- TODO factor out the centering stuff so it can be applied here
-        >>= loadAndApplyTemplate "main.html" ctx
+        >>= loadAndApplyTemplate "site.html" ctx
         >>= relativizeAllUrls
 
   -- TODO remove atom feed now that firefox doesn't support them anymore?
