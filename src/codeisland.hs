@@ -32,7 +32,7 @@ import Hakyll.Images (loadImage, compressJpgCompiler)
 main :: IO ()
 main = hakyllWith myHakyllConfig $ do
   -- unique top-level files
-  -- note that this excludes home/*.{png,jpg}
+  -- note that this excludes root/*.{png,jpg}
   match rootFiles $ route toRoot >> compile copyFileCompiler
 
   -- static files
@@ -87,7 +87,7 @@ main = hakyllWith myHakyllConfig $ do
           >>= loadAndApplyTemplate "page.template" ctx
           >>= relativizeAllUrls
 
-  whenAnyTagChanges $ match "home/index.html" $ do
+  whenAnyTagChanges $ match "root/index.html" $ do
     route $ customRoute $ const "index.html"
     compile $ do
       posts <- recentFirst =<< loadAll postMd
@@ -119,15 +119,15 @@ postMd  = fromGlob $ postDir ++ "/index.md"
 postPng = fromGlob $ postDir ++ "/*.png"
 postJpg = fromGlob $ postDir ++ "/*.jpg"
 
---------------------
--- homepage files --
---------------------
+----------------
+-- root files --
+----------------
 
 rootFiles :: Pattern
 rootFiles = fromList
-  [ "home/CNAME"
-  , "home/robots.txt"
-  , "home/favicon.ico"
+  [ "root/CNAME"
+  , "root/robots.txt"
+  , "root/favicon.ico"
   ]
 
 toRoot :: Routes

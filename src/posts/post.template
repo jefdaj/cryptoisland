@@ -1,7 +1,7 @@
 <h2> $title$ - Code Island </h2>
 
 <div class="info">
-    Posted on $date$
+    Posted $date$
     $if(author)$
         by $author$
     $endif$
