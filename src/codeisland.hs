@@ -86,7 +86,7 @@ main = hakyllWith myHakyllConfig $ do
           >>= loadAndApplyTemplate "main.html" ctx
           >>= relativizeAllUrls
 
-  whenAnyTagChanges $ match "recent/recent.html" $ do
+  whenAnyTagChanges $ match "index/index.md" $ do
     route $ customRoute $ const "index.html"
     compile $ do
       posts <- recentFirst =<< loadAll postMd
