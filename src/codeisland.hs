@@ -17,7 +17,7 @@ import qualified Text.Pandoc.Templates as PT
 import Control.Monad                  (forM)
 import Data.Aeson                     (ToJSON, encode)
 import Data.ByteString.Lazy.Internal  (unpackChars)
-import Data.List                      (intersect)
+import Data.List                      (intersect, isInfixOf)
 import Data.Maybe                     (fromMaybe, fromJust)
 import Data.Monoid                    ((<>))
 import Data.String.Utils              (replace)
@@ -25,7 +25,7 @@ import GHC.Generics                   (Generic)
 import Hakyll.Web.Html.RelativizeUrls (relativizeUrlsWith)
 import Hakyll.Web.Tags                (tagsDependency)
 import Text.Jasmine                   (minify)
-import System.FilePath                (takeDirectory, takeBaseName)
+import System.FilePath                (takeDirectory, takeBaseName, takeExtension)
 
 import Hakyll.Images (loadImage, compressJpgCompiler)
 
@@ -33,22 +33,22 @@ main :: IO ()
 main = hakyllWith myHakyllConfig $ do
   -- unique top-level files
   -- note that this excludes root/*.{png,jpg}
-  match rootFiles $ route toRoot >> compile copyFileCompiler
+  match rootFiles $ route (toRoot Nothing) >> compile copyFileCompiler
 
   -- static files
   match ("*/*.png" .||. postPng) $ route idRoute >> compile copyFileCompiler
   match ("*/*.jpg" .||. postJpg) $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
-  match "css/*" $ route idRoute >> compile compressCssCompiler
+  match ("*.css" .||. "*/*.css") $ route (toRoot $ Just "css") >> compile compressCssCompiler
 
   -- html templates used below
-  match ("*.template" .||. "*/*.template") $ compile templateCompiler
+  match ("*.html" .||. "*/*.html") $ compile templateCompiler
 
   -- top-level markdown pages: "about", "contact", "cv", etc.
   -- TODO why doesn't this create a file?
   match "*/index.md" $ do
-    route toRoot
+    route (toRoot $ Just "html")
     compile $ pandocCompiler
-      >>= loadAndApplyTemplate "page.template" defaultContext
+      >>= loadAndApplyTemplate "main.html" defaultContext
       >>= relativizeAllUrls
 
   -- most of the rest is crudely updated whenever a tag changes
@@ -72,8 +72,8 @@ main = hakyllWith myHakyllConfig $ do
             _ -> defaultHakyllWriterOptions
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
-        >>= loadAndApplyTemplate "posts/post.template" (postCtx tags)
-        >>= loadAndApplyTemplate "page.template" (postCtx tags)
+        >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
+        >>= loadAndApplyTemplate "main.html" (postCtx tags)
         >>= relativizeAllUrls
 
   tagsRules tags $ \tag pattern -> do
@@ -82,8 +82,8 @@ main = hakyllWith myHakyllConfig $ do
         posts <- recentFirst =<< loadAll pattern
         let ctx = tagCtx posts tags tag
         makeItem ""
-          >>= loadAndApplyTemplate "tags/tag.template" ctx
-          >>= loadAndApplyTemplate "page.template" ctx
+          >>= loadAndApplyTemplate "tags/tag.html" ctx
+          >>= loadAndApplyTemplate "main.html" ctx
           >>= relativizeAllUrls
 
   whenAnyTagChanges $ match "recent/recent.html" $ do
@@ -94,7 +94,7 @@ main = hakyllWith myHakyllConfig $ do
       getResourceBody
         >>= applyAsTemplate ctx
         -- TODO factor out the centering stuff so it can be applied here
-        >>= loadAndApplyTemplate "page.template" ctx
+        >>= loadAndApplyTemplate "main.html" ctx
         >>= relativizeAllUrls
 
   -- TODO remove atom feed now that firefox doesn't support them anymore?
@@ -129,10 +129,17 @@ rootFiles = fromList
   , "root/favicon.ico"
   ]
 
-toRoot :: Routes
-toRoot = customRoute $ baseNameHtml . toFilePath
+-- this one is clunky, but correctly places files in the site root
+toRoot :: Maybe String -> Routes
+toRoot mExt = customRoute $ baseName . toFilePath
   where
-    baseNameHtml p = takeBaseName (takeDirectory p) ++ ".html"
+    baseName  p = baseName' p ++ ext p
+    baseName' p = if "index" `isInfixOf` p
+                    then takeBaseName (takeDirectory p)
+                    else takeBaseName p
+    ext p = case mExt of
+              Nothing -> takeExtension p
+              Just e  -> "." ++ e
 
 -- based on hakyll's relativizeUrls
 -- adds find-and-replace through all text so it works with js + css in addition to html
