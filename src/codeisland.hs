@@ -38,7 +38,7 @@ main = hakyllWith myHakyllConfig $ do
   -- static files
   match ("*/*.png" .||. postPng) $ route idRoute >> compile copyFileCompiler
   match ("*/*.jpg" .||. postJpg) $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
-  match "js/*"  $ route idRoute >> compile compressJsCompiler
+  -- match "js/*"  $ route idRoute >> compile compressJsCompiler
   match "css/*" $ route idRoute >> compile compressCssCompiler
 
   -- html templates used below
@@ -220,11 +220,11 @@ tagCtx posts tags tag = constField "title" ("Posts tagged \"" ++ tag ++ "\"")
 
 -- | Create a JavaScript compiler that minifies the content
 -- see: https://codetalk.io/posts/2016-05-10-compiling-scss-and-js-in-hakyll.html
-compressJsCompiler :: Compiler (Item String)
-compressJsCompiler = do
-  let minifyJS = C.unpack . minify . C.pack . itemBody
-  s <- getResourceString
-  return $ itemSetBody (minifyJS s) s
+-- compressJsCompiler :: Compiler (Item String)
+-- compressJsCompiler = do
+--   let minifyJS = C.unpack . minify . C.pack . itemBody
+--   s <- getResourceString
+--   return $ itemSetBody (minifyJS s) s
 
 myHakyllConfig :: Configuration
 myHakyllConfig = defaultConfiguration

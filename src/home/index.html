@@ -6,60 +6,7 @@
 	<title>codeis.land - $title$</title>
 	<link rel="stylesheet" type="text/css" href="/css/default.css" />
 	<link href="/atom.xml" rel="alternate" type="application/atom+xml" title="codeis.land" /> 
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/wordcloud2.js"></script>
-	<script src="/js/drawwordcloud.js"></script>
 </head>
 <body>
-	<canvas id="canvas" class="canvas" width="800" height="800"><canvas>
-	<script>
-	// aeson-encoded wordlist goes here:
-	var wordlist = $wordlist$;
-        // console.log('wordlist length: ' + wordlist.length);
-	var options = {
-		gridSize: 8,
-		clearCanvas: false, // automatic when using a mask
-		// drawOutOfBound: true,
-		// drawMask: true,
-		// weightFactor: Math.round(25 / wordlist.length),
-		weightFactor: 20,
-		fontFamily: 'sans-serif',
-		// color: 'random-light',
-		// color: '#c1c1c1',
-		color: function (word, weight) {
-			return (word === 'codeis.land' || word === 'rss' || word === 'about') ? '#000' : '#c3c3c3';
-		},
-		hover: window.drawBox,
-		click: function(item) {
-			// alert(item[0] + ': ' + item[1]);
-			if (item[0] === 'codeis.land' || item[0] == 'about') {
-				location.href = "/about.html";
-			} else if (item[0] === 'rss') {
-				location.href = "/atom.xml";
-			} else {
-				location.href = "/tags/" + item[0] + ".html";
-			}
-		},
-		backgroundColor: '#fff'
-	}
-	$$(document).ready(function() {
-		var canvas = $$('#canvas');
-		var w = 200;
-		var h = 200;
-		var x = (w / 3);
-		var y = (h / 3);
-		$$.when(
-			// TODO can this be separated from the canvas?
-			// TODO and center it on the page obviously
-			// TODO and split into top (picture only) + bottom (picture with word cloud over it)
-			drawLogo(canvas, '/home/island.png', x, y, w, h, '/about.html')
-		).then(
-			drawWordCloud(canvas, wordlist, options, '/home/mask.png')
-		);
-		// preload other images to reduce delays
-		// (new Image()).src = '/home/img1.png';
-		// (new Image()).src = '/home/img2.png';
-	});
-	</script>
 </body>
 </html>
