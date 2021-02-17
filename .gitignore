@@ -1,0 +1,4 @@
+*.sw*
+.site
+src/.hakyll-cache
+src/.stack-work
