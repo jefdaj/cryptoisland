@@ -14,5 +14,5 @@ rm -rf ../.site
 # which apt-get &> /dev/null && sudo apt-get install libgmp-dev zlib1g-dev
 
 stack setup && stack build \
-  && (stack exec codeisland clean && stack exec codeisland watch) \
+  && (stack exec site clean && stack exec site watch) \
   || stack repl

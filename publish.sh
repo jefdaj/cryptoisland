@@ -16,8 +16,8 @@ git checkout develop
 # Build new files
 pushd src
 stack build
-stack exec codeisland clean
-stack exec codeisland build
+stack exec site clean
+stack exec site build
 popd
 
 # Get previous files
