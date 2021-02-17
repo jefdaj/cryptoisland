@@ -86,15 +86,15 @@ main = hakyllWith myHakyllConfig $ do
           >>= loadAndApplyTemplate "page.template" ctx
           >>= relativizeAllUrls
 
-  whenAnyTagChanges $ match "root/index.html" $ do
+  whenAnyTagChanges $ match "recent/recent.html" $ do
     route $ customRoute $ const "index.html"
     compile $ do
       posts <- recentFirst =<< loadAll postMd
-      let ctx = indexCtx posts tags
+      let ctx = recentCtx posts tags
       getResourceBody
         >>= applyAsTemplate ctx
         -- TODO factor out the centering stuff so it can be applied here
-        -- >>= loadAndApplyTemplate "page.template" ctx
+        >>= loadAndApplyTemplate "page.template" ctx
         >>= relativizeAllUrls
 
   -- TODO remove atom feed now that firefox doesn't support them anymore?
@@ -188,8 +188,8 @@ wordListCompiler iden words = do
   let item = Item iden $ unpackChars $ encode words
   unsafeCompiler $ return item
 
-indexCtx :: [Item String] -> Tags -> Context String
-indexCtx posts tags = constField "title" "Home"
+recentCtx :: [Item String] -> Tags -> Context String
+recentCtx posts tags = constField "title" "Recent"
   <> listField "posts" (postCtx tags) (return posts)
   <> constField "wordlist" (renderWordList $ indexTags tags)
   <> defaultContext

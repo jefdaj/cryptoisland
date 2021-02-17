@@ -24,7 +24,7 @@ body {
 }
 
 div#header {
-  border-bottom: 2px solid skyblue;
+  /* border-bottom: 2px solid skyblue; */
   height: 120px;
 }
 
