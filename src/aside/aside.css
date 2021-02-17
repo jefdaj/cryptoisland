@@ -1,6 +1,6 @@
 aside {
 	position: fixed;
-	width: 350px;
+	width: 430px;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -8,4 +8,12 @@ aside {
 	padding: 50px 0;
 	z-index: 100;
 	border: 1px solid red;
+}
+
+.vertical-center {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }

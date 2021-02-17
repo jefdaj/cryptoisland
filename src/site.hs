@@ -41,7 +41,7 @@ main = hakyllWith myHakyllConfig $ do
   match ("*.css" .||. "*/*.css") $ route (toRoot $ Just "css") >> compile compressCssCompiler
 
   -- html templates used below
-  match ("*.html" .||. "*/*.html") $ compile templateCompiler
+  match ("*.html" .||. "*/*.html" .||. "*/*.svg") $ compile templateCompiler
 
   -- top-level markdown pages: "about", "contact", "cv", etc.
   -- TODO why doesn't this create a file?
