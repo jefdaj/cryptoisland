@@ -1,0 +1,7 @@
+<ul>
+    $for(posts)$
+        <li>
+            $date$ &nbsp; <a class="postLink" href="$url$">$title$</a>
+        </li>
+    $endfor$
+</ul>

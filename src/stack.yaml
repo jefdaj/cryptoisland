@@ -1,0 +1,13 @@
+resolver: lts-15.11
+
+nix:
+  enable: true
+  packages: [zlib.dev, zlib.out]
+
+packages:
+- .
+
+extra-deps:
+- hakyll-4.13.3.0
+- hakyll-images-0.4.4
+- MissingH-1.4.3.0
