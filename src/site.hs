@@ -25,7 +25,7 @@ import GHC.Generics                   (Generic)
 import Hakyll.Web.Html.RelativizeUrls (relativizeUrlsWith)
 import Hakyll.Web.Tags                (tagsDependency)
 import Text.Jasmine                   (minify)
-import System.FilePath                (takeDirectory, takeBaseName, takeExtension)
+import System.FilePath                (takeDirectory, takeBaseName, takeFileName, takeExtension)
 
 import Hakyll.Images (loadImage, compressJpgCompiler)
 
@@ -124,9 +124,9 @@ postJpg = fromGlob $ postDir ++ "/*.jpg"
 
 rootFiles :: Pattern
 rootFiles = fromList
-  [ "root/CNAME"
-  , "root/robots.txt"
-  , "root/favicon.ico"
+  [ "index/CNAME"
+  , "index/robots.txt"
+  , "index/favicon.ico"
   ]
 
 -- this one is clunky, but correctly places files in the site root
@@ -134,7 +134,7 @@ toRoot :: Maybe String -> Routes
 toRoot mExt = customRoute $ baseName . toFilePath
   where
     baseName  p = baseName' p ++ ext p
-    baseName' p = if "index" `isInfixOf` p
+    baseName' p = if takeFileName p == "index.md"
                     then takeBaseName (takeDirectory p)
                     else takeBaseName p
     ext p = case mExt of
