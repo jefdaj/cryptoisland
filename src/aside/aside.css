@@ -1,6 +1,6 @@
-aside {
+#sidebar {
 	position: fixed;
-	width: 450px;
+	width: 350px;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -12,6 +12,7 @@ aside {
 }
 
 #island {
+	width: 350px;
 	z-index: 80;
 }
 
@@ -30,9 +31,10 @@ aside {
 aside > .tag-cloud {
 	z-index: 100;
 	text-align: center;
-	width: 30%;
+	width: 40%;
+	height: 5%;
 	position: absolute;
-	top: 62%;
+	top: 55%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }

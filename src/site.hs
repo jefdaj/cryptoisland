@@ -208,7 +208,7 @@ wordListCompiler iden words = do
 
 siteCtx :: Tags -> Context String
 siteCtx tags = defaultContext
-  <> tagCloudField "tagcloud" 90 400 tags
+  <> tagCloudField "tagcloud" 60 200 tags
 
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"

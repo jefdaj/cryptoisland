@@ -26,7 +26,7 @@ header, footer {
 
 main {
 	/* border: 1px solid blue; */
-	width: calc(100% - 475px);
+	width: calc(100% - 375px);
 	height: calc(100% - 85px);
 	overflow: auto;
 	padding: 20px;
