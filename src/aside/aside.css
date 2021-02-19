@@ -28,19 +28,32 @@ aside {
 }
 
 aside > .tag-cloud {
-	z-index: 99;
+	z-index: 100;
 	text-align: center;
 	width: 30%;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 aside > .tag-cloud > a {
 	color: darkblue;
+	text-decoration: none;
 }
 
 aside > .tag-cloud > a:hover {
 	color: blue;
+	text-decoration: underline;
 }
 
-svg {
-	z-index: -1;
+/* this is the main title link inside island.svg */
+#text3815 {
+	color: black;
+	text-decoration: none;
+}
+
+#text3815:hover {
+	color: blue;
+	text-decoration: underline;
 }
