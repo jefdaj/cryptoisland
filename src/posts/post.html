@@ -6,8 +6,16 @@
 <div class="info">
     Posted $date$
     $if(author)$
-        by $author$
+    	by $author$
     $endif$
+		<br/>
+		$if(tags)$
+			Tags: $tags$
+		$endif$
+		<br/>
+		$if(relatedtags)$
+			Related tags by post count: $relatedtags$
+		$endif$
 </div>
 
 $body$

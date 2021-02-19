@@ -80,7 +80,7 @@ main = hakyllWith myHakyllConfig $ do
       route idRoute
       compile $ do
         posts <- recentFirst =<< loadAll pattern
-        let ctx = tagCtx posts tags tag
+        let ctx = tagsCtx posts tags tag
         makeItem ""
           >>= loadAndApplyTemplate "tags/tag.html" ctx
           >>= loadAndApplyTemplate "page.html" ctx
@@ -167,8 +167,8 @@ indexTags tags = WordList { list = ("codeis.land", 1) : ("rss", 1) : counts }
 -- 1. find posts that use the tag
 -- 2. find tags that include one of those same posts
 -- 3. pair tags with their normal post counts
-tagTags :: Tags -> String -> WordList
-tagTags tags tag = WordList { list = tagCounts }
+relatedTags :: Tags -> String -> WordList
+relatedTags tags tag = WordList { list = tagCounts }
   where
     mainMap     = tagsMap tags
     withMainTag = fromMaybe [] $ lookup tag mainMap
@@ -198,7 +198,7 @@ wordListCompiler iden words = do
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"
   <> listField "posts" (postCtx tags) (return posts)
-  <> constField "wordlist" (renderWordList $ indexTags tags)
+  <> constField "relatedtags" (renderWordList $ indexTags tags)
   <> defaultContext
 
 -- TODO generalize to word lists for tag, index pages if possible
@@ -211,16 +211,16 @@ postTagsField key = field key $ \item -> do
 -- TODO if the monad works, can just get tags too right?
 postCtx :: Tags -> Context String
 postCtx tags =
-  -- tagsField "tags" tags <>
-  postTagsField "wordlist" <>
-  -- constField "wordlist" (renderWordList $ postTags tags post) <>
+  tagsField "tags" tags <>
+  postTagsField "relatedtags" <> -- TODO remove?
+  -- constField "relatedtags" (renderWordList $ postTags tags post) <>
   dateField "date" "%Y-%m-%d" <>
   defaultContext
 
-tagCtx :: [Item String] -> Tags -> String -> Context String
-tagCtx posts tags tag = constField "title" ("Posts tagged \"" ++ tag ++ "\"")
+tagsCtx :: [Item String] -> Tags -> String -> Context String
+tagsCtx posts tags tag = constField "title" ("Posts tagged \"" ++ tag ++ "\":")
   <> constField "tag" tag 
-  <> constField "wordlist" (renderWordList $ tagTags tags tag)
+  <> constField "relatedtags" (renderWordList $ relatedTags tags tag)
   <> listField "posts" (postCtx tags) (return posts)
   <> defaultContext
 
