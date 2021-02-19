@@ -32,7 +32,7 @@ aside > .tag-cloud {
 	text-align: center;
 	width: 30%;
 	position: absolute;
-	top: 60%;
+	top: 62%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
@@ -54,4 +54,9 @@ aside > .tag-cloud > a:hover {
 
 #text3815:hover {
 	text-decoration: underline;
+}
+
+/* TODO why does the boat underline fail? */
+#a76:hover {
+	border-bottom: 2px solid blue;
 }
