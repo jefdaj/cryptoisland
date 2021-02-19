@@ -10,18 +10,20 @@
         <link href="/atom.xml" rel="alternate" type="application/atom+xml" title="Code Island" /> 
     </head>
     <body>
-        <div id="header">
-								This is the header.
-        </div>
-				$partial("aside/aside.html")$
-				<main id="content">
+				<div id="parent">
+					<header>
+						This is the header.
+        	</header>
+					$partial("aside/aside.html")$
+					<main id="content">
 						This is the main (content) block.
 						<br/>
 						<br/>
             $body$
-        </main>
-        <div id="footer">
-								This is the footer.
-        </div>
+        	</main>
+					<footer>
+						This is the footer.
+        	</footer>
+				</div>
     </body>
 </html>

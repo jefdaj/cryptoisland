@@ -49,11 +49,9 @@ aside > .tag-cloud > a:hover {
 
 /* this is the main title link inside island.svg */
 #text3815 {
-	color: black;
 	text-decoration: none;
 }
 
 #text3815:hover {
-	color: blue;
 	text-decoration: underline;
 }

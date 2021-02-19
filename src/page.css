@@ -7,9 +7,29 @@ a {
   color: black;
 }
 
+header, footer {
+  /* height: 20px; */
+	/* position: fixed; */
+	/* left: 0; */
+	/* right: 0; */
+	/* border: 1px solid red; */
+}
+
+/* parent div to help main + aside fill the page */
+#parent {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
 main {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	width: calc(100% - 455px);
+	/* height: calc(100% - 50px); */
+	overflow: auto;
+	height: calc(100% - 45px);
 }
 
 body {
@@ -18,11 +38,14 @@ body {
     /* margin: 0px auto 0px auto; */
     /* max-width: 600px; */
     margin: auto;
+		height: 100%;
 }
 
-/* div#header {
-  border-bottom: 2px solid skyblue;
-  height: 120px;
+
+/* .clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
 } */
 
 div#logo a {
@@ -44,15 +67,6 @@ div#logo a {
     margin-left: 12px;
     text-decoration: none;
     text-transform: uppercase;
-} */
-
-/* div#footer {
-    border-top: solid 2px black;
-    color: #555;
-    font-size: 12px;
-    margin-top: 30px;
-    padding: 12px 0px 12px 0px;
-    text-align: right;
 } */
 
 h1 {
