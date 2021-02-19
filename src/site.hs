@@ -44,8 +44,8 @@ main = hakyllWith myHakyllConfig $ do
   -- note that we treat svg as html here because it includes clickable links
   match ("*.html" .||. "*/*.html" .||. "*/*.svg") $ compile templateCompiler
 
-  -- top-level markdown pages: "about", "contact", "cv", etc.
-  match "*/index.md" $ do
+  -- other top-level markdown pages: "about", "contact", "cv", etc.
+  match ("*/index.md" .&&. complement "recent/index.md") $ do
     route (toRoot $ Just "html")
     compile $ pandocCompiler
       >>= loadAndApplyTemplate "page.html" defaultContext
@@ -86,6 +86,17 @@ main = hakyllWith myHakyllConfig $ do
           >>= loadAndApplyTemplate "page.html" ctx
           >>= relativizeAllUrls
 
+  -- main homepage is the list of latest posts
+  match "recent/index.md" $ do
+    route $ constRoute "index.html"
+    compile $ do
+      posts <- recentFirst =<< loadAll postMd
+      let ctx = recentCtx posts tags
+      getResourceBody
+        >>= applyAsTemplate ctx
+        >>= loadAndApplyTemplate "page.html" ctx
+        >>= relativizeAllUrls
+
   whenAnyTagChanges $ match "index/index.md" $ do
     route $ customRoute $ const "index.html"
     compile $ do
@@ -124,9 +135,9 @@ postJpg = fromGlob $ postDir ++ "/*.jpg"
 
 rootFiles :: Pattern
 rootFiles = fromList
-  [ "index/CNAME"
-  , "index/robots.txt"
-  , "index/favicon.ico"
+  [ "CNAME"
+  , "robots.txt"
+  , "favicon.ico"
   ]
 
 -- this one is clunky, but correctly places files in the site root

@@ -1,6 +1,6 @@
 ---
 title: Another test post
-tags: test, test2
+tags: test, test2, foo, bar
 toc: true
 ...
 
