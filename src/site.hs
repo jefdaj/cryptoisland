@@ -41,14 +41,14 @@ main = hakyllWith myHakyllConfig $ do
   match ("*.css" .||. "*/*.css") $ route (toRoot $ Just "css") >> compile compressCssCompiler
 
   -- html templates used below
+  -- note that we treat svg as html here because it includes clickable links
   match ("*.html" .||. "*/*.html" .||. "*/*.svg") $ compile templateCompiler
 
   -- top-level markdown pages: "about", "contact", "cv", etc.
-  -- TODO why doesn't this create a file?
   match "*/index.md" $ do
     route (toRoot $ Just "html")
     compile $ pandocCompiler
-      >>= loadAndApplyTemplate "site.html" defaultContext
+      >>= loadAndApplyTemplate "page.html" defaultContext
       >>= relativizeAllUrls
 
   -- most of the rest is crudely updated whenever a tag changes
@@ -73,7 +73,7 @@ main = hakyllWith myHakyllConfig $ do
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
         >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
-        >>= loadAndApplyTemplate "site.html" (postCtx tags)
+        >>= loadAndApplyTemplate "page.html" (postCtx tags)
         >>= relativizeAllUrls
 
   tagsRules tags $ \tag pattern -> do
@@ -83,7 +83,7 @@ main = hakyllWith myHakyllConfig $ do
         let ctx = tagCtx posts tags tag
         makeItem ""
           >>= loadAndApplyTemplate "tags/tag.html" ctx
-          >>= loadAndApplyTemplate "site.html" ctx
+          >>= loadAndApplyTemplate "page.html" ctx
           >>= relativizeAllUrls
 
   whenAnyTagChanges $ match "index/index.md" $ do
@@ -94,7 +94,7 @@ main = hakyllWith myHakyllConfig $ do
       getResourceBody
         >>= applyAsTemplate ctx
         -- TODO factor out the centering stuff so it can be applied here
-        >>= loadAndApplyTemplate "site.html" ctx
+        >>= loadAndApplyTemplate "page.html" ctx
         >>= relativizeAllUrls
 
   -- TODO remove atom feed now that firefox doesn't support them anymore?
