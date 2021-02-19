@@ -6,8 +6,8 @@ Recent posts:
 
 <!-- TODO make post teasers here rather than a simple list -->
 
+<a href="/atom.xml"><img src="/recent/rss.png" style="width: 20px"></img></a>
+
 $partial("posts.html")$
 
 <!-- TODO rss feed per tag too? could put a little link by the list in the template -->
-
-<a href="/atom.xml">Recent posts RSS/Atom feed</a>
