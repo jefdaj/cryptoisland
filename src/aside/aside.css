@@ -62,3 +62,11 @@ aside > .tag-cloud > a:hover {
 #a76:hover {
 	border-bottom: 2px solid blue;
 }
+
+footer#watermark {
+  font-size: 10pt;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
