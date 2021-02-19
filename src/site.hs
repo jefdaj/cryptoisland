@@ -44,13 +44,6 @@ main = hakyllWith myHakyllConfig $ do
   -- note that we treat svg as html here because it includes clickable links
   match ("*.html" .||. "*/*.html" .||. "*/*.svg") $ compile templateCompiler
 
-  -- other top-level markdown pages: "about", "contact", "cv", etc.
-  match ("*/index.md" .&&. complement "recent/index.md") $ do
-    route (toRoot $ Just "html")
-    compile $ pandocCompiler
-      >>= loadAndApplyTemplate "page.html" defaultContext
-      >>= relativizeAllUrls
-
   -- most of the rest is crudely updated whenever a tag changes
   tags <- buildTags postMd $ fromCapture "tags/*.html"
   let whenAnyTagChanges = rulesExtraDependencies [tagsDependency tags]
@@ -76,6 +69,13 @@ main = hakyllWith myHakyllConfig $ do
         >>= loadAndApplyTemplate "page.html" (postCtx tags)
         >>= relativizeAllUrls
 
+  -- other top-level markdown pages: "about", "contact", "cv", etc.
+  match ("*/index.md" .&&. complement "recent/index.md") $ do
+    route (toRoot $ Just "html")
+    compile $ pandocCompiler
+      >>= loadAndApplyTemplate "page.html" (siteCtx tags)
+      >>= relativizeAllUrls
+
   tagsRules tags $ \tag pattern -> do
       route idRoute
       compile $ do
@@ -97,7 +97,7 @@ main = hakyllWith myHakyllConfig $ do
         >>= loadAndApplyTemplate "page.html" ctx
         >>= relativizeAllUrls
 
-  whenAnyTagChanges $ match "index/index.md" $ do
+  match "index/index.md" $ do
     route $ customRoute $ const "index.html"
     compile $ do
       posts <- recentFirst =<< loadAll postMd
@@ -206,11 +206,15 @@ wordListCompiler iden words = do
   let item = Item iden $ unpackChars $ encode words
   unsafeCompiler $ return item
 
+siteCtx :: Tags -> Context String
+siteCtx tags = defaultContext
+  <> tagCloudField "tagcloud" 60 150 tags
+
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"
   <> listField "posts" (postCtx tags) (return posts)
   <> constField "relatedtags" (renderWordList $ indexTags tags)
-  <> defaultContext
+  <> siteCtx tags
 
 -- TODO generalize to word lists for tag, index pages if possible
 postTagsField :: String -> Context String
@@ -226,14 +230,14 @@ postCtx tags =
   postTagsField "relatedtags" <> -- TODO remove?
   -- constField "relatedtags" (renderWordList $ postTags tags post) <>
   dateField "date" "%Y-%m-%d" <>
-  defaultContext
+  siteCtx tags
 
 tagsCtx :: [Item String] -> Tags -> String -> Context String
 tagsCtx posts tags tag = constField "title" ("Posts tagged \"" ++ tag ++ "\":")
   <> constField "tag" tag 
   <> constField "relatedtags" (renderWordList $ relatedTags tags tag)
   <> listField "posts" (postCtx tags) (return posts)
-  <> defaultContext
+  <> siteCtx tags
 
 myHakyllConfig :: Configuration
 myHakyllConfig = defaultConfiguration

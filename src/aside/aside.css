@@ -12,7 +12,11 @@ aside {
 }
 
 #island {
-	z-index: 100;
+	z-index: 80;
+}
+
+.center {
+	margin: auto;
 }
 
 .vertical-center {
@@ -21,4 +25,22 @@ aside {
 	top: 50%;
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
+}
+
+aside > .tag-cloud {
+	z-index: 99;
+	text-align: center;
+	width: 30%;
+}
+
+aside > .tag-cloud > a {
+	color: darkblue;
+}
+
+aside > .tag-cloud > a:hover {
+	color: blue;
+}
+
+svg {
+	z-index: -1;
 }
