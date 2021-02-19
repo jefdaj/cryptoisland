@@ -22,14 +22,15 @@ header, footer {
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
+	background: #fff9e8;
 }
 
 main {
 	/* border: 1px solid blue; */
 	width: calc(100% - 375px);
-	height: calc(100% - 85px);
+	/* height: calc(100% - 85px); */
+	height: calc(100% - 45px);
 	overflow: auto;
-	padding: 20px;
 }
 
 body {
@@ -47,6 +48,10 @@ body {
 	clear: both;
 	display: table;
 } */
+
+#content {
+	padding: 20px;
+}
 
 div#logo a {
     color: black;
