@@ -6,13 +6,21 @@ header {
 	left: 0;
 	width: 100%;
 	display: none !important;
-	background: url(/header/island-small.png);
+	background: #e9feffff;
 	border-bottom: 4px solid #a6ffffff;
 	text-align: center;
 	font-family: monospace;
 	z-index: 0;
 }
 
+/* small island svg */
+header > #svg3722 {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* header title link */
 header > a {
 	text-decoration: none;
 	z-index: 100;
