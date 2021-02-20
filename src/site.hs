@@ -42,7 +42,7 @@ main = hakyllWith myHakyllConfig $ do
 
   -- html templates used below
   -- note that we treat svg as html here because it includes clickable links
-  match ("*.html" .||. "*/*.html" .||. "*/*.svg") $ compile templateCompiler
+  match ("page.html" .||. "posts.html" .||. "*/*.html" .||. "*/*.svg") $ compile templateCompiler
 
   -- most of the rest is crudely updated whenever a tag changes
   tags <- buildTags postMd $ fromCapture "tags/*.html"
@@ -87,26 +87,26 @@ main = hakyllWith myHakyllConfig $ do
           >>= relativizeAllUrls
 
   -- main homepage is the list of latest posts
-  match "recent/index.md" $ do
-    route $ constRoute "index.html"
-    compile $ do
-      posts <- recentFirst =<< loadAll postMd
-      let ctx = recentCtx posts tags
-      getResourceBody
-        >>= applyAsTemplate ctx
-        >>= loadAndApplyTemplate "page.html" ctx
-        >>= relativizeAllUrls
+--   match "recent/index.md" $ do
+--     route $ constRoute "index.html"
+--     compile $ do
+--       posts <- recentFirst =<< loadAll postMd
+--       let ctx = recentCtx posts tags
+--       getResourceBody
+--         >>= applyAsTemplate ctx
+--         >>= loadAndApplyTemplate "page.html" ctx
+--         >>= relativizeAllUrls
 
-  match "index/index.md" $ do
-    route $ customRoute $ const "index.html"
-    compile $ do
-      posts <- recentFirst =<< loadAll postMd
-      let ctx = recentCtx posts tags
-      getResourceBody
-        >>= applyAsTemplate ctx
-        -- TODO factor out the centering stuff so it can be applied here
-        >>= loadAndApplyTemplate "page.html" ctx
-        >>= relativizeAllUrls
+--   match "index/index.md" $ do
+--     route $ customRoute $ const "index.html"
+--     compile $ do
+--       posts <- recentFirst =<< loadAll postMd
+--       let ctx = recentCtx posts tags
+--       getResourceBody
+--         >>= applyAsTemplate ctx
+--         -- TODO factor out the centering stuff so it can be applied here
+--         >>= loadAndApplyTemplate "page.html" ctx
+--         >>= relativizeAllUrls
 
   -- TODO remove atom feed now that firefox doesn't support them anymore?
   -- TODO how to relativizeUrls in here?
@@ -119,12 +119,14 @@ main = hakyllWith myHakyllConfig $ do
       -- return $ fmap (replace "SITEROOT" "") posts'
       return posts'
 
-  -- fullscreen version of the aside for mobile users
-  whenAnyTagChanges $ create ["mobile.html"] $ do
+  -- index shows recent if fullscreen, and mobile if small screen
+  whenAnyTagChanges $ match "index.html" $ do
     route idRoute
     compile $ do
-      makeItem ""
-        >>= loadAndApplyTemplate "aside/mobile.html" (siteCtx tags)
+      posts <- recentFirst =<< loadAll postMd
+      let ctx = recentCtx posts tags
+      getResourceBody
+        >>= applyAsTemplate ctx
         >>= relativizeAllUrls
 
 --------------------

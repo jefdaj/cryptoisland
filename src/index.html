@@ -6,20 +6,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>$title$ - Code Island</title>
         <link rel="stylesheet" type="text/css" href="/page.css" />
-        <link rel="stylesheet" type="text/css" href="/header.css" />
         <link rel="stylesheet" type="text/css" href="/aside.css" />
+        <link rel="stylesheet" type="text/css" href="/index.css" />
         <link href="/atom.xml" rel="alternate" type="application/atom+xml" title="Code Island" /> 
     </head>
     <body>
-        <div id="parent">
-          $partial("header/header.html")$
+      <div id="recent">
           <aside id="sidebar">
             $partial("aside/aside.html")$
           </aside>
-          <main id="content">
-            $body$
-          </main>
-          <footer></footer>
-        </div>
+         Recent posts:
+
+        <!-- TODO make post teasers here rather than a simple list -->
+
+        <a href="/atom.xml"><img src="/recent/rss.png" style="width: 20px"></img></a>
+
+         $partial("posts.html")$
+     </div>
+     <div id="mobile">
+       $partial("aside/aside.html")$
+     </div>
     </body>
 </html>
