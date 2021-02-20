@@ -6,12 +6,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>$title$ - Code Island</title>
 				<link rel="stylesheet" type="text/css" href="/page.css" />
+				<link rel="stylesheet" type="text/css" href="/header.css" />
 				<link rel="stylesheet" type="text/css" href="/aside.css" />
         <link href="/atom.xml" rel="alternate" type="application/atom+xml" title="Code Island" /> 
     </head>
     <body>
 				<div id="parent">
-					<!-- <header></header> -->
+					$partial("header/header.html")$
 					$partial("aside/aside.html")$
 					<main id="content">
             $body$

@@ -1,0 +1,18 @@
+header {
+	padding: 0;
+	height: 50px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: none !important;
+}
+
+@media screen and (max-width: 750px) {
+	header {
+		display: inline !important;
+	}
+	main {
+		height: calc(100% - 50px);
+	}
+}
