@@ -6,6 +6,20 @@ header {
 	left: 0;
 	width: 100%;
 	display: none !important;
+	background: url(/header/island-small.png);
+	border-bottom: 4px solid #a6ffffff;
+	text-align: center;
+	font-family: monospace;
+	z-index: 0;
+}
+
+header > a {
+	text-decoration: none;
+	z-index: 100;
+}
+
+header > a:hover {
+	text-decoration: underline;
 }
 
 @media screen and (max-width: 750px) {
