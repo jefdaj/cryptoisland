@@ -70,3 +70,20 @@ footer#watermark {
 	position: absolute;
 	bottom: 0;
 }
+
+/* TODO remove? */
+.hide {
+	position: absolute !important;
+	top: -9999px !important;
+	left: -9999px !important;
+}
+
+@media screen and (max-width: 750px) {
+	aside {
+		display: none !important;
+	}
+	main {
+		/* TODO why is the 40px necessary? */
+		width: calc(100% - 40px);
+	}
+}
