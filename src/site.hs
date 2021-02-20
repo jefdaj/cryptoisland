@@ -119,6 +119,14 @@ main = hakyllWith myHakyllConfig $ do
       -- return $ fmap (replace "SITEROOT" "") posts'
       return posts'
 
+  -- fullscreen version of the aside for mobile users
+  whenAnyTagChanges $ create ["mobile.html"] $ do
+    route idRoute
+    compile $ do
+      makeItem ""
+        >>= loadAndApplyTemplate "aside/mobile.html" (siteCtx tags)
+        >>= relativizeAllUrls
+
 --------------------
 -- per-post files --
 --------------------

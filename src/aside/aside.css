@@ -1,85 +1,86 @@
 #sidebar {
-	position: fixed;
-	width: 350px;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	overflow-y: auto;
-	padding: 50px 0;
-	z-index: 50;
-	/* border: 1px solid red; */
-	background: url(/aside/background.png) no-repeat left center;
+  position: fixed;
+  width: 350px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  padding: 50px 0;
+  z-index: 50;
+  /* border: 1px solid red; */
+  background: url(/aside/background.png) no-repeat left center;
 }
 
 #island {
-	width: 350px;
-	z-index: 80;
+  width: 350px;
+  z-index: 80;
 }
 
 .center {
-	margin: auto;
+  margin: auto;
+  width: 50%;
 }
 
 .vertical-center {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
-aside > .tag-cloud {
-	z-index: 100;
-	text-align: center;
-	width: 40%;
-	height: 5%;
-	position: absolute;
-	top: 55%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+.tag-cloud {
+  z-index: 100;
+  text-align: center;
+  width: 40%;
+  height: 5%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-aside > .tag-cloud > a {
-	color: darkblue;
-	text-decoration: none;
+.tag-cloud > a {
+  color: darkblue;
+  text-decoration: none;
 }
 
-aside > .tag-cloud > a:hover {
-	color: blue;
-	text-decoration: underline;
+.tag-cloud > a:hover {
+  color: blue;
+  text-decoration: underline;
 }
 
 /* this is the main title link inside island.svg */
 #text3815 {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #text3815:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* TODO why does the boat underline fail? */
 #a76:hover {
-	border-bottom: 2px solid blue;
+  border-bottom: 2px solid blue;
 }
 
 footer#watermark {
   font-size: 10pt;
-	text-align: center;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 /* TODO remove? */
 .hide {
-	position: absolute !important;
-	top: -9999px !important;
-	left: -9999px !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
 }
 
 @media screen and (max-width: 750px) {
-	aside {
-		display: none !important;
-	}
+  aside {
+    display: none !important;
+  }
 }
