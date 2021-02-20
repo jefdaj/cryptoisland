@@ -69,13 +69,15 @@ main = hakyllWith myHakyllConfig $ do
         >>= loadAndApplyTemplate "page.html" (postCtx tags)
         >>= relativizeAllUrls
 
-  match "recent/recent.html" $ do
-    route $ constRoute "recent.html"
+  match "recent/index.md" $ do
+    route (toRoot $ Just "html")
     compile $ do
       posts <- recentFirst =<< loadAll postMd
       let ctx = recentCtx posts tags
       getResourceBody
-        >>= loadAndApplyTemplate "posts.html" ctx
+        >>= applyAsTemplate ctx
+      -- pandocCompiler
+        -- >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
         >>= loadAndApplyTemplate "page.html" ctx
         >>= relativizeAllUrls
 
