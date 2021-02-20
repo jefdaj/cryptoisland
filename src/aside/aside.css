@@ -82,8 +82,4 @@ footer#watermark {
 	aside {
 		display: none !important;
 	}
-	main {
-		/* TODO why is the 40px necessary? */
-		width: calc(100% - 40px);
-	}
 }
