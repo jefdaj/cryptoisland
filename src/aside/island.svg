@@ -255,7 +255,7 @@
        x2="178.40475"
        y2="140.51785"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.1502618,0,0,1.0641892,-65.436584,-90.00633)" />
+       gradientTransform="matrix(0.1502618,0,0,3.7092997,-65.436584,-458.72284)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4980"
@@ -265,7 +265,7 @@
        x2="178.40475"
        y2="140.51785"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.13010471,0,0,1.0641891,69.128284,-90.006319)" />
+       gradientTransform="matrix(0.13010471,0,0,3.7092994,69.128284,-458.72279)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -274,11 +274,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="330.3732"
-     inkscape:cy="199.95138"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="-17.6268"
+     inkscape:cy="245.95138"
      inkscape:document-units="mm"
-     inkscape:current-layer="a76"
+     inkscape:current-layer="layer4"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1023"
@@ -304,7 +304,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -333,19 +333,19 @@
      inkscape:label="mist-upper"
      style="display:inline">
     <rect
-       style="fill:url(#linearGradient5545);fill-opacity:1;stroke-width:0.39988369;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:url(#linearGradient5545);fill-opacity:1;stroke-width:0.74656951;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect5537"
        width="21.695833"
-       height="119.0625"
+       height="415"
        x="-60.324989"
-       y="1.8880591e-14"
+       y="-145"
        transform="rotate(-90)" />
     <rect
-       style="fill:#ffffff;fill-opacity:0.98760328;stroke-width:1.16189539;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:#ffffff;fill-opacity:0.98760328;stroke-width:2.16921997;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect5640"
-       width="119.0625"
+       width="415"
        height="14.287508"
-       x="0"
+       x="-145"
        y="59.795822" />
   </g>
   <g
@@ -354,12 +354,12 @@
      inkscape:label="mist-lower"
      style="display:inline">
     <rect
-       style="display:inline;fill:url(#linearGradient5545-5);fill-opacity:1;stroke-width:0.37209678;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;enable-background:new"
+       style="display:inline;fill:url(#linearGradient5545-5);fill-opacity:1;stroke-width:0.69469225;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;enable-background:new"
        id="rect5537-9"
        width="18.785416"
-       height="119.06249"
+       height="414.99994"
        x="73.554169"
-       y="-5.5511151e-16"
+       y="-145"
        transform="matrix(0,1,1,0,0,0)" />
   </g>
   <g
