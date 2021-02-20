@@ -70,7 +70,7 @@ main = hakyllWith myHakyllConfig $ do
         >>= relativizeAllUrls
 
   -- other top-level markdown pages: "about", "contact", "cv", etc.
-  match ("*/index.md" .&&. complement "recent/index.md") $ do
+  match "*/index.md" $ do
     route (toRoot $ Just "html")
     compile $ pandocCompiler
       >>= loadAndApplyTemplate "page.html" (siteCtx tags)
@@ -86,9 +86,9 @@ main = hakyllWith myHakyllConfig $ do
           >>= loadAndApplyTemplate "page.html" ctx
           >>= relativizeAllUrls
 
-  -- main homepage is the list of latest posts
+  -- TODO should this stay separate, or should you just use recentCtx for everything?
 --   match "recent/index.md" $ do
---     route $ constRoute "index.html"
+--     route $ toRoot $ Just "html"
 --     compile $ do
 --       posts <- recentFirst =<< loadAll postMd
 --       let ctx = recentCtx posts tags
