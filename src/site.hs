@@ -42,7 +42,7 @@ main = hakyllWith myHakyllConfig $ do
 
   -- html templates used below
   -- note that we treat svg as html here because it includes clickable links
-  match ("page.html" .||. "posts.html" .||. "*/*.html" .||. "*/*.svg") $ compile templateCompiler
+  match ("page.html" .||. "posts.html" .||. ("*/*.html" .&&. complement "recent/recent.html") .||. "*/*.svg") $ compile templateCompiler
 
   -- most of the rest is crudely updated whenever a tag changes
   tags <- buildTags postMd $ fromCapture "tags/*.html"
@@ -69,8 +69,17 @@ main = hakyllWith myHakyllConfig $ do
         >>= loadAndApplyTemplate "page.html" (postCtx tags)
         >>= relativizeAllUrls
 
-  -- other top-level markdown pages: "about", "contact", "cv", etc.
-  match "*/index.md" $ do
+  match "recent/recent.html" $ do
+    route $ constRoute "recent.html"
+    compile $ do
+      posts <- recentFirst =<< loadAll postMd
+      let ctx = recentCtx posts tags
+      getResourceBody
+        >>= loadAndApplyTemplate "posts.html" ctx
+        >>= loadAndApplyTemplate "page.html" ctx
+        >>= relativizeAllUrls
+
+  match ("*/index.md" .&&. complement "recent/index.md") $ do
     route (toRoot $ Just "html")
     compile $ pandocCompiler
       >>= loadAndApplyTemplate "page.html" (siteCtx tags)
