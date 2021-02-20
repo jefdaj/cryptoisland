@@ -14,7 +14,7 @@ header {
 }
 
 /* small island svg */
-header > #svg3722 {
+header > a > #svg3722 {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -35,6 +35,6 @@ header > a:hover {
 		display: inline !important;
 	}
 	main {
-		height: calc(100% - 50px);
+		height: calc(100% - 55px);
 	}
 }
