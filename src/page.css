@@ -50,8 +50,7 @@ body {
 } */
 
 #content {
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 20px;
 }
 
 div#logo a {
