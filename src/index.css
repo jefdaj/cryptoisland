@@ -2,11 +2,15 @@ html {
   background: #fff9e8;
 }
 #recent {
-    display: block !important;
+    /* display: block !important; */
+  position: absolute;
+  left: 0;
 }
 
 #mobile {
-    display: none !important;
+    /* display: none !important; */
+  position: absolute;
+  left: -999px;
 }
 
 @media screen and (max-width: 750px) {
@@ -14,11 +18,19 @@ html {
     background: url(/aside/background.png) repeat-x left center;
   }
   #recent {
-    display: none !important;
+    /* display: none !important; */
+    position: absolute;
+    left: -999px;
   }
 
   #mobile {
-    display: block !important;
+    /* display: block !important; */
+    position: absolute;
+    left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
   }
 }
 

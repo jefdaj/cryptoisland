@@ -81,6 +81,8 @@ footer#watermark {
 
 @media screen and (max-width: 750px) {
   aside {
-    display: none !important;
+    /* display: none !important; */
+		position: absolute;
+		left: -999px;
   }
 }
