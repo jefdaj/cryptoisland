@@ -1,7 +1,7 @@
 html {
   background: #fff9e8;
 }
-#recent {
+#content {
     /* display: block !important; */
   position: absolute;
   left: 0;
@@ -13,7 +13,7 @@ html {
   left: -999px;
 }
 
-#recent {
+#content {
   padding: 20px;
 }
 
@@ -21,7 +21,7 @@ html {
   html {
     background: url(/aside/background.png) repeat-x left center;
   }
-  #recent {
+  #content {
     /* display: none !important; */
     position: absolute;
     left: -999px;

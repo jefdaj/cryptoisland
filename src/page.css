@@ -20,7 +20,7 @@ html {
 }
 
 /* parent div to help main + aside fill the page */
-#parent {
+#content {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -42,16 +42,6 @@ body {
     margin: auto;
 }
 
-
-/* .clearfix::after {
-	content: "";
-	clear: both;
-	display: table;
-} */
-
-#content {
-	padding: 20px;
-}
 
 div#logo a {
     color: black;
@@ -88,9 +78,6 @@ ul {
 }
 
 @media screen and (max-width: 750px) {
-	parent {
-		height: calc(100% - 55px); /* TODO why is this needed? */
-	}
 	main {
 		height: calc(100% - 55px);
 		width: calc(100% - 40px);
