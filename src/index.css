@@ -13,6 +13,10 @@ html {
   left: -999px;
 }
 
+#recent {
+  padding: 20px;
+}
+
 @media screen and (max-width: 750px) {
   html {
     background: url(/aside/background.png) repeat-x left center;
@@ -48,5 +52,3 @@ html {
   max-height: 100%;
   margin: 0;
 }
-
-
