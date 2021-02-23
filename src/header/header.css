@@ -6,7 +6,7 @@ header {
 	width: 100%;
   /* display: none !important; */
   position: absolute;
-  left: -999px;
+  left: -999px !important;
 	background: #e9feffff;
 	border-bottom: 4px solid #00ddff;
 	text-align: center;
@@ -34,7 +34,7 @@ header > a:hover {
 @media screen and (max-width: 750px) {
 	header {
 		/* display: inline !important; */
-		left: 0;
+		left: 0 !important;
 	}
 	main {
 		height: calc(100% - 55px);

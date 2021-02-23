@@ -1,13 +1,15 @@
-html {
-  background: #fff9e8;
-}
 #content {
     /* display: block !important; */
   position: absolute;
   left: 0;
 }
 
-#mobile {
+#header {
+  position: absolute;
+  left: -999px !important;
+}
+
+#aside {
     /* display: none !important; */
   position: absolute;
   left: -999px;
@@ -27,7 +29,7 @@ html {
     left: -999px;
   }
 
-  #mobile {
+  #aside {
     /* display: block !important; */
     position: absolute;
     left: 0;

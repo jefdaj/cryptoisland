@@ -72,15 +72,22 @@ main = hakyllWith myHakyllConfig $ do
   -- the recent posts page is special because we also use it to create index.html,
   -- and because it's the only one that needs a list of recent posts.
   -- TODO how to flag index.html as different for css?
-  create ["index.html", "recent.html"] $ do
+  create ["recent.html"] $ do
     route idRoute
     compile $ do
       posts <- recentFirst =<< loadAll postMd
       let ctx = recentCtx posts tags
-      -- getResourceBody
-        -- >>= applyAsTemplate ctx
-      -- pandocCompiler
-        -- >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
+      makeItem ""
+        >>= loadAndApplyTemplate "recent/index.html" ctx
+        >>= loadAndApplyTemplate "page.html" ctx
+        >>= relativizeAllUrls
+
+  -- this is the same as recent.html above, except with extra css
+  create ["index.html"] $ do
+    route idRoute
+    compile $ do
+      posts <- recentFirst =<< loadAll postMd
+      let ctx = recentCtx posts tags <> constField "extracss" "./index.css"
       makeItem ""
         >>= loadAndApplyTemplate "recent/index.html" ctx
         >>= loadAndApplyTemplate "page.html" ctx
