@@ -9,6 +9,7 @@ a {
 
 html {
 	background: #fff9e8;
+	padding: 0;
 }
 
 /* parent div to help main + aside fill the page */
@@ -17,22 +18,14 @@ main {
 	width: 100%;
 	height: 100%;
 	background: #fff9e8;
-}
-
-main {
-	/* border: 1px solid blue; */
-	width: calc(100% - 375px);
-	/* height: calc(100% - 85px); */
-	margin: 20px;
-	overflow: auto;
+	margin: 10px;
+	width: calc(100% - 385px);
 }
 
 body {
     color: black;
     font-size: 16px;
-    /* max-width: 600px; */
 }
-
 
 div#logo a {
     color: black;
@@ -41,18 +34,6 @@ div#logo a {
     font-weight: bold;
     text-decoration: none;
 }
-
-/* div#header #navigation {
-    text-align: right;
-} */
-
-/* div#header #navigation a {
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    text-transform: uppercase;
-} */
 
 h1 {
     font-size: 24px;
@@ -67,8 +48,4 @@ ul {
 }
 
 @media screen and (max-width: 750px) {
-	main {
-		height: calc(100% - 55px);
-		width: calc(100% - 40px);
-	}
 }
