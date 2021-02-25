@@ -4,4 +4,19 @@ title: About
 
 <img src="/about/boat.svg"></img>
 
-Hi. I'm Jeff and this is my island! Sort of. You know what I mean.
+Welcome to <b>Code Island</b>!
+
+It's your standard programmer blog,
+but I'll try to keep it fun by rambling less
+and adding more visuals.
+
+I go by *jefdaj* online. Here are some ways you can contact me:
+
+- [Github](https://github.com/jefdaj)
+- Email (personal, UC Berkeley)
+- Twitter
+- Secure Scuttlebutt
+- Meetup
+- Reddit
+
+<!-- TODO gpg? bitmessage? -->
