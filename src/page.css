@@ -23,6 +23,7 @@ main {
 	/* border: 1px solid blue; */
 	width: calc(100% - 375px);
 	/* height: calc(100% - 85px); */
+	margin: 20px;
 	overflow: auto;
 }
 
