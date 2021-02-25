@@ -67,6 +67,7 @@ footer#watermark {
   width: 100%;
   position: absolute;
   bottom: 0;
+	padding-bottom: 10px;
 }
 
 @media screen and (max-width: 750px) {
