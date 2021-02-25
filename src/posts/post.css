@@ -27,5 +27,13 @@ div.toc {
   max-width: 50%;
 }
 
+div.toc > ul > li > a {
+  text-decoration: none;
+}
+
+div.toc > ul > li > a:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 750px) {
 }
