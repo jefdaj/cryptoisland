@@ -1,4 +1,4 @@
-#sidebar {
+aside {
   position: fixed;
   width: 350px;
   top: 0;
@@ -72,16 +72,8 @@ footer#watermark {
   bottom: 0;
 }
 
-/* TODO remove? */
-.hide {
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
-}
-
 @media screen and (max-width: 750px) {
   aside {
-    /* display: none !important; */
 		position: absolute;
 		left: -999px;
   }

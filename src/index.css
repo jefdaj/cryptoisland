@@ -1,43 +1,13 @@
-#content {
-    /* display: block !important; */
+/* desktop version */
+
+main {
   position: absolute;
   left: 0;
 }
 
-#header {
-  position: absolute;
-  left: -999px !important;
-}
-
-#aside {
-    /* display: none !important; */
+header {
   position: absolute;
   left: -999px;
-}
-
-#content {
-  padding: 20px;
-}
-
-@media screen and (max-width: 750px) {
-  html {
-    background: url(/aside/background.png) repeat-x left center;
-  }
-  #content {
-    /* display: none !important; */
-    position: absolute;
-    left: -999px;
-  }
-
-  #aside {
-    /* display: block !important; */
-    position: absolute;
-    left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		margin: auto;
-  }
 }
 
 html {
@@ -53,4 +23,35 @@ html {
   width: 100%;
   max-height: 100%;
   margin: 0;
+}
+
+/* mobile version, which should only show the island */
+@media screen and (max-width: 750px) {
+  html {
+    background: url(/aside/background.png) repeat-x left center;
+  }
+  header {
+    position: absolute;
+    left: -999px;
+  }
+
+  main {
+    position: absolute;
+    left: -999px;
+  }
+
+  footer {
+    position: absolute;
+    left: -999px;
+  }
+
+  aside {
+    position: absolute;
+    left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		margin: auto;
+		padding: 0;
+  }
 }
