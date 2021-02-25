@@ -1,6 +1,6 @@
 ---
 title: Test post
-tags: test
+tags: test, money, crypto, haskell, nix, economics
 ...
 
 This is a test.
