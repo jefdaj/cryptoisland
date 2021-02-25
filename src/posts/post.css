@@ -20,11 +20,6 @@ div.info {
 div.toc {
   float: right;
   /* background-color: lightblue; */
-  margin-left: 1em;
-  margin-bottom: 2em;
-  margin-right: 1em;
-  margin-top: -3em;
-  padding: 1em;
   max-width: 50%;
 }
 
