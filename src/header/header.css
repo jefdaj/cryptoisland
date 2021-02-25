@@ -1,15 +1,14 @@
 header {
 	height: 50px;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	width: 100%;
-  position: absolute;
   left: -9999px;
 	background: #e9feffff;
 	border-bottom: 4px solid #00ddff;
 	text-align: center;
 	font-family: monospace;
-	z-index: 0;
+	z-index: 10;
 }
 
 /* small island svg */
