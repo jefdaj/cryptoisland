@@ -4,7 +4,7 @@ header {
 	top: 0;
 	width: 100%;
   position: absolute;
-  left: -999px;
+  left: -9999px;
 	background: #e9feffff;
 	border-bottom: 4px solid #00ddff;
 	text-align: center;
