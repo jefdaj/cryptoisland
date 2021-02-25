@@ -7,7 +7,7 @@ main {
 
 header {
   position: absolute;
-  left: -999px;
+  left: -9999px;
 }
 
 html {
@@ -31,17 +31,17 @@ html {
   }
   header {
     position: absolute;
-    left: -999px;
+    left: -9999px;
   }
 
   main {
     position: absolute;
-    left: -999px;
+    left: -9999px;
   }
 
   footer {
     position: absolute;
-    left: -999px;
+    left: -9999px;
   }
 
   aside {

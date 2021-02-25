@@ -3,7 +3,7 @@ header {
 	position: fixed;
 	top: 0;
 	width: 100%;
-  left: -9999px;
+  left: -99999px;
 	background: #e9feffff;
 	border-bottom: 4px solid #00ddff;
 	text-align: center;
