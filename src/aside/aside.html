@@ -2,7 +2,13 @@
 <div id="island" class="vertical-center">
   $partial("aside/island.svg")$
 </div>
-<div class="tag-cloud">$tagcloud$</div>
+<div class="tag-cloud-container">
+  <div class="tag-cloud-left">
+	  <div class="tag-cloud-right">
+		  $tagcloud$
+	  </div>
+  </div>
+</div>
 <footer id="watermark">
   Built by <a href="https://github.com/jefdaj">jefdaj</a>
   using <a href="https://github.com/jaspervdj/hakyll">hakyll</a>.

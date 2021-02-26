@@ -26,28 +26,37 @@ aside {
   transform: translateY(-50%);
 }
 
-.tag-cloud {
-  z-index: 100;
-  text-align: center;
-  width: 40%;
-  height: 15%;
-  position: absolute;
-  top: 65%;
-  left: 50%;
+.tag-cloud-container {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	z-index: 100;
 	transform: translate(-50%, -50%);
+	width: 70%;
+	height: 10%;
 }
 
-.tag-cloud:before {
-	-webkit-transform: perspective(80em) rotateX(-30deg);
-  transform: perspective(80em) rotateX(-30deg);
+.tag-cloud-left {
+  shape-outside: url(/aside/shape-left.svg);
+  float: left;
+  width: 75%;
+  height: 100%;
 }
 
-.tag-cloud > a {
+.tag-cloud-right {
+  shape-outside: url(/aside/shape-right.svg);
+  float: right;
+  width: 67%;
+  height: 100%;
+  z-index: 100;
+}
+
+.tag-cloud-right > a {
   color: darkblue;
   text-decoration: none;
 }
 
-.tag-cloud > a:hover {
+.tag-cloud-right > a:hover {
   color: blue;
   text-decoration: underline;
 }
