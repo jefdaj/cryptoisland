@@ -36,13 +36,13 @@ main = hakyllWith myHakyllConfig $ do
   match rootFiles $ route (toRoot Nothing) >> compile copyFileCompiler
 
   -- static files
-  match (("*/*.svg" .&&. complement "aside/*.svg" .&&. complement "header/*.svg") .||. "*/*.png" .||. postPng) $ route idRoute >> compile copyFileCompiler
+  match (("*/*.svg" .&&. complement "*/island*.svg" .&&. complement "aside/boat.svg") .||. "*/*.png" .||. postPng) $ route idRoute >> compile copyFileCompiler
   match ("*/*.jpg" .||. postJpg) $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
   match ("*.css" .||. "*/*.css") $ route (toRoot $ Just "css") >> compile compressCssCompiler
 
   -- html templates used below
   -- note that we treat svg as html here because it includes clickable links
-  match ("page.html" .||. "posts.html" .||. "*/*.html" .||. "aside/*.svg" .||. "header/*.svg") $ compile templateCompiler
+  match ("page.html" .||. "posts.html" .||. "*/*.html" .||. "*/island*.svg" .||. "aside/boat.svg") $ compile templateCompiler
 
   -- most of the rest is crudely updated whenever a tag changes
   tags <- buildTags postMd $ fromCapture "tags/*.html"
