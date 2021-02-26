@@ -76,7 +76,7 @@ aside {
 }
 
 /* TODO why does the boat underline fail? */
-#a76:hover {
+#aboutBoat:hover {
   border-bottom: 2px solid blue;
 }
 
