@@ -28,35 +28,40 @@ aside {
 
 .tag-cloud-container {
 	position: absolute;
-	top: 60%;
+	top: 53%;
 	left: 50%;
 	z-index: 100;
-	transform: translate(-50%, -50%);
-	width: 70%;
-	height: 10%;
+	transform: translateX(-50%);
+	width: 300px;
+	height: 250px;
+	display: block;
+	overflow: hidden;
 }
 
 .tag-cloud-left {
-  shape-outside: url(/aside/shape-left.svg);
+	        shape-outside: polygon(107.83% 60.65%, 4% 61.27%, 0% 0%, 29.17% -0.8%, 46.16% 26.43%, 80.17% 40.3%);
+	-webkit-shape-outside: polygon(107.83% 60.65%, 4% 61.27%, 0% 0%, 29.17% -0.8%, 46.16% 26.43%, 80.17% 40.3%);
   float: left;
-  width: 75%;
-  height: 100%;
+	width: 50%;
+	height: 100%;
 }
 
 .tag-cloud-right {
-  shape-outside: url(/aside/shape-right.svg);
+					shape-outside: polygon(9.16% 62.65%, 84.66% 63.27%, 83.33% -1.6%, 44.5% 18%, 26.16% 44.83%, 36.84% 50.7%);
+	-webkit-shape-outside: polygon(9.16% 62.65%, 84.66% 63.27%, 83.33% -1.6%, 44.5% 18%, 26.16% 44.83%, 36.84% 50.7%);
   float: right;
-  width: 67%;
-  height: 100%;
-  z-index: 100;
+	width: 50%;
+	height: 100%;
 }
 
-.tag-cloud-right > a {
+.tag-cloud > a {
   color: darkblue;
   text-decoration: none;
+	margin: 2pt;
+	overflow: hidden;
 }
 
-.tag-cloud-right > a:hover {
+.tag-cloud > a:hover {
   color: blue;
   text-decoration: underline;
 }
