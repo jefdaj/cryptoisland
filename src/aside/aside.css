@@ -28,14 +28,15 @@ aside {
 
 .tag-cloud-container {
 	position: absolute;
-	top: 53%;
+	top: 60%;
 	left: 54%;
 	z-index: 100;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 	width: 250px;
 	height: 150px;
 	display: block;
 	overflow: hidden;
+	margin-top: 0.5em;
 }
 
 .tag-cloud-left {
@@ -55,9 +56,8 @@ aside {
 }
 
 .tag-cloud > a {
-  color: darkblue;
+  color: blue; 
   text-decoration: none;
-	margin: 2pt;
 	overflow: hidden;
 }
 
