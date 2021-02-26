@@ -80,6 +80,14 @@ aside {
   border-bottom: 2px solid blue;
 }
 
+#aboutBoat {
+  position: absolute;
+	top: 51%;
+	left: 70%;
+	width: 10%;
+	z-index: 100; /* TODO why doesn't this work? */
+}
+
 footer#watermark {
   font-size: 10pt;
   text-align: center;
