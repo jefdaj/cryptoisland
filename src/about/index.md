@@ -2,7 +2,7 @@
 title: About
 ---
 
-<img src="/about/boat.svg"></img>
+<img src="/about/boat.svg" style="margin-left: 40px"></img>
 
 Welcome to <b>Code Island</b>!
 
