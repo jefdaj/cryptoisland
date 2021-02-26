@@ -67,11 +67,11 @@ aside {
 }
 
 /* this is the main title link inside island.svg */
-#text3815 {
+#titleText {
   text-decoration: none;
 }
 
-#text3815:hover {
+#titleText:hover {
   text-decoration: underline;
 }
 
@@ -82,10 +82,12 @@ aside {
 
 #aboutBoat {
   position: absolute;
-	top: 51%;
+	top: 55%;
 	left: 70%;
 	width: 10%;
+	height: 90px;
 	z-index: 100; /* TODO why doesn't this work? */
+	margin: 10px;
 }
 
 footer#watermark {
