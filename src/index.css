@@ -53,6 +53,15 @@ html {
 	}
 
 	.tag-cloud-container {
-		top: 64%;
+		top: 66%;
+		left: 52%;
+	}
+
+	.tag-cloud-left {
+	  width: 100px;
+	}
+}
+	.tag-cloud-right {
+	  width: 100px;
 	}
 }

@@ -28,11 +28,11 @@ aside {
 
 .tag-cloud-container {
 	position: absolute;
-	top: 60%;
+	top: 59%;
 	left: 50%;
 	z-index: 90;
 	transform: translate(-50%, -50%);
-	/* width: 175px; */
+	width: 185px;
 	height: 150px;
 	display: block;
 	overflow: hidden;
@@ -44,7 +44,7 @@ aside {
 	        shape-outside: url(/aside/shape-left.svg);
 	-webkit-shape-outside: url(/aside/shape-left.svg);
   float: left;
-	width: 100px;
+	width: 90px;
 	height: 100%;
 }
 
@@ -52,7 +52,7 @@ aside {
 					shape-outside: url(/aside/shape-right.svg);
 	-webkit-shape-outside: url(/aside/shape-right.svg);
   float: right;
-	width: 75px;
+	width: 65px;
 	height: 100%;
 }
 
