@@ -10,13 +10,14 @@ It's your standard programmer blog,
 but I'll try to keep it fun by rambling less
 and adding more visuals.
 
-I go by *jefdaj* online. Here are some ways you can contact me:
+I go by *jefdaj* online.
+Here are some places you can me:
 
 - [Github](https://github.com/jefdaj)
 - Email (personal, UC Berkeley)
 - Twitter
 - Secure Scuttlebutt
 - Meetup
-- Reddit
+<!-- - Reddit -->
 
 <!-- TODO gpg? bitmessage? -->

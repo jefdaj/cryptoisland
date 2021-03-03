@@ -1,6 +1,6 @@
 ---
 title: Another test post
-tags: test, test4, haskell, nix, crypto, money, css, hakyll
+tags: test, test4, haskell, nix, crypto, futarchy, css, hakyll
 toc: true
 ...
 

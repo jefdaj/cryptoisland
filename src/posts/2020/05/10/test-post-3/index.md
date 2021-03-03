@@ -1,6 +1,6 @@
 ---
 title: Another test post
-tags: test, test2, foo, bar, thisisatest, haskell, crypto, money
+tags: test, test2, foo, bar, thisisatest, haskell, crypto, futarchy
 toc: true
 ...
 
