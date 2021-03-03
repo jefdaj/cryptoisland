@@ -29,22 +29,22 @@ aside {
 .tag-cloud-container {
 	position: absolute;
 	top: 60%;
-	left: 54%;
+	left: 50%;
 	z-index: 90;
 	transform: translate(-50%, -50%);
-	width: 250px;
+	width: 175px;
 	height: 150px;
 	display: block;
 	overflow: hidden;
 	margin-top: 0.5em;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 
 .tag-cloud-left {
 	        shape-outside: url(/aside/shape-left.svg);
 	-webkit-shape-outside: url(/aside/shape-left.svg);
   float: left;
-	width: 50%;
+	width: 100px;
 	height: 100%;
 }
 
@@ -52,7 +52,7 @@ aside {
 					shape-outside: url(/aside/shape-right.svg);
 	-webkit-shape-outside: url(/aside/shape-right.svg);
   float: right;
-	width: 50%;
+	width: 75px;
 	height: 100%;
 }
 
@@ -79,8 +79,8 @@ aside {
 /* TODO why does the boat underline fail? */
 #aboutBoat {
 	position: absolute;
-	top: 50%;
-	left: 76%;
+	top: 52%;
+	left: 66%;
 	width: 10%;
 	height: 55px;
 	margin: 30px;
