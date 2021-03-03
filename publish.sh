@@ -8,7 +8,7 @@ set -x
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 # Temporarily store uncommited changes
-git stash
+git stash || true
 
 # Verify correct branch
 git checkout develop
