@@ -3,7 +3,8 @@ CodeIs.land
 
 Source code for my blog, <https://codeis.land>.
 
-Posts are my own, but go ahead and copy the code for your thing!
+Everything is licensed under [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) by default,
+but I'm probably open to making exceptions for your commercial thing too as long as you ask first.
 
 [build.sh](build.sh) will install dependencies,
 build the site with stack, and serve it at <http://localhost:8000>.
