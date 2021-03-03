@@ -1,6 +1,6 @@
 ---
 title: How to use this blog
-tags: hakyll, haskell, blog, javascript, github, writing
+tags: blog, github, writing
 ...
 
 Each post is intended to be a quick "bite-sized" read rather than anything
