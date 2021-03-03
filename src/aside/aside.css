@@ -32,8 +32,12 @@ aside {
 	left: 54%;
 	z-index: 90;
 	transform: translate(-50%, -50%);
+	width: 250px;
+	height: 150px;
+	display: block;
 	overflow: hidden;
 	margin-top: 0.5em;
+	border: 1px solid red;
 }
 
 .tag-cloud-left {
@@ -73,18 +77,18 @@ aside {
 }
 
 /* TODO why does the boat underline fail? */
-#aboutBoat:hover {
-  border-bottom: 2px solid blue;
-}
-
 #aboutBoat {
-  position: absolute;
+	position: absolute;
 	top: 50%;
-	left: 66%;
+	left: 76%;
 	width: 10%;
 	height: 55px;
-	z-index: 100; /* TODO why doesn't this work? */
-	margin: 50px; /* seems to be required to get it out from under the tag cloud */
+	margin: 30px;
+	z-index: 100; /* TODO why does this not work */
+}
+
+#aboutBoat:hover {
+  border-bottom: 2px solid blue;
 }
 
 footer#watermark {
