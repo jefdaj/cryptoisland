@@ -11,7 +11,7 @@ but I'll try to keep it fun by rambling less
 and adding more visuals.
 
 I go by *jefdaj* online.
-Here are some places you can me:
+Here are some places you can contact me:
 
 - [Github](https://github.com/jefdaj)
 - Email (personal, UC Berkeley)
