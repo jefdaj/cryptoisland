@@ -51,4 +51,8 @@ html {
 		height: 90px;
 		margin: 50px; /* seems to be required to get it out from under the tag cloud */
 	}
+
+	.tag-cloud-container {
+		top: 64%;
+	}
 }
