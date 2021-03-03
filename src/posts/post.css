@@ -10,9 +10,11 @@
     text-decoration: underline;
 }
 
-div.toc  .header {
+.header {
   border-bottom: 1px solid black;
   font-weight: bold;
+  margin: 10px;
+  margin-top: 30px;
 }
 
 div.info {
@@ -31,7 +33,23 @@ div.toc > ul > li > a {
   text-decoration: none;
 }
 
+div.toc > ul > li > ul > li > a:hover {
+  text-decoration: underline;
+}
+
+div.toc > ul > li > ul > li > a {
+  text-decoration: none;
+}
+
 div.toc > ul > li > a:hover {
+  text-decoration: underline;
+}
+
+div.info > a {
+  text-decoration: none;
+}
+
+div.info > a:hover {
   text-decoration: underline;
 }
 
