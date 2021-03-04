@@ -6,20 +6,24 @@ tags: plutus, haskell, smart-contracts, cardano, solidity, ethereum
 Most smart contracts in use today are written in [Solidity][solidity] and run
 on [Ethereum][ethereum]. [Plutus][plutus] is the native language of
 [Cardano][cardano], a competing platform with a slower and more academic ethos.
-They haven't even launched contracts on mainnet yet. So why bother learning the
-less popular language?
+They haven't even launched contracts on mainnet yet! So why bother learning this
+arcane language?
 
-Personally I think [their papers][papers] contain important breakthroughs in
-[sustainability][pos], [scaling][hydra], [governance][treasury], and
-[privacy][privacy] that point to a fundamentally better protocol, and the
-market will eventually discover that.
+Personally I think [their academic work so far][papers] is an amazing treasure
+trove of breakthroughs unmatched by any other crypto project. They range across
+topics like [environmental sustainability][pos], [scaling][hydra],
+[governance][treasury], and [privacy][privacy], and they are building toward
+something fundamentally better than anything in production today. As far as I
+can tell, the main reason the market doesn't reflect that is because most
+people haven't gotten around to reading the papers.
 
-But if not, learning another programming style with different tradeoffs will
-still make you a better Solidity developer. It's analagous to [why you should
-learn Haskell][why-learn]. Also it *is* Haskell, and the things it teaches
-you---immutable data structures, static analysis with types, stateless
-functions guaranteed to work in parallel---seem especially well suited to a
-blockchain context.
+But even if that turns out to be a naive and biased opinion, learning
+another programming style with different tradeoffs will still make you a better
+Solidity developer. It's analagous to [why you should learn
+Haskell][why-learn]. Also it *is* pretty similar to Haskell, and the functional
+programming paradigm---immutable data structures, static analysis of types,
+stateless functions guaranteed to work in parallel---seems especially well
+suited to a blockchain context.
 
 <!-- Assuming you're interested, see [the intro series][intro]. -->
 
