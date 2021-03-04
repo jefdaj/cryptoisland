@@ -10,7 +10,8 @@ make it less daunting for me to write every day.
 
 If you get interested in something you should explore linked and similarly-tagged
 posts, then branch out into the primary sources or [ask me][me] to expand
-on the topic if things are still unclear. I love constructive feedback!
+on the topic if things are still unclear. Also, please tell me if I messed something up.
+I want all the constructive feedback!
 
 The site is [hosted on Github][github]. The `master` branch holds unreadable
 compiled HTML; start [here][posts] on the `develop` branch instead. Each post
