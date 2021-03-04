@@ -6,9 +6,8 @@ title: About
 
 Welcome to <b>Code Island</b>!
 
-It's your standard programmer blog,
-but I'll try to keep it fun by rambling less
-and adding more visuals.
+It's your standard programmer blog, but with [shorter posts][zettel-posts].
+I'll try to keep it fun by rambling less and adding more visuals.
 
 I go by *jefdaj* online.
 Here are some places you can contact me:
@@ -21,3 +20,5 @@ Here are some places you can contact me:
 <!-- - Reddit -->
 
 <!-- TODO gpg? bitmessage? -->
+
+[zettel-posts]: /posts/2021/03/03/how-to-use-this-blog/index.html
