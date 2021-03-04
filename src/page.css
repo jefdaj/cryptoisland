@@ -42,8 +42,8 @@ h2 {
     font-size: 20px;
 }
 
-ul {
-  list-style-type: none;
+div.toc > ul {
+  list-style: none;
 }
 
 @media screen and (max-width: 750px) {
