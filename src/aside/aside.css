@@ -32,8 +32,8 @@ aside {
 	left: 50%;
 	z-index: 90;
 	transform: translate(-50%, -50%);
-	width: 185px;
-	height: 150px;
+	width: 55%;
+	height: 15%;
 	display: block;
 	overflow: hidden;
 	margin-top: 0.5em;
@@ -44,7 +44,7 @@ aside {
 	        shape-outside: url(/aside/shape-left.svg);
 	-webkit-shape-outside: url(/aside/shape-left.svg);
   float: left;
-	width: 90px;
+	width: 50%;
 	height: 100%;
 }
 
@@ -52,7 +52,7 @@ aside {
 					shape-outside: url(/aside/shape-right.svg);
 	-webkit-shape-outside: url(/aside/shape-right.svg);
   float: right;
-	width: 65px;
+	width: 55%;
 	height: 100%;
 }
 
