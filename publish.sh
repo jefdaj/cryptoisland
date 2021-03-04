@@ -21,9 +21,8 @@ stack exec site build
 popd
 
 # Get previous files
-# git fetch --all
-# git checkout -b master --track github/master
-git checkout master
+git fetch --all
+git checkout -b master --track origin/master
 
 # Overwrite existing files with new files
 rsync -a \
@@ -39,13 +38,10 @@ rsync -a \
 git add -A
 git commit -m "update site with publish.sh"
 
-# TODO remove this
-# clear && git diff HEAD^
-
 # Push
-# git push github master:master
+git push origin master:master
 
 # Restoration
 git checkout develop
-# git branch -D master
-git stash pop
+git branch -D master
+git stash pop || true
