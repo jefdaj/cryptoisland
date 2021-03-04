@@ -13,10 +13,9 @@ posts, then branch out into the primary sources or [ask me][me] to expand
 on the topic if things are still unclear. I love constructive feedback!
 
 The site is [hosted on Github][github]. The `master` branch holds unreadable
-compiled HTML; start [here][posts] on the `develop` branch instead for the
-actual source code. Each post is a folder with an `index.md` (like
-[this][this]) and possibly other files: pictures, standalone code you can
-download and run, etc.
+compiled HTML; start [here][posts] on the `develop` branch instead. Each post
+is a folder with an `index.md` (like [this][this]) and possibly other files:
+pictures, standalone scripts you can download and run, etc.
 
 [zettel]: https://zettelkasten.de/posts/overview/
 [github]: https://github.com/jefdaj/jefdaj.github.io
