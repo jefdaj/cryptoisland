@@ -1,6 +1,6 @@
 ---
 title: Why learn Plutus?
-tags: plutus, haskell, smart-contracts, cardano, solidity, ethereum
+tags: plutus, haskell, cardano, solidity, ethereum
 ...
 
 Most smart contracts in use today are written in [Solidity][solidity] and run
