@@ -4,7 +4,7 @@ tags: blog, github, writing, zettelkasten
 ...
 
 Each post is intended to be a quick "bite-sized" read on a narrow topic, more
-like a [Zettelkasten][zettel] note (a "zettel") than than a traditional
+like a [Zettelkasten][zettel] note (a "zettel") than a traditional
 full-length article. That's partly to avoid wasting your time, and partly to
 make it less daunting for me to write every day.
 
