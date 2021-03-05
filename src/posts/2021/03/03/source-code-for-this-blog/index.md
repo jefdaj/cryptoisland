@@ -43,7 +43,7 @@ Posting dates are based on the folder structure, and everything else is part of 
 [master]: https://github.com/jefdaj/jefdaj.github.io/tree/master
 [develop]: https://github.com/jefdaj/jefdaj.github.io/tree/develop
 [posts]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/src/posts/
-[index]: https://raw.githubusercontent.com/jefdaj/jefdaj.github.io/develop/src/posts/2021/03/04/code-for-this-blog/index.md
+[index]: https://raw.githubusercontent.com/jefdaj/jefdaj.github.io/develop/src/posts/2021/03/03/source-code-for-this-blog/index.md
 [build]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/build.sh
 [publish]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/publish.sh
 [sitehs]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/src/site.hs
