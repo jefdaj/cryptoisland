@@ -13,13 +13,13 @@ Why bother learning something that's less popular and also arguably more
 difficult?
 
 Personally, I'm learning it because I think it will be better. I think [their
-academic work so far][papers] is an amazing treasure trove of advancements on
+academic work so far][papers] is an amazing treasure trove of advances in
 topics like [environmental sustainability][pos], [scaling][hydra],
 [governance][treasury], and [privacy][privacy], and that the aggregate result
 of all that research and development will be a fundamentally better protocol
 that everyone wants to use.
 
-I could be wrong! But if nothing else, learning another programming style with
+But if I'm wrong about all that, learning another programming style with
 different trade-offs will still make you a better Solidity developer. It's
 analogous to [why you should learn Haskell][why-haskell]. Plutus is also
 closely related to Haskell, and the functional programming paradigm---immutable
