@@ -6,18 +6,17 @@ title: About
 
 Welcome to <b>Code Island</b>!
 
-It's your standard programmer blog, but with [shorter posts][zettel-posts].
+It's your standard programmer blog, just with [shorter posts][zettel-posts].
 I'll try to keep it fun by rambling less and adding more visuals.
 
-I go by *jefdaj* online.
-Here are some places you can contact me:
+I go by *jefdaj* online. Here are some ways you can contact me:
 
 - [Github](https://github.com/jefdaj)
-- Email (personal, UC Berkeley)
+- Email (same handle at protonmail.ch or berkeley.edu)
 - Twitter
 - Secure Scuttlebutt
 - Meetup
-<!-- - Reddit -->
+* Reddit
 
 <!-- TODO gpg? bitmessage? -->
 
