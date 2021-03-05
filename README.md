@@ -1,7 +1,7 @@
 CodeIs.land
 ===========
 
-Source code for my blog, <https://CodeIs.land>.
+Source code for my blog, [Code Island](https://codeis.land).
 
 Everything is licensed under [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) by default,
 but I'm probably open to making exceptions for your commercial thing too as long as you ask first.
