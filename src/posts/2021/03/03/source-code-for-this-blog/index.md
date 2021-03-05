@@ -15,7 +15,8 @@ Most of it is based on [this tutorial][tutorial].
 serving. Start on [the `develop` branch][develop] instead for the source code.
 I make a new branch like `develop-cssfixes` or `develop-greatidea` when
 starting any task that has a chance of failing, then merge back into `develop`
-once I know it works.
+once I know it works. All my draft posts live on one `drafts` branch. When one
+is done I check it out onto `develop`, then rebase `drafts` from there.
 
 # Posts
 
@@ -24,7 +25,9 @@ other files too: drawings, standalone scripts, etc. The post itself should
 contain links and instructions whenever you can do something non-obvious with
 them. I mainly write in [Pandoc markdown][markdown], but you can use anything
 supported by Pandoc. Posting dates are based on the folder structure, and the
-rest is pulled from the markdown header.
+rest is pulled from the markdown header. I date draft posts 2099/something,
+which pushes them to the top of the recent posts list and reminds me to fill in
+the right date later.
 
 # Scripts
 
@@ -41,6 +44,30 @@ When I'm ready I commit and push the `develop` branch, then run [publish.sh][pub
 It does one more clean build, checks out `master`, overwrites it with the current code,
 and pushes that to Github. I was wary of the magic at first, but it seems relatively safe.
 
+To ensure that I don't accidentally publish draft posts I have a pre-push hook
+as suggested [here][nopush]:
+
+~~~{ .bash }
+# .git/hooks/pre-push
+if [[ `grep 'draft'` ]]; then 
+  echo "You really don't want to push the drafts branch. Aborting."
+  exit 1
+fi
+~~~
+
+I also remove them in `publish.sh` and `.gitignore`:
+
+~~~{ .bash }
+# publish.sh
+# Just in case, remove accidentally-added draft posts
+rm -rf posts/2099
+~~~
+
+~~~{ .bash }
+# .gitignore
+src/posts/2099
+~~~
+
 [github]: https://github.com/jefdaj/jefdaj.github.io
 [master]: https://github.com/jefdaj/jefdaj.github.io/tree/master
 [develop]: https://github.com/jefdaj/jefdaj.github.io/tree/develop
@@ -54,3 +81,4 @@ and pushes that to Github. I was wary of the magic at first, but it seems relati
 [atom]: /atom.xml
 [recent]: /recent.html
 [markdown]: https://pandoc.org/MANUAL.html#pandocs-markdown
+[nopush]: https://stackoverflow.com/a/30471886
