@@ -82,12 +82,13 @@ main = hakyllWith myHakyllConfig $ do
         >>= loadAndApplyTemplate "page.html" ctx
         >>= relativizeAllUrls
 
-  -- this is the same as recent.html above, except with extra css
+  -- this mostly is the same as recent.html above
+  -- TODO get the padding/margin to match exactly
   create ["index.html"] $ do
     route idRoute
     compile $ do
       posts <- recentFirst =<< loadAll postMd
-      let ctx = recentCtx posts tags <> constField "extracss" "./index.css"
+      let ctx = constField "title" "Home" <> recentCtx posts tags <> constField "extracss" "./index.css"
       makeItem ""
         >>= loadAndApplyTemplate "recent/index.html" ctx
         >>= loadAndApplyTemplate "page.html" ctx
