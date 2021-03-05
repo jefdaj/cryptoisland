@@ -37,7 +37,6 @@ and pushes that to Github. I was wary of the magic at first, but it seems relati
 Each post is a folder with [an `index.md` like this][index] and possibly other
 files: pictures, standalone scripts you can download and run, etc.
 The post should contain links and instructions whenever you can do something non-obvious with them.
-
 Posting dates are based on the folder structure, and everything else is part of the Markdown header.
 
 [github]: https://github.com/jefdaj/jefdaj.github.io
