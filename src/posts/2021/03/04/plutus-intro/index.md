@@ -1,6 +1,6 @@
 ---
 title: Plutus intro
-tags: plutus, smart contracts
+tags: plutus
 ...
 
 Welcome to a series of posts wherein I try to learn [smart contract][smart-contract]

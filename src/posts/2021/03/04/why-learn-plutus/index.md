@@ -1,6 +1,6 @@
 ---
 title: Why learn Plutus?
-tags: plutus, cardano, solidity, ethereum, smart contracts
+tags: plutus, cardano, solidity, ethereum
 ...
 
 *Note: you can probably skip this if you already drink the functional

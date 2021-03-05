@@ -34,6 +34,9 @@ rsync -a \
   --delete-excluded \
   LICENSE README.md .site/ .
 
+# Just in case, remove accidentally-added draft posts
+rm -rf posts/2099
+
 # Commit
 git add -A
 git commit -m "update site with publish.sh"
