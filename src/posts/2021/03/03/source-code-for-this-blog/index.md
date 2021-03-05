@@ -1,6 +1,6 @@
 ---
 title: Source code for this blog
-tags: blog, github, writing, hakyll
+tags: blog, github, hakyll
 toc: true
 ...
 

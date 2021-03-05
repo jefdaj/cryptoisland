@@ -1,6 +1,6 @@
 ---
 title: How to use this blog
-tags: blog, writing, zettelkasten
+tags: blog, zettelkasten
 ...
 
 Each post is intended to be a quick bite-sized read on a narrow topic, more
