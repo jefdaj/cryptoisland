@@ -23,6 +23,7 @@ popd
 # Get previous files
 git fetch --all
 git checkout -b master --track origin/master
+git checkout develop LICENSE README.md
 
 # Overwrite existing files with new files
 rsync -a \
@@ -30,9 +31,8 @@ rsync -a \
   --filter='P .gitignore' \
   --filter='P .site/' \
   --filter='P src/' \
-  --filter='P LICENSE' \
   --delete-excluded \
-  .site/ .
+  LICENSE README.md .site/ .
 
 # Commit
 git add -A
