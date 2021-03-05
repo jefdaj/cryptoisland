@@ -29,7 +29,7 @@ aside {
 .tag-cloud-container {
 	position: absolute;
 	top: 59%;
-	left: 50%;
+	left: 48%;
 	z-index: 90;
 	transform: translate(-50%, -50%);
 	width: 50%;
@@ -52,7 +52,7 @@ aside {
 					shape-outside: url(/aside/shape-right.svg);
 	-webkit-shape-outside: url(/aside/shape-right.svg);
   float: right;
-	width: 55%;
+	width: 51%;
 	height: 100%;
 }
 

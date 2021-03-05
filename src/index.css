@@ -53,9 +53,10 @@ html {
 	}
 
 	.tag-cloud-container {
-		top: 60%;
+		top: 65%;
 		left: 48%;
 		width: 60%;
+		height: 15%;
 		margin-top: 0.5em;
 	}
 
