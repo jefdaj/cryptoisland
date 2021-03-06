@@ -12,7 +12,8 @@ I'll try to keep it fun by rambling less and adding more visuals.
 I go by *jefdaj* online. Here are some ways you can contact me:
 
 - [Github](https://github.com/jefdaj)
-- Email (same handle at protonmail.ch or berkeley.edu)
+* [StackExchange](https://stackoverflow.com/users/429898/jefdaj)
+- Email (same handle above @protonmail.ch or @berkeley.edu)
 - Twitter
 - Secure Scuttlebutt
 - Meetup
