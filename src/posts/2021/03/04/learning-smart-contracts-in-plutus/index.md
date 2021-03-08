@@ -47,7 +47,7 @@ Instead of trying to make a comprehensive guide, I'll just start expanding on
 things I find confusing as a Haskell developer with no prior blockchain
 experience, and then progress to mocking up naive implementations of some
 interesting dApp ideas. Along the way there will probably be comparisons to
-Marlowe, Solidity, and traditional programming paradigms. I hope it becomes a
+Marlowe, Solidity, and traditional programming. I hope it becomes a
 useful supplement to the other available resources rather than a standalone
 thing.
 
