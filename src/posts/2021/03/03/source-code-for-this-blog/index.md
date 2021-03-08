@@ -11,7 +11,7 @@ Most of it is based on [this tutorial][tutorial].
 
 # Branches
 
-[The `master` branch][master] holds the unreadable HTML that Github is actually
+The `master` branch holds the unreadable HTML that Github is actually
 serving. Start on [the `develop` branch][develop] instead for the source code.
 I make a new branch like `develop-cssfixes` or `develop-greatidea` when
 starting any task that has a chance of failing, then merge back into `develop`
@@ -21,28 +21,35 @@ is done I check it out onto `develop`, then rebase `drafts` from there.
 # Posts
 
 Each post is a folder with [an `index.md` like this][index] and possibly some
-other files too: drawings, standalone scripts, etc. The post itself should
-contain links and instructions whenever you can do something non-obvious with
-them. I mainly write in [Pandoc markdown][markdown], but you can use anything
+other files too: drawings, standalone scripts, etc. The post should contain
+links and instructions whenever you can do something non-obvious with the other
+files. I mainly write in [Pandoc markdown][markdown], but you can use anything
 supported by Pandoc. Posting dates are based on the folder structure, and the
 rest is pulled from the markdown header. I date draft posts 2099/something,
 which pushes them to the top of the recent posts list and reminds me to fill in
-the right date later.
+the actual posting date later.
 
 # Scripts
 
-To write I checkout out one of the `develop` branches and run
+To write I checkout the `drafts` branch, rebase from `develop` if needed, and run
 [build.sh][build]. It builds a local copy of the site, serves it at
 <http://localhost:8000>, and auto-updates it as I change things. The tag cloud,
 [RSS feed][atom], CSS, and [recent posts list][recent] auto-update along with the post contents.
 The only thing that doesn't auto-update is [the Haskell code][sitehs]; if I
-edit that I have to kill and re-run the script. One other gotcha is that you
-should disable caching in your browser to make sure you aren't looking at old
-versions of the CSS/JS.
+edit that I have to kill and re-run the script. One other gotcha is that I
+have to disable caching in Chrome and Firefox to make sure I'm not looking at old
+versions of the CSS.
 
-When I'm ready I commit and push the `develop` branch, then run [publish.sh][publish] to do the rest.
-It does one more clean build, checks out `master`, overwrites it with the current code,
-and pushes that to Github. I was wary of the magic at first, but it seems relatively safe.
+I commit the `drafts` often. Then when a post is done I:
+
+* Check it out onto `develop`
+* Date it properly
+* Commit and push `develop`, leaving a clean git repo
+* Run [publish.sh][publish]
+
+The publish script does one more clean build, checks out `master`, overwrites
+it with the current code, and pushes that to Github. I was wary of the magic at
+first, but it seems relatively safe. The live site updates within a couple minutes.
 
 To ensure that I don't accidentally publish draft posts I have a pre-push hook
 as suggested [here][nopush]:
@@ -69,7 +76,6 @@ src/posts/2099
 ~~~
 
 [github]: https://github.com/jefdaj/jefdaj.github.io
-[master]: https://github.com/jefdaj/jefdaj.github.io/tree/master
 [develop]: https://github.com/jefdaj/jefdaj.github.io/tree/develop
 [posts]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/src/posts/
 [index]: https://raw.githubusercontent.com/jefdaj/jefdaj.github.io/develop/src/posts/2021/03/03/source-code-for-this-blog/index.md
