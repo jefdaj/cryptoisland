@@ -12,7 +12,7 @@ Sometimes they'll be very short, more like a zettel (a hyperlinked note in the
 get interested but something seems to be missing, try exploring linked and similarly-tagged
 posts. Hopefully it makes sense in context. If not, please [let me know about it][about].
 
-Also, please tell me if I messed something up.
+Also, please tell me if I messed something else up.
 I want all the constructive feedback!
 
 [about]: /about.html
