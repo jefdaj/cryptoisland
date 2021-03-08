@@ -10,7 +10,7 @@ day.
 Sometimes they'll be very short, more like a zettel (a hyperlinked note in the
 [zettelkasten][zettel] style) than a traditional full-length article. If you
 get interested but something seems to be missing, try exploring linked and similarly-tagged
-posts. Hopefully it makes sense in context. If not, please [let me know about it][about].
+posts. Hopefully it makes sense in context. If not, please [let me know][about].
 
 Also, please tell me if I messed something else up.
 I want all the constructive feedback!
