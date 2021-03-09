@@ -16,6 +16,7 @@ rm -rf ../.site
 # uncomment to allow LAN access to your dev machine,
 # to test the site with mobile phones and such
 # (adjust destination ip pattern to match your lan first)
+# sudo iptables -F # warning: clobbers your firewall settings until reboot
 # sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 # sudo iptables -t nat -I PREROUTING -p tcp -d 10.0.0.0/24 --dport 8000 -j DNAT --to-destination 127.0.0.1:8000
 
