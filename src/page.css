@@ -50,8 +50,8 @@ h3 {
 h1::before, h2::before, h3::before { 
   display: block; 
   content: " "; 
-  margin-top: -60px; /* height of header + 10 */
-  height: 60px;      /* height of header + 10 */
+  margin-top: -10px; /* undoes the 50px header thing below */
+  height: 10px;      /* undoes the 50px header thing below */
   visibility: hidden; 
   pointer-events: none;
 }
@@ -61,4 +61,9 @@ div.toc > ul {
 }
 
 @media screen and (max-width: 750px) {
+  /* see https://css-tricks.com/hash-tag-links-padding/ */
+  h1::before, h2::before, h3::before { 
+    margin-top: -60px; /* height of header + 10 */
+    height: 60px;      /* height of header + 10 */
+  }
 }
