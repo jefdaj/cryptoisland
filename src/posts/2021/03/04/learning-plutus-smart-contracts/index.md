@@ -1,5 +1,5 @@
 ---
-title: Learning smart contracts in Plutus
+title: Learning Plutus smart contracts
 tags: plutus, cardano
 ...
 
