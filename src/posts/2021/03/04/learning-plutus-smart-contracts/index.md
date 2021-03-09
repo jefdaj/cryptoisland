@@ -1,6 +1,7 @@
 ---
 title: Learning Plutus smart contracts
 tags: plutus, cardano
+toc: true
 ...
 
 Welcome to a series of posts wherein I try to learn [smart contract][smart-contract]
@@ -41,7 +42,7 @@ prioritize it over Solidity. I'll be doing some of both on this blog. But you
 should at least learn enough of it to get a feel for the design patterns and
 compare them.
 
-# About the series
+# What to expect
 
 Instead of trying to make a comprehensive guide, I'll just start expanding on
 things I find confusing as a Haskell developer with no prior blockchain
