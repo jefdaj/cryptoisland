@@ -13,6 +13,11 @@ rm -rf ../.site
 
 # which apt-get &> /dev/null && sudo apt-get install libgmp-dev zlib1g-dev
 
+# uncomment to allow LAN access to your dev machine,
+# to test the site with mobile phones and such
+# sudo sysctl -w net.ipv4.conf.all.route_localnet=1
+# sudo iptables -t nat -I PREROUTING -p tcp -d 10.0.0.0/24 --dport 8000 -j DNAT --to-destination 127.0.0.1:8000
+
 stack setup && stack build \
   && (stack exec site clean && stack exec site watch) \
   || stack repl
