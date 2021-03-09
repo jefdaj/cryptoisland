@@ -46,8 +46,18 @@ h3 {
     font-size: 14px;
 }
 
+/* see https://css-tricks.com/hash-tag-links-padding/ */
+h1::before, h2::before, h3::before { 
+  display: block; 
+  content: " "; 
+  margin-top: -60px; /* height of header + 10 */
+  height: 60px;      /* height of header + 10 */
+  visibility: hidden; 
+  pointer-events: none;
+}
+
 div.toc > ul {
-  list-style: none;
+  list-style: decimal;
 }
 
 @media screen and (max-width: 750px) {
