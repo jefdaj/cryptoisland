@@ -55,16 +55,15 @@ html {
 	.tag-cloud-container {
 		top: 65%;
 		left: 48%;
-		width: 60%;
 		height: 15%;
 		margin-top: 0.5em;
 	}
 
 	.tag-cloud-left {
-	  width: 120px;
+	  width: 40%;
 	}
-}
+
 	.tag-cloud-right {
-	  width: 120px;
+	  width: 40%;
 	}
 }
