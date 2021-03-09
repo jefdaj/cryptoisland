@@ -68,5 +68,5 @@ pre {
   white-space: pre-wrap !important;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and ((max-width: 800px) or (max-height: 600px)) {
 }

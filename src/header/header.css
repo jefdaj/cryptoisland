@@ -28,7 +28,7 @@ header > a:hover {
 	text-decoration: underline;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and ((max-width: 800px) or (max-height: 600px)) {
 	header {
 		left: 0;
 	}

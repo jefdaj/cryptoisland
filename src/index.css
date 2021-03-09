@@ -25,7 +25,7 @@ html {
 }
 
 /* mobile version, which should only show the island */
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
   html {
     background: url(/aside/background.png) repeat-x left center;
   }
