@@ -170,8 +170,7 @@ postJpg = fromGlob $ postDir ++ "/*.jpg"
 
 rootFiles :: Pattern
 rootFiles = fromList
-  [ "CNAME"
-  , "robots.txt"
+  [ "robots.txt"
   , "favicon.ico"
   ]
 
@@ -204,7 +203,7 @@ data WordList = WordList { list :: [(String, Int)] }
   deriving (Generic, Show, ToJSON)
 
 indexTags :: Tags -> WordList
-indexTags tags = WordList { list = ("codeis.land", 1) : ("rss", 1) : counts }
+indexTags tags = WordList { list = ("cryptois.land", 1) : ("rss", 1) : counts }
   where
     counts' = concat $ replicate 3 $ counts -- TODO remove once more tags
     counts = map (\(t, is) -> (t, length is)) $ tagsMap tags
@@ -224,10 +223,10 @@ relatedTags tags tag = WordList { list = tagCounts }
 -- postTags :: MonadMetadata m => Identifier -> m String
 -- postTags post = do
 --     tags <- fmap concat . getTags
---     return $ renderWordList $ WordList { list = ("codeis.land", 1) : map (\t -> (t, 1)) tags }
+--     return $ renderWordList $ WordList { list = ("cryptois.land", 1) : map (\t -> (t, 1)) tags }
 
 -- postTags :: Tags -> Identifier -> WordList
--- postTags tags post = WordList { list = ("codeis.land", 1) : tagCounts }
+-- postTags tags post = WordList { list = ("cryptois.land", 1) : tagCounts }
 --   where
 --     relevant = filter (\(t, is) -> post `elem` is) $ tagsMap tags
 --     tagCounts = map (\(t, is) -> (t, length is)) relevant
@@ -284,11 +283,11 @@ myHakyllConfig = defaultConfiguration
 
 myFeedConfig :: FeedConfiguration
 myFeedConfig = FeedConfiguration
-  { feedTitle       = "Code Island"
-  , feedDescription = "Code Island"          -- TODO blank?
+  { feedTitle       = "Crypto Island"
+  , feedDescription = "Crypto Island"          -- TODO blank?
   , feedAuthorName  = "jefdaj"               -- TODO blank?
   , feedAuthorEmail = "jefdaj@protonmail.ch" -- TODO blank?
-  , feedRoot        = "https://codeis.land"
+  , feedRoot        = "https://cryptois.land"
   }
 
 -- based on https://github.com/vaclavsvejcar/svejcar-dev/blob/master/src/Site/Pandoc.hs

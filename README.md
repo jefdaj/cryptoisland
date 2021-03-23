@@ -1,7 +1,7 @@
-CodeIs.land
-===========
+CryptoIs.land
+=============
 
-Source code for my blog, [Code Island][codeisland].
+Source code for my blog, [Crypto Island][cryptoisland].
 
 Everything is licensed under [CC BY-SA][ccsa4] by default, but I'm probably
 open to making exceptions for your commercial thing too as long as you ask
@@ -16,7 +16,7 @@ If you have type errors it will fall back to GHCi.
 [publish.sh][publish] will update the static files on the master branch and
 push them for use with [Github pages](https://pages.github.com/).
 
-[codeisland]: https://codeis.land
+[cryptoisland]: https://cryptois.land
 [build]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/build.sh
 [publish]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/publish.sh
 [stack]: https://docs.haskellstack.org/en/stable/README

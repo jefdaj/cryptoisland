@@ -4,7 +4,7 @@ title: About
 
 <img src="/about/boat.svg" style="margin-left: 40px"></img>
 
-Welcome to <b>Code Island</b>!
+Welcome to <b>Crypto Island</b>!
 
 It's your standard programmer blog, but I'll try to keep it fun by rambling
 less and adding more visuals.
