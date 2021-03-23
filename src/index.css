@@ -48,22 +48,23 @@ html {
   }
 
 	#aboutBoat {
-		height: 90px;
-		margin: 50px; /* seems to be required to get it out from under the tag cloud */
+		height: 80px;
+		margin: 40px; /* seems to be required to get it out from under the tag cloud */
+		padding-bottom: 10px;
 	}
 
 	.tag-cloud-container {
-		top: 65%;
-		left: 48%;
-		height: 15%;
-		margin-top: 0.5em;
+		top: calc(50% + 130px);
+		width: 335px;
+		height: 220px;
+		/*margin-top: 0.5em;*/
 	}
 
 	.tag-cloud-left {
-	  width: 40%;
+	  /*width: 40%;*/
 	}
 
 	.tag-cloud-right {
-	  width: 40%;
+	  /*width: 40%;*/
 	}
 }
