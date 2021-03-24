@@ -56,6 +56,10 @@ h1::before, h2::before, h3::before {
   pointer-events: none;
 }
 
+div.info {
+  max-width: 50%;
+}
+
 div.toc > ul {
   list-style: decimal;
 }
