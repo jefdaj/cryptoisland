@@ -51,7 +51,8 @@ main = hakyllWith myHakyllConfig $ do
   -- posts (pandoc markdown)
   -- TODO would this ever need updating to deal with a tag change?
   match postMd $ do
-    route $ setExtension "html"
+    -- route $ setExtension "html"
+    route $ customRoute $ \md -> takeDirectory (toFilePath md) ++ ".html"
 
     -- this part is from:
     -- https://argumatronic.com/posts/2018-01-16-pandoc-toc.html
