@@ -1,7 +1,8 @@
-<ul>
+<table>
     $for(posts)$
-        <li>
-            $date$ &nbsp; <a class="postLink" href="$url$">$title$</a>
-        </li>
+        <tr>
+								<td>$date$</td>
+								<td><a class="postLink" href="$url$">$title$</a></td>
+        </tr>
     $endfor$
-</ul>
+</table>

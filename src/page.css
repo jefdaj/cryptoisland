@@ -60,6 +60,14 @@ div.toc > ul {
   list-style: decimal;
 }
 
+table {
+  margin: 10px;
+}
+
+td {
+  padding: 10px;
+}
+
 @media screen and ((max-width: 800px) or (max-height: 600px) {
   /* see https://css-tricks.com/hash-tag-links-padding/ */
   h1::before, h2::before, h3::before { 
