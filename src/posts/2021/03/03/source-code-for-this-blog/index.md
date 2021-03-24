@@ -2,17 +2,20 @@
 title: Source code for this blog
 tags: blog, github, hakyll
 toc: true
+updated: 2021-03-23
 ...
 
-This site is built with [Hakyll][hakyll] and hosted on [Github][github].
+*Update: Migrated from Github Pages to a personal server*
+
+This site is built with [Hakyll][hakyll].
 I've had a great experience with that so far!
 Here I'll do a quick overview of how I manage it in case you want to try something similar.
-Most of it is based on [this tutorial][tutorial].
+Most of it is based on [this tutorial][tutorial],
+but I switched to self-hosting on a VPS rather than via Github Pages.
 
 # Branches
 
-The `master` branch holds the unreadable HTML that Github is actually
-serving. Start on [the `master` branch][master] instead for the source code.
+[The `master` branch][master] holds the production source code.
 I make a new branch like `master-cssfixes` or `master-greatidea` when
 starting any task that has a chance of failing, then merge back into `master`
 once I know it works. All my draft posts live on one `drafts` branch. When one
@@ -45,11 +48,7 @@ I commit the `drafts` often. Then when a post is done I:
 * Check it out onto `master`
 * Date it properly
 * Commit and push `master`, leaving a clean git repo
-* Run [publish.sh][publish]
-
-The publish script does one more clean build, checks out `master`, overwrites
-it with the current code, and pushes that to Github. I was wary of the magic at
-first, but it seems relatively safe. The live site updates within a couple minutes.
+* Run [publish.sh][publish] to `rsync` it to the server
 
 To ensure that I don't accidentally publish draft posts I have a pre-push hook
 as suggested [here][nopush]:
@@ -75,13 +74,12 @@ rm -rf posts/2099
 src/posts/2099
 ~~~
 
-[github]: https://github.com/jefdaj/jefdaj.github.io
-[master]: https://github.com/jefdaj/jefdaj.github.io/tree/master
-[posts]: https://github.com/jefdaj/jefdaj.github.io/blob/master/src/posts/
-[index]: https://raw.githubusercontent.com/jefdaj/jefdaj.github.io/master/src/posts/2021/03/03/source-code-for-this-blog/index.md
-[build]: https://github.com/jefdaj/jefdaj.github.io/blob/master/build.sh
-[publish]: https://github.com/jefdaj/jefdaj.github.io/blob/master/publish.sh
-[sitehs]: https://github.com/jefdaj/jefdaj.github.io/blob/master/src/site.hs
+[master]: https://github.com/jefdaj/cryptoisland/tree/master
+[posts]: https://github.com/jefdaj/cryptoisland/blob/master/src/posts/
+[index]: https://raw.githubusercontent.com/jefdaj/cryptoisland/master/src/posts/2021/03/03/source-code-for-this-blog/index.md
+[build]: https://github.com/jefdaj/cryptoisland/blob/master/build.sh
+[publish]: https://github.com/jefdaj/cryptoisland/blob/master/publish.sh
+[sitehs]: https://github.com/jefdaj/cryptoisland/blob/master/src/site.hs
 [tutorial]: https://jaspervdj.be/hakyll/tutorials/github-pages-tutorial.html
 [hakyll]: https://jaspervdj.be/hakyll/
 [atom]: /atom.xml
