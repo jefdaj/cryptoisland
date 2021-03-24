@@ -13,8 +13,7 @@ You need to kill and re-run the script to recompile the [Haskell][haskell]
 code in [site.hs][sitehs], but everything else updates live as you edit the files.
 If you have type errors it will fall back to GHCi.
 
-[publish.sh][publish] will update the static files on the master branch and
-push them for use with [Github pages](https://pages.github.com/).
+[publish.sh][publish] will update the HTML files and push them to the server.
 
 [cryptoisland]: https://cryptois.land
 [build]: https://github.com/jefdaj/jefdaj.github.io/blob/master/build.sh
