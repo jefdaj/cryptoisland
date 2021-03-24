@@ -49,8 +49,7 @@ html {
 
 	#aboutBoat {
 		height: 80px;
-		margin: 40px; /* seems to be required to get it out from under the tag cloud */
-		padding-bottom: 10px;
+		right: 20px;
 	}
 
 	.tag-cloud-container {

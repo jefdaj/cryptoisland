@@ -80,12 +80,13 @@ aside {
 /* TODO why does the boat underline fail? */
 #aboutBoat {
 	position: absolute;
-	top: 55%;
-	left: 72%;
-	width: 15%;
-	height: 55px;
-	margin: 30px;
+	top: calc(50% + 40px);
+	right: 15px;
+	height: 70px;
+	width: 55px;
 	z-index: 100; /* TODO why does this not work */
+	padding-bottom: 5px;
+	margin-left: 50px;
 }
 
 #aboutBoat:hover {
