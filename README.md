@@ -13,7 +13,8 @@ You need to kill and re-run the script to recompile the [Haskell][haskell]
 code in [site.hs][sitehs], but everything else updates live as you edit the files.
 If you have type errors it will fall back to GHCi.
 
-[publish.sh][publish] will update the HTML files and push them to the server.
+Once you have the right HTML built,
+[publish.sh][publish] will push it to the server.
 
 [cryptoisland]: https://cryptois.land
 [build]: https://github.com/jefdaj/jefdaj.github.io/blob/master/build.sh
