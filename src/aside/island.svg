@@ -278,7 +278,7 @@
      inkscape:cx="47.278684"
      inkscape:cy="277.73623"
      inkscape:document-units="mm"
-     inkscape:current-layer="g929"
+     inkscape:current-layer="g923"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1023"
@@ -436,12 +436,12 @@
         <path
            sodipodi:nodetypes="cc"
            style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#a14100;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;enable-background:new"
-           d="m 143.11166,89.641665 c 0,0 1,-7 7,-13"
+           d="m 143.11166,89.641665 c 0,0 1.18086,-6.55401 7.18086,-8.55401"
            id="path4661"
            inkscape:connector-curvature="0" />
         <path
            style="opacity:1;vector-effect:none;fill:#009c00;fill-opacity:1;stroke:#000000;stroke-width:0.26456693;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           d="m 152.26742,76.31789 c 0,0 1.32308,-1.578417 3.96927,-1.485568 0,0 -2.20514,-2.228352 -4.94417,0.255333 0,0 0.16249,-3.133621 -5.29232,-1.949809 0.0464,0.185695 2.69258,0.998116 1.97301,1.810536 -0.0232,0.06964 -2.36762,-1.299871 -4.38708,2.251565 0,0 2.57655,-1.207024 3.92284,-0.04642 0,0 -1.21645,-0.06587 -2.21645,1.934128 0,0 1.75222,-1.307405 3.74845,-0.703893 l 2.43726,2.228353 c 0,0 0.52304,-1.226241 -0.0464,-2.437262 0,0 1.2767,-0.46424 3.66753,1.415933 0.46423,-2.901503 -2.83187,-3.040775 -2.83187,-3.272894 z"
+           d="m 152.26742,79.31789 c 0,0 1.32308,-1.578417 3.96927,-1.485568 0,0 -2.20514,-2.228352 -4.94417,0.255333 0,0 0.16249,-3.133621 -5.29232,-1.949809 0.0464,0.185695 2.69258,0.998116 1.97301,1.810536 -0.0232,0.06964 -2.36762,-1.299871 -4.38708,2.251565 0,0 2.57655,-1.207024 3.92284,-0.04642 0,0 -1.21645,-0.06587 -2.21645,1.934128 0,0 1.75222,-1.307405 3.74845,-0.703893 l 2.43726,2.228353 c 0,0 0.52304,-1.226241 -0.0464,-2.437262 0,0 1.2767,-0.46424 3.66753,1.415933 0.46423,-2.901503 -2.83187,-3.040775 -2.83187,-3.272894 z"
            id="path960"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="cccccccccccccc" />
