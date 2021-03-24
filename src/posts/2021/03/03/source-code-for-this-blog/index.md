@@ -12,11 +12,11 @@ Most of it is based on [this tutorial][tutorial].
 # Branches
 
 The `master` branch holds the unreadable HTML that Github is actually
-serving. Start on [the `develop` branch][develop] instead for the source code.
-I make a new branch like `develop-cssfixes` or `develop-greatidea` when
-starting any task that has a chance of failing, then merge back into `develop`
+serving. Start on [the `master` branch][master] instead for the source code.
+I make a new branch like `master-cssfixes` or `master-greatidea` when
+starting any task that has a chance of failing, then merge back into `master`
 once I know it works. All my draft posts live on one `drafts` branch. When one
-is done I check it out onto `develop`, then rebase `drafts` from there.
+is done I check it out onto `master`, then rebase `drafts` from there.
 
 # Posts
 
@@ -31,7 +31,7 @@ the actual posting date later.
 
 # Scripts
 
-To write I checkout the `drafts` branch, rebase from `develop` if needed, and run
+To write I checkout the `drafts` branch, rebase from `master` if needed, and run
 [build.sh][build]. It builds a local copy of the site, serves it at
 <http://localhost:8000>, and auto-updates it as I change things. The tag cloud,
 [RSS feed][atom], CSS, and [recent posts list][recent] auto-update along with the post contents.
@@ -42,9 +42,9 @@ versions of the CSS.
 
 I commit the `drafts` often. Then when a post is done I:
 
-* Check it out onto `develop`
+* Check it out onto `master`
 * Date it properly
-* Commit and push `develop`, leaving a clean git repo
+* Commit and push `master`, leaving a clean git repo
 * Run [publish.sh][publish]
 
 The publish script does one more clean build, checks out `master`, overwrites
@@ -76,12 +76,12 @@ src/posts/2099
 ~~~
 
 [github]: https://github.com/jefdaj/jefdaj.github.io
-[develop]: https://github.com/jefdaj/jefdaj.github.io/tree/develop
-[posts]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/src/posts/
-[index]: https://raw.githubusercontent.com/jefdaj/jefdaj.github.io/develop/src/posts/2021/03/03/source-code-for-this-blog/index.md
-[build]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/build.sh
-[publish]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/publish.sh
-[sitehs]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/src/site.hs
+[master]: https://github.com/jefdaj/jefdaj.github.io/tree/master
+[posts]: https://github.com/jefdaj/jefdaj.github.io/blob/master/src/posts/
+[index]: https://raw.githubusercontent.com/jefdaj/jefdaj.github.io/master/src/posts/2021/03/03/source-code-for-this-blog/index.md
+[build]: https://github.com/jefdaj/jefdaj.github.io/blob/master/build.sh
+[publish]: https://github.com/jefdaj/jefdaj.github.io/blob/master/publish.sh
+[sitehs]: https://github.com/jefdaj/jefdaj.github.io/blob/master/src/site.hs
 [tutorial]: https://jaspervdj.be/hakyll/tutorials/github-pages-tutorial.html
 [hakyll]: https://jaspervdj.be/hakyll/
 [atom]: /atom.xml

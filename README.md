@@ -17,9 +17,9 @@ If you have type errors it will fall back to GHCi.
 push them for use with [Github pages](https://pages.github.com/).
 
 [cryptoisland]: https://cryptois.land
-[build]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/build.sh
-[publish]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/publish.sh
+[build]: https://github.com/jefdaj/jefdaj.github.io/blob/master/build.sh
+[publish]: https://github.com/jefdaj/jefdaj.github.io/blob/master/publish.sh
 [stack]: https://docs.haskellstack.org/en/stable/README
 [haskell]: https://www.haskell.org
-[sitehs]: https://github.com/jefdaj/jefdaj.github.io/blob/develop/src/site.hs
+[sitehs]: https://github.com/jefdaj/jefdaj.github.io/blob/master/src/site.hs
 [ccsa4]: https://creativecommons.org/licenses/by-sa/4.0/
