@@ -49,6 +49,7 @@ I commit the `drafts` often. Then when a post is done I:
 * Date it properly
 * Commit and push `master`, leaving a clean git repo
 * Run [publish.sh][publish] to `rsync` the `.site` folder to the server
+* Rebase `drafts` from `master`
 
 To ensure that I don't accidentally publish draft posts I have a pre-push hook
 as suggested [here][nopush]:
