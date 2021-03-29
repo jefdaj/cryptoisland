@@ -155,6 +155,24 @@ main = hakyllWith myHakyllConfig $ do
         >>= applyAsTemplate ctx
         >>= relativizeAllUrls
 
+  -- based on http://nbloomf.blog/site.html
+  whenAnyTagChanges $ create ["404.html"] $ do
+    route idRoute
+    compile $ do
+      let
+        body = concat
+          [ "<h1>404 - Not Found</h1>"
+          , "<br/> Sorry! Maybe try <a href=\"/recent.html\">recent posts</a>?"
+          ]
+        ctx = mconcat
+          [ constField "title" "404 - Not Found"
+          , constField "body" body
+          , postCtx tags
+          ]
+      makeItem ""
+        >>= loadAndApplyTemplate "page.html" ctx
+        >>= relativizeAllUrls
+
 --------------------
 -- per-post files --
 --------------------
