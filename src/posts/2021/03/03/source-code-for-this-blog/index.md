@@ -2,10 +2,8 @@
 title: Source code for this blog
 tags: blog, github, hakyll
 toc: true
-updated: 2021-03-23
+updated: 2021-03-29
 ...
-
-*Update: Migrated from Github Pages to a personal server*
 
 This site is built with [Hakyll][hakyll].
 I've had a great experience with that so far!
