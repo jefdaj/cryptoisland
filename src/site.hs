@@ -17,7 +17,7 @@ import qualified Text.Pandoc.Templates as PT
 import Control.Monad                  (forM)
 import Data.Aeson                     (ToJSON, encode)
 import Data.ByteString.Lazy.Internal  (unpackChars)
-import Data.List                      (intersect, isInfixOf)
+import Data.List                      (intersect, isInfixOf, isPrefixOf)
 import Data.Maybe                     (fromMaybe, fromJust)
 import Data.Monoid                    ((<>))
 import Data.String.Utils              (replace)
@@ -25,7 +25,7 @@ import GHC.Generics                   (Generic)
 import Hakyll.Web.Html.RelativizeUrls (relativizeUrlsWith)
 import Hakyll.Web.Tags                (tagsDependency)
 import Text.Jasmine                   (minify)
-import System.FilePath                (takeDirectory, takeBaseName, takeFileName, takeExtension)
+import System.FilePath                (takeDirectory, takeBaseName, takeFileName, takeExtension, splitFileName)
 
 import Hakyll.Images (loadImage, compressJpgCompiler)
 
@@ -51,8 +51,8 @@ main = hakyllWith myHakyllConfig $ do
   -- posts (pandoc markdown)
   -- TODO would this ever need updating to deal with a tag change?
   match postMd $ do
-    -- route $ setExtension "html"
-    route $ customRoute $ \md -> takeDirectory (toFilePath md) ++ ".html"
+    route $ setExtension "html"
+    -- route $ customRoute $ \md -> takeDirectory (toFilePath md) ++ ".html"
 
     -- this part is from:
     -- https://argumatronic.com/posts/2018-01-16-pandoc-toc.html
@@ -206,9 +206,24 @@ toRoot mExt = customRoute $ baseName . toFilePath
               Nothing -> takeExtension p
               Just e  -> "." ++ e
 
+-- TODO fix this to work with urls relative to the current post
+relativizeUrlsWith' :: String  -- ^ Path to the site root
+                    -> String  -- ^ Path to the current page (including root)
+                    -> String  -- ^ HTML to relativize
+                    -> String  -- ^ Resulting HTML
+relativizeUrlsWith' root path = withUrls rel
+  where
+    -- isRel x = "/" `isPrefixOf` x && not ("//" `isPrefixOf` x)
+    rel x | "//" `isPrefixOf` x = x
+    rel x |  "/" `isPrefixOf` x = root ++ x
+    rel x | "./" `isPrefixOf` x = root ++ "/" ++ path ++ tail x
+    rel x | otherwise = root ++ "/" ++ path ++ "/" ++ x
+    -- rel x = if isRel x then root ++ x else x
+
 -- based on hakyll's relativizeUrls
 -- adds find-and-replace through all text so it works with js + css in addition to html
 -- TODO get rid of the weird SITEROOT convention?
+-- TODO make this work on urls relative to the current post too
 relativizeAllUrls :: Item String -> Compiler (Item String)
 relativizeAllUrls item = do
   route <- getRoute $ itemIdentifier item
@@ -216,8 +231,9 @@ relativizeAllUrls item = do
     Nothing -> item
     Just r ->
       let rootPath = toSiteRoot r
+          postDir  = takeDirectory r
       -- in fmap (replace "SITEROOT" rootPath)
-      in fmap (relativizeUrlsWith rootPath) item
+      in fmap (relativizeUrlsWith' rootPath postDir) item
 
 data WordList = WordList { list :: [(String, Int)] }
   deriving (Generic, Show, ToJSON)
@@ -280,6 +296,7 @@ postTagsField key = field key $ \item -> do
 -- TODO if the monad works, can just get tags too right?
 postCtx :: Tags -> Context String
 postCtx tags =
+  dropIndexHtml "url" <>
   tagsField "tags" tags <>
   postTagsField "relatedtags" <> -- TODO remove?
   -- constField "relatedtags" (renderWordList $ postTags tags post) <>
@@ -327,3 +344,15 @@ withToc = defaultHakyllWriterOptions
   , writerTOCDepth = 2
   , writerTemplate = Just tocTemplate
   }
+
+
+transform :: String -> String
+transform url = case splitFileName url of
+                    (p, "index.html") -> takeDirectory p
+                    _                 -> url
+
+dropIndexHtml :: String -> Context a
+dropIndexHtml key = mapContext transform (urlField key) where
+    transform url = case splitFileName url of
+                        (p, "index.html") -> takeDirectory p
+                        _                 -> url
