@@ -1,4 +1,4 @@
-resolver: lts-15.11
+resolver: lts-17.11
 
 nix:
   enable: true
@@ -8,6 +8,6 @@ packages:
 - .
 
 extra-deps:
-- hakyll-4.13.3.0
-- hakyll-images-0.4.4
-- MissingH-1.4.3.0
+- hakyll-4.14.0.0
+- hakyll-images-1.0.1
+# - MissingH-1.4.3.0
