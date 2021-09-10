@@ -214,7 +214,7 @@ relativizeUrlsWith' :: String  -- ^ Path to the site root
 relativizeUrlsWith' root path = withUrls rel
   where
     -- isRel x = "/" `isPrefixOf` x && not ("//" `isPrefixOf` x)
-    rel x | "//" `isPrefixOf` x = x
+    rel x | "http" `isPrefixOf` x = x
     rel x |  "/" `isPrefixOf` x = root ++ x
     rel x | "./" `isPrefixOf` x = root ++ "/" ++ path ++ tail x
     rel x | otherwise = root ++ "/" ++ path ++ "/" ++ x
