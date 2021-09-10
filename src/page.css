@@ -73,6 +73,10 @@ td {
 	padding-bottom: 0px;
 }
 
+img {
+  max-width: 100%;
+}
+
 @media screen and ((max-width: 800px) or (max-height: 600px) {
   /* see https://css-tricks.com/hash-tag-links-padding/ */
   h1::before, h2::before, h3::before { 
