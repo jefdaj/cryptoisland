@@ -60,8 +60,6 @@ digraph protocol {
   State1 -> Batch1 -> State2
   
   BotWallet2 -> Batch2
-  Trade1 -> Batch2
-  Trade2 -> Batch2
   Trade3 -> Batch2
   
   State2 -> Batch2 -> State3

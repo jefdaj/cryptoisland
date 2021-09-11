@@ -1,7 +1,7 @@
 ---
 title: Simple Cardano "batching bots" for concurrent DEX protocols
 tags: cardano, plutus, concurrency, utxo, brainstorm, dex
-updated: 2021-09-10
+updated: 2021-09-11
 ...
 
 Everyone seems so interested in [Cardano][cardano]'s [concurrency problem][problem]
@@ -13,6 +13,9 @@ It sounds like others are thinking along similar lines as well.
 auction by requiring a predefined set of UTXOs to be used as user inputs. That
 looks better for most use cases. I could see it having an issue with
 auction sniping though.*
+
+*Update: only one bid can reference each original trade UTXO; subsequent bids
+just reference the previous state*
 
 # A (relatively) simple batching protocol
 
