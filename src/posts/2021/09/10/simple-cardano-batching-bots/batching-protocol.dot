@@ -1,0 +1,76 @@
+digraph protocol {
+  rankdir=TB
+  bgcolor=transparent
+  node [style=filled, fillcolor=white]
+  edge [color=grey]
+
+  // nodes outside the protocol
+  Wallet2 [fillcolor="#66ddff"]
+  Wallet1 [fillcolor="#66ddff"]
+  Wallet3 [fillcolor="#66ddff"]
+  BotWallet1 [fillcolor=lightgreen]
+  BotWallet2 [fillcolor=lightgreen]
+  Wallet1p [label="Wallet1", fillcolor="#66ddff"]
+  Wallet2p [label="Wallet2", fillcolor="#66ddff"]
+  Wallet3p [label="Wallet3", fillcolor="#66ddff"]
+  BotWallet1p [label="BotWallet1", fillcolor=lightgreen]
+  BotWallet2p [label="BotWallet2", fillcolor=lightgreen]
+  State4 [fillcolor="#F6B657"]
+  State1 [fillcolor="#F6B657"]
+
+  subgraph cluster_phase1 {
+    bgcolor=lightgrey
+    label="Phase 1: announce trades in parallel"
+    node [shape=rect, fillcolor="#66ddff"]
+    UserWallet1 [label="User1 posts trade"]
+    UserWallet3 [label="User3 posts trade"]
+    UserWallet2 [label="User2 posts trade"]
+    node [shape=oval]
+    Trade1 [fillcolor="#F6B657"]
+    Trade2 [fillcolor="#F6B657"]
+    Trade3 [fillcolor="#F6B657"]
+
+    node [shape=oval, fillcolor=white]
+    Wallet3 -> UserWallet3 -> Trade3
+    Wallet1 -> UserWallet1 -> Trade1
+    Wallet2 -> UserWallet2 -> Trade2
+  }
+  
+  subgraph cluster_phase2 {
+    bgcolor=lightgrey
+    label="Phase 2: single-threaded batching auction"
+    Batch1 [label="Bot1 bids 2 trades,\nposts collateral", shape=rect, fillcolor=lightgreen]
+    Batch2 [label="Bot2 bids 3 trades,\nposts collateral", shape=rect, fillcolor=lightgreen]
+    State2 [fillcolor="#F6B657"]
+    State3 [fillcolor="#F6B657"]
+  }
+
+  subgraph cluster_phase3 {
+    bgcolor=lightgrey
+    label="Phase 3: finalize winning state transition"
+    Finalize [shape=rect, fillcolor=lightgreen, label="Bot2 applies all 3 trades,\nslashes Bot1 for omitting Trade3,\nrewards itself,\ndistributes traded tokens"]
+  }
+
+  State2
+  State3
+
+  BotWallet1 -> Batch1
+  Trade1 -> Batch1
+  Trade2 -> Batch1
+  State1 -> Batch1 -> State2
+  
+  BotWallet2 -> Batch2
+  Trade1 -> Batch2
+  Trade2 -> Batch2
+  Trade3 -> Batch2
+  
+  State2 -> Batch2 -> State3
+
+  State3 -> Finalize
+  Finalize -> Wallet1p
+  Finalize -> Wallet2p
+  Finalize -> Wallet3p
+  Finalize -> BotWallet1p
+  Finalize -> BotWallet2p
+  Finalize -> State4
+}
