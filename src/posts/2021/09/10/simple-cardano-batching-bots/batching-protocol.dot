@@ -5,8 +5,8 @@ digraph protocol {
   edge [color=grey]
 
   // nodes outside the protocol
-  Wallet2 [fillcolor="#66ddff"]
   Wallet1 [fillcolor="#66ddff"]
+  Wallet2 [fillcolor="#66ddff"]
   Wallet3 [fillcolor="#66ddff"]
   BotWallet1 [fillcolor=lightgreen]
   BotWallet2 [fillcolor=lightgreen]
@@ -15,25 +15,30 @@ digraph protocol {
   Wallet3p [label="Wallet3", fillcolor="#66ddff"]
   BotWallet1p [label="BotWallet1", fillcolor=lightgreen]
   BotWallet2p [label="BotWallet2", fillcolor=lightgreen]
-  State4 [fillcolor="#F6B657"]
   State1 [fillcolor="#F6B657"]
+  State4 [fillcolor="#F6B657"]
+
+  node [shape=rect, fillcolor="#66ddff"]
+  UserWallet3 [label="User3 posts trade"]
+  UserWallet2 [label="User2 posts trade"]
+  UserWallet1 [label="User1 posts trade"]
+
+  node [shape=oval, fillcolor=white]
+  Wallet3 -> UserWallet3
+  Wallet1 -> UserWallet1
+  Wallet2 -> UserWallet2
 
   subgraph cluster_phase1 {
     bgcolor=lightgrey
     label="Phase 1: announce trades in parallel"
-    node [shape=rect, fillcolor="#66ddff"]
-    UserWallet1 [label="User1 posts trade"]
-    UserWallet3 [label="User3 posts trade"]
-    UserWallet2 [label="User2 posts trade"]
     node [shape=oval]
     Trade1 [fillcolor="#F6B657"]
     Trade2 [fillcolor="#F6B657"]
     Trade3 [fillcolor="#F6B657"]
 
-    node [shape=oval, fillcolor=white]
-    Wallet3 -> UserWallet3 -> Trade3
-    Wallet1 -> UserWallet1 -> Trade1
-    Wallet2 -> UserWallet2 -> Trade2
+    UserWallet3 -> Trade3
+    UserWallet1 -> Trade1
+    UserWallet2 -> Trade2
   }
   
   subgraph cluster_phase2 {
@@ -54,10 +59,10 @@ digraph protocol {
   State2
   State3
 
-  BotWallet1 -> Batch1
+  State1 -> Batch1 -> State2
   Trade1 -> Batch1
   Trade2 -> Batch1
-  State1 -> Batch1 -> State2
+  BotWallet1 -> Batch1
   
   BotWallet2 -> Batch2
   Trade3 -> Batch2
