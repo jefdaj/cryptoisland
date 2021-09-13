@@ -3,13 +3,31 @@
     /* border: 1px solid red; */
 }
 
+@font-face {
+  font-family: OpenSans;
+  src: url("../fonts/OpenSans-Regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url("../fonts/OpenSans-Bold.ttf");
+  font-weight: bold;
+}
+
 a {
-  color: black;
+  color: #4a3304;
+}
+
+body:a {
+  color: #221701;
 }
 
 html {
-	background: #FDF6E369;
-	padding: 0;
+  background: #FDF6E369;
+  color: #4a3304;
+  font-family: OpenSans, sans-serif;
+  padding: 0;
 }
 
 /* parent div to help main + aside fill the page */
