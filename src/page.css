@@ -67,8 +67,8 @@ h3 {
 h1::before, h2::before, h3::before { 
   display: block; 
   content: " "; 
-  margin-top: -10px; /* undoes the 50px header thing below */
-  height: 10px;      /* undoes the 50px header thing below */
+  margin-top: -60px; /* undoes the 60px header thing below */
+  height: 60px;      /* undoes the 60px header thing below */
   visibility: hidden; 
   pointer-events: none;
 }
