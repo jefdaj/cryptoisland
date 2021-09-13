@@ -16,7 +16,7 @@
   font-weight: bold;
   margin: 10px;
   margin-top: -30px; /* TODO why is this needed? */
-	margin-left: 20px;
+  margin-left: 20px;
 }
 
 div.info {
@@ -87,4 +87,15 @@ blockquote p {
 }
 
 @media screen and ((max-width: 800px) or (max-height: 600px)) {
+  div.toc {
+    float: none;
+    max-width: 100%;
+  }
+  div.info {
+    max-width: 100%;
+    margin: 20px;
+  }
+  div.toc > div.header {
+    margin-top: 0px;
+  }
 }
