@@ -32,16 +32,15 @@ html {
 
 /* parent div to help main + aside fill the page */
 main {
-	position: absolute;
-	width: 100%;
-	height: auto;
-	margin: 10px;
-	width: calc(100% - 385px);
+  position: absolute;
+  width: 100%;
+  height: auto;
+  margin: 10px;
+  width: calc(100% - 385px);
 }
 
 body {
-    color: black;
-    font-size: 16px;
+  font-size: 16px;
 }
 
 div#logo a {
@@ -88,7 +87,7 @@ table {
 
 td {
   padding: 10px;
-	padding-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 img {
