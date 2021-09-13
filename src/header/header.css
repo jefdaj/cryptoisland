@@ -32,6 +32,10 @@ header > a:hover {
 	header {
 		left: 0;
 	}
+  /* title on mobile pages */
+  header > a > h1 {
+    color: black;
+  }
 	main {
 		position: absolute;
 		height: calc(100% - 80px);
