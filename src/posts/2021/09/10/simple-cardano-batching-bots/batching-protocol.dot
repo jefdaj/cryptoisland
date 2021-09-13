@@ -29,7 +29,7 @@ digraph protocol {
   Wallet2 -> UserWallet2
 
   subgraph cluster_phase1 {
-    bgcolor=lightgrey
+    bgcolor="#fbeee0"
     label="Phase 1: announce trades in parallel"
     node [shape=oval]
     Trade1 [fillcolor="#F6B657"]
@@ -42,7 +42,7 @@ digraph protocol {
   }
   
   subgraph cluster_phase2 {
-    bgcolor=lightgrey
+    bgcolor="#fbeee0"
     label="Phase 2: single-threaded batching auction"
     Batch1 [label="Bot1 bids 2 trades,\nposts collateral", shape=rect, fillcolor=lightgreen]
     Batch2 [label="Bot2 bids 3 trades,\nposts collateral", shape=rect, fillcolor=lightgreen]
@@ -51,7 +51,7 @@ digraph protocol {
   }
 
   subgraph cluster_phase3 {
-    bgcolor=lightgrey
+    bgcolor="#fbeee0"
     label="Phase 3: finalize winning state transition"
     Finalize [shape=rect, fillcolor=lightgreen, label="Bot2 applies all 3 trades,\nslashes Bot1 for omitting Trade3,\nrewards itself,\ndistributes traded tokens"]
   }

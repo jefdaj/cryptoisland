@@ -10,17 +10,17 @@
 <title>protocol</title>
 <g id="clust1" class="cluster">
 <title>cluster_phase1</title>
-<polygon fill="lightgrey" stroke="black" points="240.34,-482 240.34,-629 764.34,-629 764.34,-482 240.34,-482"/>
+<polygon fill="#fbeee0" stroke="black" points="240.34,-482 240.34,-629 764.34,-629 764.34,-482 240.34,-482"/>
 <text text-anchor="middle" x="502.34" y="-613.8" font-family="Times-Roman" font-size="14.00">Phase 1: announce trades in parallel</text>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_phase2</title>
-<polygon fill="lightgrey" stroke="black" points="200.34,-179 200.34,-474 555.34,-474 555.34,-179 200.34,-179"/>
+<polygon fill="#fbeee0" stroke="black" points="200.34,-179 200.34,-474 555.34,-474 555.34,-179 200.34,-179"/>
 <text text-anchor="middle" x="377.84" y="-458.8" font-family="Times-Roman" font-size="14.00">Phase 2: single&#45;threaded batching auction</text>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_phase3</title>
-<polygon fill="lightgrey" stroke="black" points="279.34,-64 279.34,-171 642.34,-171 642.34,-64 279.34,-64"/>
+<polygon fill="#fbeee0" stroke="black" points="279.34,-64 279.34,-171 642.34,-171 642.34,-64 279.34,-64"/>
 <text text-anchor="middle" x="460.84" y="-155.8" font-family="Times-Roman" font-size="14.00">Phase 3: finalize winning state transition</text>
 </g>
 <!-- Wallet1 -->
