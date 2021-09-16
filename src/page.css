@@ -67,8 +67,8 @@ h3 {
 h1::before, h2::before, h3::before { 
   display: block; 
   content: " "; 
-  margin-top: -60px; /* undoes the 60px header thing below */
-  height: 60px;      /* undoes the 60px header thing below */
+  margin-top: -10px; /* undoes the 60px header hack on big screens */
+  height: 10px;      /* undoes the 69px header hack on big screens */
   visibility: hidden; 
   pointer-events: none;
 }
@@ -94,7 +94,7 @@ img {
   max-width: 100%;
 }
 
-@media screen and ((max-width: 800px) or (max-height: 600px) {
+@media screen and ((max-width: 800px) or (max-height: 600px)) {
   /* see https://css-tricks.com/hash-tag-links-padding/ */
   h1::before, h2::before, h3::before { 
     margin-top: -60px; /* height of header + 10 */
