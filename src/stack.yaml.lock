@@ -5,22 +5,29 @@
 
 packages:
 - completed:
-    hackage: hakyll-4.14.0.0@sha256:28aab547aa94202d486328aa4bbcd02ecbefc4e5d42dfa15e8137b731a4f5d55,9059
+    hackage: MissingH-1.4.3.0@sha256:32f9892ec98cd21df4f4d3ed8d95a3831ae74287ea0641d6f09b2dc6ef061d39,4859
     pantry-tree:
-      size: 8272
-      sha256: b5dff3f9f3c9bc32b154d8f5b30f88fc12f88a32dd7a10ac7f16584af5059b3f
+      size: 5271
+      sha256: 6cd6a7213615d72a7db3234c7fcd4346ceb4889bc8fb14b302b5878768018fcd
   original:
-    hackage: hakyll-4.14.0.0
+    hackage: MissingH-1.4.3.0@sha256:32f9892ec98cd21df4f4d3ed8d95a3831ae74287ea0641d6f09b2dc6ef061d39,4859
 - completed:
-    hackage: hakyll-images-1.0.1@sha256:a88a759731df738f88a0727f0c5a2e737bf662a7aca642155e3d531db124c1e5,2207
+    hackage: hakyll-4.14.1.0@sha256:3afc2e60d14388792dfaf3592d489e21fd48a0abd47f0dbfbf9ab7ec25e582cd,9290
     pantry-tree:
-      size: 1109
-      sha256: dc96c9515b365815a6bc7b930c99005eff33550bec9e7e9dd5d93cbb26043a60
+      size: 8490
+      sha256: f5242fdbfbed08b7374055b5236dfff8220a964563e3268eadd8a0c7b1cb5d8a
   original:
-    hackage: hakyll-images-1.0.1
+    hackage: hakyll-4.14.1.0@sha256:3afc2e60d14388792dfaf3592d489e21fd48a0abd47f0dbfbf9ab7ec25e582cd,9290
+- completed:
+    hackage: hakyll-images-1.1.0@sha256:0361649c838f56a97c847a051fdc2029c8d1a8c1b5dc2923a81a532a51563f45,2427
+    pantry-tree:
+      size: 1173
+      sha256: 72f9c0c262d6934ba7caea78685b0c2e23ea11126ebb6857a47f27e6f5bf0cdc
+  original:
+    hackage: hakyll-images-1.1.0@sha256:0361649c838f56a97c847a051fdc2029c8d1a8c1b5dc2923a81a532a51563f45,2427
 snapshots:
 - completed:
-    size: 567672
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/17/11.yaml
-    sha256: 03181cdbeb671eb605bbcf6f285bea4d094b6ac7433a0e14a9f1dd54ad995938
-  original: lts-17.11
+    size: 587546
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/10.yaml
+    sha256: 88b4f81e162ba3adc230a9fcccc4d19ac116377656bab56c7382ca88598b257a
+  original: lts-18.10
