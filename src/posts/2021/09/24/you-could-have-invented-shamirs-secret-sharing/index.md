@@ -36,9 +36,9 @@ estimate the entropy of each piece:
 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 >>> len(chars)
 84
->>> len(chars) ** 8 # number of possible 8-char passwords
+>>> len(chars) ** 8 # possible 8-char passwords
 2406758911082496
->>> len(chars) ** 4 # number of possible 4-char password halves
+>>> len(chars) ** 4 # possible 4-char password halves
 49067136
 ~~~
 
@@ -53,22 +53,22 @@ Of course, you could compensate for that by making the password longer. But the
 general problem remains, and it gets exponentially worse if you also try to
 protect yourself against losing some of the pieces (problem #1 above).
 
-Let's look at the tradeoff. Instead of two halves, you could break the password
-into 3 partially redundant pieces so that any 2 of them can be used to
-reconstruct it like so:
+How does that work? Instead of two halves, you could break the password into 3
+partially redundant pieces so that any 2 of them can be used to reconstruct it.
+But each piece would have to contain 2/3 of the password:
 
 #. `███sy=06`
-#. `!f8██=06`
-#. `!f8sy███`
+#. `!f8███06`
+#. `!f8sy=██`
 
-Now you're protected from losing one share, but you've sacrificed almost all of
-the entropy! Someone who finds even one piece can easily guess the missing
-characters:
+Now you're protected from losing any one share, but you've sacrificed almost
+all of the entropy! Someone who finds even one piece can easily guess the
+missing characters:
 
 ~~~{ .python }
->>> len(chars) ** 3 # number of possible missing 3-char chunks
+>>> len(chars) ** 3 # possible missing 3-char chunks
 592704
->>> len(chars) ** 2 # and for the middle 2-char one
+>>> len(chars) ** 2 # possible missing 2-char chunks
 7056
 ~~~
 
