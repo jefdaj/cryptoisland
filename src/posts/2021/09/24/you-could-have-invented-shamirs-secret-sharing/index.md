@@ -184,7 +184,7 @@ the secret shares on paper.
 If you do decide to use `ssss`, consider using it via [a program I wrote called
 Horcrux][horcrux]. It's only a little more complicated. The main advantage is that
 it lets you create your secret shares once, hide them, and then encrypt new
-backups later without gathering them up to reconstruct the master password each
+backups later without gathering enough shares to reconstruct the master password each
 time. I think that makes it much more likely you'll keep regular backups, and
 less likely you'll have the master password written on a post-it note or in
 some similarly insecure location.
