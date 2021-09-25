@@ -57,8 +57,8 @@ protect yourself against losing some of the pieces (problem #1 above).
 Why the trade-off? Because to protect against losing any given part of the
 password you have to make more than one copy of it. For example, you could
 break the password into 3 partially redundant pieces so that any 2 of them can
-be used to reconstruct it. But then each piece would have to contain at lease
-2/3 of the password:
+be used to reconstruct it. But then each piece would have to contain more
+of the password:
 
 #. `███sy=06`
 #. `!f8███06`
