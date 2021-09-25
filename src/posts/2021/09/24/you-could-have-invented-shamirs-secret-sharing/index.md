@@ -54,9 +54,11 @@ Of course, you could compensate for that by making the password longer. But the
 general problem remains, and it gets exponentially worse if you also try to
 protect yourself against losing some of the pieces (problem #1 above).
 
-How does that work? Instead of two halves, you could break the password into 3
-partially redundant pieces so that any 2 of them can be used to reconstruct it.
-But each piece would have to contain 2/3 of the password:
+Why the trade-off? Because to protect against losing any given part of the
+password you have to make more than one copy of it. For example, you could
+break the password into 3 partially redundant pieces so that any 2 of them can
+be used to reconstruct it. But then each piece would have to contain at lease
+2/3 of the password:
 
 #. `███sy=06`
 #. `!f8███06`
