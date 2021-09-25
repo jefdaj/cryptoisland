@@ -147,7 +147,7 @@ on that curve doesn't get you any closer to finding the intercept. Without 4
 you might as well have none at all.
 
 *Note: Shamir's actual scheme uses number fields defined in terms of large
-random prime numbers; the easier-to-visualize real number curves and equations
+prime numbers; the easier-to-visualize real number curves and equations
 shown here are just meant to give some basic intuition for how the math works*
 
 # Make it useful!
