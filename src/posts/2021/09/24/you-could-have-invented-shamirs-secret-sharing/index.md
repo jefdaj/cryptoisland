@@ -186,7 +186,7 @@ Horcrux][horcrux]. It's only a little more complicated. The main advantage is th
 it lets you create your secret shares once, hide them, and then encrypt new
 backups later without gathering enough shares to reconstruct the master password each
 time. I think that makes it much more likely you'll keep regular backups, and
-less likely you'll have the master password written on a post-it note or in
+less likely you'll have the master password written on a Post-It note or in
 some similarly insecure location.
 
 [ascii]:   https://www.rapidtables.com/code/text/ascii-table.html
