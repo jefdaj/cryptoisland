@@ -86,6 +86,45 @@ blockquote p {
   display: inline;
 }
 
+div.sourceCode {
+	width: max-content;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+pre.sourceCode {
+  color: black;
+	background: #f9ede5;
+	border-radius: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+code.sourceCode {
+	margin-top: 20px;
+}
+
+code.sourceCode > span {
+  margin-left:  10px;
+	margin-right: 10px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+}
+
+table, th, td {
+  border: 1px solid #4a3304;
+}
+
+th {
+	background: #f9ede5;
+}
+
 @media screen and ((max-width: 800px) or (max-height: 600px)) {
   div.toc {
     float: none;
