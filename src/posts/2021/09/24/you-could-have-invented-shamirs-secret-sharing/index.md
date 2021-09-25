@@ -148,7 +148,7 @@ their cryptocurrency, passwords, or other data. The [`ssss` ("Shamir's Secret
 Sharing Scheme") package][ssss] is easy to use. Pick the threshold with `-t` and
 the total number of shares with `-n`:
 
-~~~{ .bash }
+~~~{ .txt }
 $ ssss-split -t 3 -n 5
 Generating shares using a (3,5) scheme with dynamic security level.
 Enter the secret, at most 128 ASCII characters: !f8sy=06
@@ -160,7 +160,7 @@ Using a 64 bit security level.
 5-955a6dc11192e6d3
 ~~~
 
-~~~{ .bash }
+~~~{ .txt }
 $ ssss-combine -t 3 -n 5
 Enter 3 shares separated by newlines:
 Share [1/3]: 1-d8a1c623c3a614a5
