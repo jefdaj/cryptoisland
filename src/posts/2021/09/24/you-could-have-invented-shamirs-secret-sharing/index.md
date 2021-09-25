@@ -58,7 +58,7 @@ into 3 partially redundant pieces so that any 2 of them can be used to
 reconstruct it like so:
 
 #. `███sy=06`
-#. `!f███=06`
+#. `!f8██=06`
 #. `!f8sy███`
 
 Now you're protected from losing one share, but you've sacrificed almost all of
@@ -68,6 +68,8 @@ characters:
 ~~~{ .python }
 >>> len(chars) ** 3 # number of possible missing 3-char chunks
 592704
+>>> len(chars) ** 2 # and for the middle 2-char one
+7056
 ~~~
 
 If you needed to, you could pick a very long password and split it up like
