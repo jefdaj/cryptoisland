@@ -109,11 +109,11 @@ To keep it simple, let's focus on secret sharing just the exclamation point:
 
 Now anyone who has the `(x,y)` coordinates of at least two of the blue + brown
 points can draw a line to find the secret number, 33. This is much better than
-the naive solution above because finding one coordinate leaks *no information
-at all.* You could draw an infinite number of lines through it, and 256 of them
-would lead to Y intercepts representing ASCII characters. Which is the same as
-the total number of characters you would have to guess from anyway. Cool,
-right?
+the naive solution above because finding one pair of coordinates leaks *no
+information at all.* You could draw an infinite number of lines through the
+point you found, and 256 of them would lead to Y intercepts representing ASCII
+characters. Which is the same as the total number of characters you would have
+to guess from anyway. Cool, right?
 
 ![](2-of-n-infinite.svg)
 
