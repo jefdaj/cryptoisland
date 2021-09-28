@@ -18,4 +18,14 @@ I go by *jefdaj* online. Here are some ways you can contact me:
 - Secure Scuttlebutt
 - Meetup
 * Reddit
-<!-- TODO gpg? bitmessage? -->
+<!-- TODO bitmessage? -->
+
+Encrypted emails go to the top of the list! [Here][pubkey] is my public key.
+You can also look it up on [keys.openpgp.org][openpgp] or import it directly into `gpg`:
+
+~~~{ .bash }
+gpg --keyserver keys.openpgp.org --recv-key 54C195A345205DCABC2010EEE604517174B3D49E
+~~~
+
+[pubkey]:  /about/jefdaj.asc
+[openpgp]: https://keys.openpgp.org
