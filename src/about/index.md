@@ -11,13 +11,13 @@ less and illustrating everything with boats, pirates and the like.
 
 I go by *jefdaj* online. Here are some ways you can contact me:
 
+- Email (same handle at `protonmail.ch` or `berkeley.edu`)
 - [Github](https://github.com/jefdaj)
 * [StackExchange](https://stackoverflow.com/users/429898/jefdaj)
-- Email (same handle above @protonmail.ch or @berkeley.edu)
-- Twitter
+* [Reddit](https://www.reddit.com/user/jefdaj)
+- [Twitter](https://twitter.com/jefdaj)
 - Secure Scuttlebutt
 - Meetup
-* Reddit
 <!-- TODO bitmessage? -->
 
 Encrypted emails go to the top of the list! [Here][pubkey] is my public key.
