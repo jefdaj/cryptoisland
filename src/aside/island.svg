@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -11,7 +9,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="island.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    id="svg3722"
    version="1.1"
    viewBox="0 0 119.0625 137.58333"
@@ -274,14 +272,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="8.0000004"
-     inkscape:cx="47.278684"
-     inkscape:cy="277.73623"
+     inkscape:zoom="16.000001"
+     inkscape:cx="107.30192"
+     inkscape:cy="257.62507"
      inkscape:document-units="mm"
-     inkscape:current-layer="g923"
+     inkscape:current-layer="g4657"
      showgrid="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1023"
+     inkscape:window-width="1024"
+     inkscape:window-height="549"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -291,7 +289,8 @@
      fit-margin-bottom="0"
      gridtolerance="10"
      units="px"
-     inkscape:pagecheckerboard="true">
+     inkscape:pagecheckerboard="true"
+     inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
        id="grid899" />
@@ -432,7 +431,7 @@
          style="opacity:1;vector-effect:none;fill:#009c00;fill-opacity:1;stroke:#000000;stroke-width:0.26456693;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <g
          id="g923"
-         transform="translate(1.8191422,-2.44599)">
+         transform="translate(-0.18085778,-1.44599)">
         <path
            sodipodi:nodetypes="cc"
            style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#a14100;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;enable-background:new"
@@ -440,7 +439,7 @@
            id="path4661"
            inkscape:connector-curvature="0" />
         <path
-           style="opacity:1;vector-effect:none;fill:#009c00;fill-opacity:1;stroke:#000000;stroke-width:0.26456693;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           style="opacity:1;vector-effect:none;fill:#009c00;fill-opacity:1;stroke:#000000;stroke-width:0.264567;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            d="m 152.26742,79.31789 c 0,0 1.32308,-1.578417 3.96927,-1.485568 0,0 -2.20514,-2.228352 -4.94417,0.255333 0,0 0.16249,-3.133621 -5.29232,-1.949809 0.0464,0.185695 2.69258,0.998116 1.97301,1.810536 -0.0232,0.06964 -2.36762,-1.299871 -4.38708,2.251565 0,0 2.57655,-1.207024 3.92284,-0.04642 0,0 -1.21645,-0.06587 -2.21645,1.934128 0,0 1.75222,-1.307405 3.74845,-0.703893 l 2.43726,2.228353 c 0,0 0.52304,-1.226241 -0.0464,-2.437262 0,0 1.2767,-0.46424 3.66753,1.415933 0.46423,-2.901503 -2.83187,-3.040775 -2.83187,-3.272894 z"
            id="path960"
            inkscape:connector-curvature="0"
@@ -636,10 +635,10 @@
     <a
        href="/recent.html"
        id="a90"
-       transform="matrix(0.99042662,0,0,1.023112,-2.7112844,2.7535356)">
+       transform="matrix(0.99042662,0,0,1.023112,-2.8108577,2.7391429)">
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:11.28309822px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.69999999;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-weight:normal;font-size:11.2831px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.7;stroke-miterlimit:4;stroke-dasharray:none"
          x="67.427322"
          y="91.860771"
          id="titleText"><tspan
@@ -647,9 +646,9 @@
            id="tspan3813"
            x="67.427322"
            y="91.860771"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.28309822px;font-family:'Courier New', monospace;-inkscape-font-specification:'Courier New, monospace Bold';fill:#000000;fill-opacity:1;stroke-width:0.69999999;stroke-miterlimit:4;stroke-dasharray:none"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.2831px;font-family:'Courier New', monospace;-inkscape-font-specification:'Courier New, monospace Bold';fill:#000000;fill-opacity:1;stroke-width:0.7;stroke-miterlimit:4;stroke-dasharray:none"
            dx="0 0 0 0 0 0 0 0 -0.07 -1.0167036 0.64417589 0.44252765">Crypto<tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New', monospace;-inkscape-font-specification:'Courier New, monospace Bold';word-spacing:-2.67493773px"
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New', monospace;-inkscape-font-specification:'Courier New, monospace Bold';word-spacing:-4px"
    id="tspan892"> </tspan>Island</tspan></text>
     </a>
   </g>
