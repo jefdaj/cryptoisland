@@ -95,6 +95,7 @@ img {
 }
 
 div.sourceCode {
+	width: max-content;
   max-width: calc(100% - 10px);
 }
 
