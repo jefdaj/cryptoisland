@@ -48,7 +48,8 @@ html {
 		height: 100%;
   }
 
-	#aboutBoat {
+	#aboutBox {
+		/* TODO center more on wide short screens */
 		height: 80px;
 		right: 20px;
 	}
