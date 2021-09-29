@@ -86,30 +86,6 @@ blockquote p {
   display: inline;
 }
 
-div.sourceCode {
-	width: max-content;
-	max-width: calc(100% - 20px);
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-pre.sourceCode {
-  color: black;
-	background: #f9ede5;
-	border-radius: 10px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-code.sourceCode {
-	margin-top: 20px;
-}
-
-code.sourceCode > span {
-  margin-left:  10px;
-	margin-right: 10px;
-}
-
 table {
   border-collapse: collapse;
 }
