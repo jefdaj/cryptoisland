@@ -1,16 +1,15 @@
 <div id="island" class="vertical-center">
   $partial("aside/island.svg")$
-	<a pointer-events="bounding-box" href="/about.html">
-    $partial("aside/boat.svg")$
-	</a>
+  <a pointer-events="bounding-box" href="/about.html">
+    <div id="aboutBox">
+      $partial("aside/boat.svg")$
+      <a id="aboutLink" href="/about.html">@jefdaj</a>
+    </div>
+  </a>
 </div>
-	<div class="tag-cloud-container">
-		<div class="tag-cloud-left"></div>
-		<div class="tag-cloud-right"></div>
+<div class="tag-cloud-container">
+  <div class="tag-cloud-left"></div>
+  <div class="tag-cloud-right"></div>
 		<div class="tag-cloud">$tagcloud$</div>
-	</div>
 </div>
-<footer id="watermark">
-  Made by <a href="/about.html">jefdaj</a>
-  <a href="/posts/2021/03/03/source-code-for-this-blog/index.html">using hakyll</a>.
-</footer>
+</div>
