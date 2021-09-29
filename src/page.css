@@ -94,6 +94,35 @@ img {
   max-width: 100%;
 }
 
+div.sourceCode {
+  max-width: calc(100% - 10px);
+}
+
+pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+pre.sourceCode {
+  color: black;
+  background: #f9ede5;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+code.sourceCode {
+  margin-top: 20px;
+  word-wrap: break-word;
+}
+
+code.sourceCode > span {
+  margin: 10px;
+}
+
 @media screen and ((max-width: 800px) or (max-height: 600px)) {
   /* see https://css-tricks.com/hash-tag-links-padding/ */
   h1::before, h2::before, h3::before { 
