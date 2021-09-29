@@ -27,45 +27,45 @@ aside {
 }
 
 .tag-cloud-container {
-	position: absolute;
-	top: calc(50% + 80px);
-	left: 50%;
-	z-index: 90;
-	transform: translate(-50%, -50%);
-	width: 70%;
-	height: 15%;
-	display: block;
-	overflow: hidden;
-	margin-top: 0.5em;
-	text-align: end;
-	/* border: 1px solid red; */
+  position: absolute;
+  top: calc(50% + 80px);
+  left: 50%;
+  z-index: 90;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 15%;
+  display: block;
+  overflow: hidden;
+  margin-top: 0.5em;
+  text-align: end;
+  /* border: 1px solid red; */
 }
 
 .tag-cloud-left {
-	        shape-outside: url(/aside/shape-left.svg);
-	-webkit-shape-outside: url(/aside/shape-left.svg);
+          shape-outside: url(/aside/shape-left.svg);
+  -webkit-shape-outside: url(/aside/shape-left.svg);
   float: left;
-	width: 50%;
-	height: 100%;
+  width: 50%;
+  height: 100%;
 }
 
 .tag-cloud-right {
-					shape-outside: url(/aside/shape-right.svg);
-	-webkit-shape-outside: url(/aside/shape-right.svg);
+          shape-outside: url(/aside/shape-right.svg);
+  -webkit-shape-outside: url(/aside/shape-right.svg);
   float: right;
-	width: 50%;
-	height: 100%;
+  width: 50%;
+  height: 100%;
 }
 
 .tag-cloud > a {
   color: blue; 
   text-decoration: none;
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .tag-cloud > a:hover {
   color: blue;
-  text-decoration: underline;
+  border-bottom: 2px solid currentColor;
 }
 
 /* this is the main title link inside island.svg */
@@ -74,38 +74,44 @@ aside {
 }
 
 #titleText:hover {
-  text-decoration: underline;
+  border-bottom: 2px solid currentColor;
 }
 
 /* TODO why does the boat underline fail? */
 #aboutBox {
-	/* border: 1px solid red; */
-	position: absolute;
-	top: calc(50% + 40px);
-	right: 15px;
-	height: 70px;
-	width: 55px;
-	padding-bottom: 5px;
-	margin-left: 50px;
+  /* border: 1px solid red; */
+  position: absolute;
+  top: calc(50% + 40px);
+  right: 15px;
+  height: 70px;
+  width: 55px;
+  padding-bottom: 5px;
+  margin-left: 50px;
 }
 
-#aboutBox > a {
+#aboutBox > #aboutLink {
+  /* nested id prevents matching the svg pointer-events box */
   color: blue;
-	text-decoration: none;
+  text-decoration: none;
 }
 
-#aboutBox:hover > a {
-	text-decoration: underline;
+#aboutBox:hover > #aboutLink {
+  border-bottom: 2px solid currentColor;
 }
 
 #aboutBoat {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
+  border-bottom: none;
+}
+
+#aboutBoat:hover {
+  border-bottom: none;
 }
 
 @media screen and ((max-width: 800px) or (max-height: 600px)) {
   aside {
-		position: absolute;
-		left: -9999px;
+    position: absolute;
+    left: -9999px;
   }
 }
