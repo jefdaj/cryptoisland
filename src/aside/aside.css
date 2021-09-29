@@ -74,7 +74,8 @@ aside {
 }
 
 #titleText:hover {
-  border-bottom: 2px solid currentColor;
+  /* TODO any way to make underline kerning nicer? */
+	text-decoration: underline;
 }
 
 /* TODO why does the boat underline fail? */
