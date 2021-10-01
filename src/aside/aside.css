@@ -28,12 +28,12 @@ aside {
 
 .tag-cloud-container {
   position: absolute;
-  top: calc(50% + 80px);
+  top: calc(50% + 5.5em);
   left: 50%;
   z-index: 90;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  height: 15%;
+  transform: translate(-51%, -50%);
+  width: 15em;
+  height: 9em;
   display: block;
   overflow: hidden;
   margin-top: 0.5em;
