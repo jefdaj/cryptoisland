@@ -55,9 +55,9 @@ html {
 	}
 
 	.tag-cloud-container {
-		top: calc(50% + 130px);
-		width: 335px;
-		height: 220px;
+    transform: translate(-48%, -50%);
+		width: 16em;
+		height: 9em;
 		/*margin-top: 0.5em;*/
 	}
 
