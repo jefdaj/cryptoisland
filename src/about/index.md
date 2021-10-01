@@ -27,5 +27,8 @@ You can also look it up on [keys.openpgp.org][openpgp] or import it directly int
 gpg --keyserver keys.openpgp.org --recv-key 54C195A345205DCABC2010EEE604517174B3D49E
 ~~~
 
+(And see [this post][post] for help generating your own keys if needed)
+
 [pubkey]:  /about/jefdaj.asc
 [openpgp]: https://keys.openpgp.org
+[post]: /posts/2021/10/01/how-i-generated-my-gpg-keys
