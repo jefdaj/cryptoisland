@@ -145,4 +145,7 @@ code.sourceCode > span {
 	pre {
     font-size: 10pt;
 	}
+	code.sourceCode {
+	  font-size: #{"min(1.7vw, 10pt)"};
+	}
 }
