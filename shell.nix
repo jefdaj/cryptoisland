@@ -6,6 +6,7 @@ let
     bytestring
     hakyll
     hakyll-images
+    hakyll-sass
     filepath
     pandoc
     MissingH

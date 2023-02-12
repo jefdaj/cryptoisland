@@ -24,6 +24,7 @@ import Data.String.Utils              (replace)
 import GHC.Generics                   (Generic)
 import Hakyll.Web.Html.RelativizeUrls (relativizeUrlsWith)
 import Hakyll.Web.Tags                (tagsDependency)
+import Hakyll.Web.Sass                (sassCompiler)
 import Text.Jasmine                   (minify)
 import System.FilePath                (takeDirectory, takeBaseName, takeFileName, takeExtension, splitFileName)
 
@@ -38,7 +39,8 @@ main = hakyllWith myHakyllConfig $ do
   -- static files
   match (("*/*.svg" .&&. complement "*/island*.svg" .&&. complement "aside/boat.svg") .||. "*/*.png" .||. postPng .||. postSvg .||. postTar .||. postSubDir .||. "fonts/*.ttf" .||. "about/jefdaj.asc") $ route idRoute >> compile copyFileCompiler
   match ("*/*.jpg" .||. postJpg) $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
-  match ("*.css" .||. "*/*.css") $ route (toRoot $ Just "css") >> compile compressCssCompiler
+  match("variables.scss") $ route idRoute >> compile copyFileCompiler
+  match ("*.scss" .||. "*/*.scss") $ route (toRoot $ Just "css") >> compile (fmap compressCss <$> sassCompiler)
 
   -- html templates used below
   -- note that we treat svg as html here because it includes clickable links
