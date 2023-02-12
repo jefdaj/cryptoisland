@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .postTitle {
   margin-top: 0;
   font-size: 24px;
@@ -94,7 +96,7 @@ th {
 	background: #f9ede5;
 }
 
-@media screen and ((max-width: 800px) or (max-height: 600px)) {
+@media screen and (max-width: $mobile-breakpoint) {
   div.toc {
     float: none;
     max-width: 100%;

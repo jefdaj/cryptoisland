@@ -3,6 +3,8 @@
     /* border: 1px solid red; */
 }
 
+@import "./variables.scss";
+
 @font-face {
   font-family: OpenSans;
   src: url("../fonts/OpenSans-Regular.ttf");
@@ -37,8 +39,10 @@ main {
   height: auto;
   margin: 10px;
   /* on large screens, center main div in body */
-  margin-left: max(10px, (100% - 385px - 1000px) / 2);
-  width: min(1000px, 100% - 385px);
+	/* string interpolation works around sass bug:
+	   https://github.com/sass/node-sass/issues/2815#issuecomment-574038619 */
+  margin-left: #{"max(10px, (100% - "$aside-width" - "$mobile-breakpoint") / 2)"};
+  width: #{"min(1000px, 100% - "$aside-width")"};
 }
 
 body {
@@ -130,10 +134,15 @@ code.sourceCode > span {
   margin: 10px;
 }
 
-@media screen and ((max-width: 800px) or (max-height: 600px)) {
+/* mobile version with header instead of sidebar */
+@media screen and (max-width: $mobile-breakpoint) {
   /* see https://css-tricks.com/hash-tag-links-padding/ */
   h1::before, h2::before, h3::before { 
     margin-top: -60px; /* height of header + 10 */
     height: 60px;      /* height of header + 10 */
   }
+
+	pre {
+    font-size: 10pt;
+	}
 }

@@ -1,4 +1,4 @@
-/* desktop version */
+@import "./variables.scss";
 
 main {
   position: absolute;
@@ -43,7 +43,7 @@ html {
 
 
 /* mobile version, which should only show the island */
-@media screen and ((max-width: 800px) or (max-height: 600px)) {
+@media screen and (max-width: $mobile-breakpoint) {
   html {
     background: url(/aside/background.png) repeat-x left center;
   }
