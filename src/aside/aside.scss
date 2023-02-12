@@ -10,11 +10,16 @@ aside {
   /* border: 1px solid red; */
   background: url(/aside/background.png) no-repeat left center;
   background-size: cover;
+	pointer-events: none;
 }
 
 #island {
   width: 350px;
   z-index: 80;
+}
+
+#a90, #aboutBox {
+  pointer-events: auto;
 }
 
 .center {
@@ -68,6 +73,7 @@ aside {
   color: blue; 
   text-decoration: none;
   overflow: hidden;
+	pointer-events: auto;
 }
 
 .tag-cloud > a:hover {
