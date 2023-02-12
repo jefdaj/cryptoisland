@@ -144,8 +144,9 @@ code.sourceCode > span {
 
 	pre {
     font-size: 10pt;
+	  line-height: #{"min(1.75vw, 11pt)"};
 	}
 	code.sourceCode {
-	  font-size: #{"min(1.7vw, 10pt)"};
+	  font-size: #{"min(1.75vw, 11pt)"};
 	}
 }
