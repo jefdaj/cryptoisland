@@ -1,6 +1,6 @@
 ---
 title: You could have invented Shamir's secret sharing
-tags: cryptography, security, secret-sharing, math, education, python, horcrux
+tags: cryptography, security, secret-sharing, math, python, horcrux
 toc: true
 updated: 2021-09-25
 ...

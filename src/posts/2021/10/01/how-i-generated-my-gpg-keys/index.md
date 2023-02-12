@@ -1,6 +1,6 @@
 ---
 title: How I generated my GPG keys
-tags: security, gpg, education, encryption
+tags: security, gpg, encryption
 toc: true
 ...
 
