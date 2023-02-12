@@ -1,5 +1,12 @@
+# vim
 *.sw*
+
+# nix
+result
+
+# hakyll
 .site
 src/.hakyll-cache
-src/.stack-work
+
+# blog
 src/posts/2099
