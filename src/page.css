@@ -117,6 +117,10 @@ pre.sourceCode {
   padding-bottom: 10px;
 }
 
+code {
+  background: #f9ede5;
+}
+
 code.sourceCode {
   margin-top: 20px;
   word-wrap: break-word;
