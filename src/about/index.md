@@ -20,14 +20,16 @@ I go by *jefdaj* online. Here are some ways you can contact me:
 - Meetup
 <!-- TODO bitmessage? -->
 
-Encrypted emails go to the top of the list! [Here][pubkey] is my public key.
-You can also look it up on [keys.openpgp.org][openpgp] or import it directly into `gpg`:
+Encrypted emails aren't required of course, but I like them!
+[Here][pubkey] is my public key.
+You can also look it up on [keys.openpgp.org][openpgp] or import it directly with `gpg`:
 
 ~~~{ .bash }
-gpg --keyserver keys.openpgp.org --recv-key 54C195A345205DCABC2010EEE604517174B3D49E
+gpg --keyserver keys.openpgp.org \
+  --recv-key 54C195A345205DCABC2010EEE604517174B3D49E
 ~~~
 
-(And see [this post][post] for help generating your own keys if needed)
+See [this post][post] for help generating your own keys if needed.
 
 [pubkey]:  /about/jefdaj.asc
 [openpgp]: https://keys.openpgp.org
