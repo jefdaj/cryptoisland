@@ -28,7 +28,7 @@ html {
 .tag-cloud-container {
        transform: translate(-37%, -37%);
        width: 18em;
-       height: 10em;
+       height: 9em;
        text-align: center;
        /*margin-top: 0.5em;*/
 }
@@ -74,7 +74,7 @@ html {
 	.tag-cloud-container {
     transform: translate(-48%, -50%);
 		width: 16em;
-		height: 9em;
+    height: min(25vh, 9em); /* prevent squishing */
 		/*margin-top: 0.5em;*/
 	}
 
@@ -90,6 +90,7 @@ html {
   @media screen and (-webkit-min-device-pixel-ratio:0){
     .tag-cloud-container {
       transform: translate(-37%, -37%);
+    height: min(25vh, 11em); /* prevent squishing */
     }
   }
  
