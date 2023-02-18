@@ -25,6 +25,23 @@ html {
   max-height: 100%;
 }
 
+.tag-cloud-container {
+       transform: translate(-37%, -37%);
+       width: 18em;
+       height: 10em;
+       text-align: center;
+       /*margin-top: 0.5em;*/
+}
+
+/* firefox */
+@-moz-document url-prefix() {
+  .tag-cloud-container {
+    transform: translate(-47%, -50%);
+	  width: 19em;
+  }
+}
+
+
 /* mobile version, which should only show the island */
 @media screen and ((max-width: 800px) or (max-height: 600px)) {
   html {
@@ -68,4 +85,19 @@ html {
 	.tag-cloud-right {
 	  /*width: 40%;*/
 	}
+
+  /* chrome: */
+  @media screen and (-webkit-min-device-pixel-ratio:0){
+    .tag-cloud-container {
+      transform: translate(-37%, -37%);
+    }
+  }
+ 
+  /* firefox */
+  @-moz-document url-prefix() {
+    .tag-cloud-container {
+           transform: translate(-48%, -38%);
+    }
+  }
+
 }
