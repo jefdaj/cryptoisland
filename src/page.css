@@ -36,7 +36,9 @@ main {
   width: 100%;
   height: auto;
   margin: 10px;
-  width: calc(100% - 385px);
+  /* on large screens, center main div in body */
+  margin-left: max(10px, (100% - 385px - 1000px) / 2);
+  width: min(1000px, 100% - 385px);
 }
 
 body {
