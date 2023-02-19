@@ -102,3 +102,10 @@ html {
   }
 
 }
+
+/* micro version, for when the tag cloud wont fit */
+@media screen and (max-height: 500px) {
+	.tag-cloud-container {
+    visibility: hidden;
+	}
+}
