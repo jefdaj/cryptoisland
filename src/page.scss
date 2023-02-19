@@ -144,9 +144,9 @@ code.sourceCode > span {
 
 	pre {
     font-size: 10pt;
-	  line-height: #{"min(1.75vw, 11pt)"};
+	  line-height: #{"min(2.1vw, 11pt)"}; /* TODO should this be vh? */
 	}
 	code.sourceCode {
-	  font-size: #{"min(1.75vw, 11pt)"};
+	  font-size: #{"min(1.9vw, 11pt)"};
 	}
 }
