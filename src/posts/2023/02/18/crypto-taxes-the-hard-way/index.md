@@ -177,17 +177,17 @@ Finally, play around with some interactive `hledger` commands:
 
 ~~~{ .bash }
 [nix-shell]$ hledger -f all.journal reg cur:USD assets
-2023-01-01 opening balances          assets:exchanges:mockex     100.00 USD    100.00 USD
-2023-02-01 MockEx buy                assets:exchanges:mockex      -35.0 USD     65.00 USD
-2023-05-01 MockEx buy                assets:exchanges:mockex      -45.0 USD     20.00 USD
+2023-01-01 opening balances  assets:exchanges:mockex  100.00 USD  100.00 USD
+2023-02-01 MockEx buy        assets:exchanges:mockex   -35.0 USD   65.00 USD
+2023-05-01 MockEx buy        assets:exchanges:mockex   -45.0 USD   20.00 USD
 ~~~
 
 ~~~{ .bash }
 [nix-shell]$ hledger -f all.journal reg cur:BTC
-2023-02-01 MockEx buy                assets:exchanges:mockex     0.0100 BTC    0.0100 BTC
-                                     expenses:fees               0.0001 BTC    0.0101 BTC
-2023-05-01 MockEx buy                assets:exchanges:mockex     0.0100 BTC    0.0201 BTC
-                                     expenses:fees               0.0001 BTC    0.0202 BTC
+2023-02-01 MockEx buy  assets:exchanges:mockex  0.0100 BTC  0.0100 BTC
+                       expenses:fees            0.0001 BTC  0.0101 BTC
+2023-05-01 MockEx buy  assets:exchanges:mockex  0.0100 BTC  0.0201 BTC
+                       expenses:fees            0.0001 BTC  0.0202 BTC
 
 ~~~
 
