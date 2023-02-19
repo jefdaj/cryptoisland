@@ -102,8 +102,9 @@ img {
 }
 
 div.sourceCode {
+  /* better to have the whole block overflow right than weird breaks: */
+  /* max-width: calc(100% - 10px); */
 	width: max-content;
-  max-width: calc(100% - 10px);
 }
 
 pre {
@@ -144,10 +145,23 @@ code.sourceCode > span {
   }
 
 	pre {
-    font-size: 10pt;
-	  line-height: #{"min(2.1vw, 11pt)"}; /* TODO should this be vh? */
+    /* font-size: 10pt; */
+	  line-height: #{"min(3vh, 15pt)"}; /* TODO should this be vh? */
 	}
 	code.sourceCode {
-	  font-size: #{"min(1.9vw, 11pt)"};
+	  /* shrink font to fit */
+	  /* TODO should this be vw? */
+	  font-size: #{"min(2vh, 15pt)"};
 	}
+}
+
+/* mobile version, which should only show the island */
+@media screen and (max-width: $mobile-breakpoint) {
+  div.sourceCode {
+	/* center the div but leave content left-aligned
+	  https://stackoverflow.com/a/1269596 */
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 50vw;
+  }
 }
