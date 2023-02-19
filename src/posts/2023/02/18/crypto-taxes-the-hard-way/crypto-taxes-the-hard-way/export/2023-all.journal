@@ -1,0 +1,14 @@
+2023-01-01 opening balances
+    assets:exchanges:mockex                 = 100.00 USD
+    equity:opening balances
+
+2023-02-01 (078blk23598s) MockEx buy
+    assets:exchanges:mockex      0.0100 BTC
+    assets:exchanges:mockex       -35.0 USD
+    expenses:fees                0.0001 BTC
+
+2023-05-01 (078werfgsdaf) MockEx buy
+    assets:exchanges:mockex      0.0100 BTC
+    assets:exchanges:mockex       -45.0 USD
+    expenses:fees                0.0001 BTC
+

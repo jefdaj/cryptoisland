@@ -1,0 +1,19 @@
+# Fields as labeled in the MockEx CSV
+# "Transaction ID","Time","Type","Asset","Amount","Fee","Price"
+
+# Fields as we want them parsed
+# (Some have special meanings in hledger)
+skip 1
+fields code,date,type,currency1,amount1,amount3,amount2_
+date-format %-d/%-m/%Y
+
+description MockEx %type
+
+account1  assets:exchanges:mockex
+
+account2  assets:exchanges:mockex
+amount2  -%amount2_
+currency2 USD
+
+account3  expenses:fees
+currency3 %currency1
