@@ -1,0 +1,13 @@
+;; Settings you want in all your journals
+include ./config.journal
+
+;; Opening balances
+;; This only needs to be done once for the first year you track
+;; Subsequent years will have auto-generated opening + closing transactions
+2023/01/01 opening balances
+  assets:exchanges:mockex    = 100.00 USD
+  equity:opening balances
+  
+;; Add not-yet-generated files here to tell export.hs to generate them
+;; from the corresponding CSV inputs
+include ./import/mockex/journal/trades-2023.journal

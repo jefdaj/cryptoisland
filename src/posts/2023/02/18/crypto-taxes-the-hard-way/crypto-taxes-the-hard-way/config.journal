@@ -1,0 +1,5 @@
+;; I like making the USD "ticker" consistent with the other currencies
+;; You can also adjust the number of decimals displayed
+;; Be careful with numbers in tickers! Things like "REPV2" will cause problems later
+commodity 1000.0 USD
+commodity 1000.0000 BTC

@@ -1,0 +1,10 @@
+2023-02-01 (078blk23598s) MockEx buy
+    assets:exchanges:mockex       BTC0.0100
+    assets:exchanges:mockex          USD-35
+    expenses:fees                 BTC0.0001
+
+2023-05-01 (078werfgsdaf) MockEx buy
+    assets:exchanges:mockex       BTC0.0100
+    assets:exchanges:mockex          USD-45
+    expenses:fees                 BTC0.0001
+
