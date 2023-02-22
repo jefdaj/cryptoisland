@@ -103,9 +103,14 @@ html {
 
 }
 
-/* micro version, for when the tag cloud wont fit */
+/* remove tag cloud and maybe even boat on really tiny screens */
 @media screen and (max-height: 500px) {
 	.tag-cloud-container {
+    visibility: hidden;
+	}
+}
+@media screen and (max-height: 440px) {
+	#aboutBox {
     visibility: hidden;
 	}
 }
