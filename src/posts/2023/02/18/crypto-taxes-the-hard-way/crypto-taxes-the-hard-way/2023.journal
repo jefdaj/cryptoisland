@@ -3,7 +3,7 @@ include ./config.journal
 
 ;; Opening balances
 ;; This only needs to be done once for the first year you track
-;; Subsequent years will have auto-generated opening + closing transactions
+;; After that there are auto-generated opening + closing transactions
 2023/01/01 opening balances
   assets:exchanges:mockex    = 100.00 USD
   equity:opening balances
