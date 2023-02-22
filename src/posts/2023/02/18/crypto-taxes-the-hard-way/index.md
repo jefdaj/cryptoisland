@@ -1,6 +1,6 @@
 ---
 title: Crypto Taxes the Hard Way
-tags: hledger, haskell, nix, taxes, accounting, reproducibility, pipeline
+tags: hledger, haskell, nix, taxes, accounting, reproducibility, git
 toc: true
 updated: 2023-02-22
 ...
@@ -40,6 +40,7 @@ You'll probably invent some addons of your own too, and I'd love to hear about t
 <!-- TODO github link to the code once it has a final URL -->
 
 [Here is a tarball of today's code][tarball] to use as a template.
+I'll assume you use git for simplicity, but nothing important relies on that.
 
 Installing dependencies will probably take at least a couple minutes.
 I use [Nix][nix] whenever I expect a project to involve more than one language. To try it that way run [the Nix install script][nis], then open a new terminal and start `nix-shell` inside the repo. Alternatively the full-fledged tutorial includes [a Dockerfile][df] with [a pre-built image][di] you can pull.
@@ -127,11 +128,27 @@ import/mockex/journal/* (3)
     expenses:fees                 BTC0.0001
 ~~~
 
-4. You `include` the per-import journal file (3) in `2023.journal` by hand.
+4. You `include` the per-import journal file in `2023.journal` by hand.
    That tells `export/export.hs` to generate it from the CSV and `hledger` to read it.
    You might also add some transactions here by hand. In this case there's an opening balance.
 
-6. `export/export.hs` generates financial reports here along with `2023-all.journal` (see below)
+~~~{ .txt }
+;; Settings you want in all your journals
+include ./config.journal
+
+;; Opening balances
+;; This only needs to be done once for the first year you track
+;; After that there are auto-generated opening + closing transactions
+2023/01/01 opening balances
+  assets:exchanges:mockex    = 100.00 USD
+  equity:opening balances
+
+;; Add not-yet-generated files here to tell export.hs to generate them
+;; from the corresponding CSV inputs
+include ./import/mockex/journal/trades-2023.journal
+~~~
+
+6. `export/export.hs` generates financial reports here along with `2023-all.journal`. It looks trivial now (see next section) but once you have dozens of data sources it's is very helpful to see them merged into one linear history.
 
 7. You `include` the journal for each year into `all.journal` by hand.
    It's what you load to look at your finances interactively.
@@ -151,7 +168,7 @@ Build completed in 0.09s
 ~~~
 
 This will fail if you have any unbalanced transactions according to hledger's version of standard [double-entry accounting][dea] rules.
-Once you fix any import errors and everything balances, you get a linear history of all your manually written + parsed transactions in `2023-all.journal`. Cool, right?
+If you've ever worked with [Haskell][haskell] this will be a similar experience: the compiler complains over and over until every little thing is fixed in your CSV rules, then suddenly it all works and magically writes a consistent history to `2023-all.journal`. Cool, right?
 
 ~~~{ .txt }
 2023-01-01 opening balances
@@ -193,6 +210,8 @@ Balance Sheet 2023-05-01
 You should version control all of them so you can `diff` them later!
 One of the main benefits of this system is being able to refactor aggressively and see what changed.
 Try messing up the sign of a number or the name of a field in `mockex.rules` and re-running it.
+You should either get an Hledger error about improper transactions or it will succeed and you can `git diff` your final reports.
+One way to get a good diff would be to change the name of the `assets:exchanges:mockex` account everywhere.
 
 Finally, play around with some interactive `hledger` commands:
 
