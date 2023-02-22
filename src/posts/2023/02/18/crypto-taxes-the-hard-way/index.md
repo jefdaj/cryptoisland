@@ -2,6 +2,7 @@
 title: Crypto Taxes the Hard Way
 tags: hledger, haskell, nix, taxes, accounting, reproducibility, pipeline
 toc: true
+updated: 2023-02-22
 ...
 
 *Disclaimer 1: nothing on this blog is advice about the substance of your taxes!* I have no background in accounting and no idea whether this code will produce valid results. You need to verify everything yourself and then own your own mistakes or hire a tech-savvy [CPA][cpa] (or equivalent in your country) to go over it and fix any problems. That's what I'll be doing.
@@ -75,6 +76,7 @@ Most of the interesting logic is in `export/export.hs`. It's written with [Shake
 [Here][flow] is an ASCII diagram of data flow through the "full-fledged" system. It's confusing at first but worth learning because it was refined over ~10 years of successful journal maintenance.
 For today we'll focus on only the parts needed to answer the question, "What happens when you add or edit a CSV file?"
 
+
 ~~~{ .txt }
 import/mockex/csv/* (1)
       +
@@ -98,19 +100,38 @@ import/mockex/journal/* (3)
 ~~~
 
 1. The only data source so far is "MockEx", a made up exchange.
-   The trade data starts in `import/mockex/csv/trades-2023.csv`
-	 
+   The trade data starts in `import/mockex/csv/trades-2023.csv`.
+
+~~~{ .txt }
+"Transaction ID","Time","Type","Asset","Amount","Fee","Price"
+"078werfgsdaf","1/5/2023","buy","BTC",0.01,0.0001,45
+"078blk23598s","1/2/2023","buy","BTC",0.01,0.0001,35
+~~~
+
 2. `csv2journal` parses the csv according to `import/mockex/mockex.rules`,
-	 which is written in [the hledger CSV rules format][rules].
-	 You'll need that because *everyone* seems to make up their own idiosyncratic formats.
+   which is written in [the hledger CSV rules format][rules].
+   You'll need that because *everyone* seems to make up their own CSV conventions as they go.
 
 3. The generated `import/mockex/journal/trades-2023.journal` in hledger format goes here.
    You'll mainly look at these per-import journal files to debug your CSV rules.
 
-4. You `include` the per-import journal file (3) in `2023.journal` by hand.
-   That tells `hledger` to read it and `export/export.hs` to put it in the dependency DAG.
+~~~{ .txt }
+2023-02-01 (078blk23598s) MockEx buy
+    assets:exchanges:mockex       BTC0.0100
+    assets:exchanges:mockex          USD-35
+    expenses:fees                 BTC0.0001
 
-6. `export/export.hs` generates financial reports and other miscellaneous files here
+2023-05-01 (078werfgsdaf) MockEx buy
+    assets:exchanges:mockex       BTC0.0100
+    assets:exchanges:mockex          USD-45
+    expenses:fees                 BTC0.0001
+~~~
+
+4. You `include` the per-import journal file (3) in `2023.journal` by hand.
+   That tells `export/export.hs` to generate it from the CSV and `hledger` to read it.
+   You might also add some transactions here by hand. In this case there's an opening balance.
+
+6. `export/export.hs` generates financial reports here along with `2023-all.journal` (see below)
 
 7. You `include` the journal for each year into `all.journal` by hand.
    It's what you load to look at your finances interactively.
