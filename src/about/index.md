@@ -9,8 +9,8 @@ Welcome to <b>Crypto Island</b>!
 It's your standard programmer blog, but I'll attempt to keep it fun by rambling
 less and illustrating everything with boats, pirates and the like.
 
-Note: totally unrelated to [any][ci2] of [these][ci3] [other][ci4] [crypto][ci5] [islands][ci6].
-I hope you'll associate this one with tutorials, open source code, and the occasional relatively sober utopian idea that isn't uncomfortably colonial or an obvious cash grab.
+Note: unrelated to [any][ci2] of [these][ci3] [other][ci4] [crypto][ci5] [islands][ci6].
+I hope you'll come to associate this one with tutorials, open source code, and the occasional relatively sober utopian idea that isn't uncomfortably colonial or an obvious cash grab.
 
 I go by *jefdaj* online. Here are some ways you can contact me:
 
