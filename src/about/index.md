@@ -6,11 +6,10 @@ title: About
 
 Welcome to <b>Crypto Island</b>!
 
-It's your standard programmer blog, but I'll attempt to keep it fun by rambling
-less and illustrating everything with boats, pirates and the like.
-
-Note: unrelated to [any][ci2] of [these][ci3] [other][ci4] [crypto][ci5] [islands][ci6].
-I hope you'll come to associate this one with tutorials, open source code, and the occasional relatively sober utopian idea that isn't uncomfortably colonial or an obvious cash grab.
+It's more or less your standard developer blog,
+totally unrelated to [any][ci2] of [these][ci3] [other][ci4] [crypto][ci5] [islands][ci6].
+I hope you'll come to associate mine with tutorials, open source, maybe bad drawings of pirates.
+And if all goes well, the occasional utopian idea that won't come across as scammy or uncomfortably colonial.
 
 I go by *jefdaj* online. Here are some ways you can contact me:
 
@@ -19,20 +18,19 @@ I go by *jefdaj* online. Here are some ways you can contact me:
 * [StackExchange](https://stackoverflow.com/users/429898/jefdaj)
 * [Reddit](https://www.reddit.com/user/jefdaj)
 - [Twitter](https://twitter.com/jefdaj)
-- Secure Scuttlebutt
 - Meetup
 <!-- TODO bitmessage? -->
 
 Encrypted emails aren't required of course, but I like them!
-[Here][pubkey] is my public key.
-You can also look it up on [keys.openpgp.org][openpgp] or import it directly with `gpg`:
+See [this post][post] if you want to get into that kind of thing.
+[Here][pubkey]'s my public key.
+You can also look it up on [keys.openpgp.org][openpgp] or import it directly:
 
 ~~~{ .bash }
 gpg --keyserver keys.openpgp.org \
   --recv-key 54C195A345205DCABC2010EEE604517174B3D49E
 ~~~
 
-See [this post][post] for help generating your own keys if needed.
 
 [pubkey]:  /about/jefdaj.asc
 [openpgp]: https://keys.openpgp.org
