@@ -1,0 +1,10 @@
+;; Simple journal to demonstrate market prices
+
+commodity 1000.00 USD
+commodity 1000.00 ETH
+
+include ./import/coinpaprika/journal/coinpaprika-ETH.journal
+
+2015-08-04 opening balances
+  assets:wallets:ancient  1 ETH
+  equity:opening balances

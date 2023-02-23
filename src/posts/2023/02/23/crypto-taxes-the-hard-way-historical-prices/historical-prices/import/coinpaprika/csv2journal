@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# hack to format correctly for price file instead of journal
+# see coinpaprika.rules for the other half of the hack
+hledger print --rules-file coinpaprika.rules -f "$1" | while read line; do
+  [[ -z "$line" ]] || echo "P $line"
+done

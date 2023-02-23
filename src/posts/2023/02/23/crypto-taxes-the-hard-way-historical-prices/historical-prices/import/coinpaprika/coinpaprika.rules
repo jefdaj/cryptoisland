@@ -1,0 +1,7 @@
+skip 1
+fields date,price,price_btc,volume_24h
+
+# hack to generate a price file rather than a journal
+# see csv2journal for the 2nd part of the hack
+date-format %Y-%m-%d %H:%M:%S
+description ETH %price USD
