@@ -145,7 +145,7 @@ Ending balances (historical) in 2015-01-01..2023-12-31, valued at period ends:
 
 # Plot portfolio value
 
-Did you notice that today's `shell.nix` includes R packages?
+Did you notice that today's `shell.nix` includes [tidyverse][tv]?
 That's so that as a final sanity check we can increase the reporting frequency to weekly (`-W`) and plot USD value over time. Our 1 ETH "portfolio" should come out looking like the CoinPaprika chart at the top...
 
 ~~~{ .bash }
@@ -187,3 +187,4 @@ This might seem trivial because we got the same chart back at the end, but now w
 [hcs]: https://devhints.io/hledger
 [ctthw]: /posts/2023/02/18/crypto-taxes-the-hard-way
 [tar]: historical-prices.tar
+[tv]: https://www.tidyverse.org/
