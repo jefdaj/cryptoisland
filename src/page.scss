@@ -146,12 +146,12 @@ code.sourceCode > span {
 
 	pre {
     /* font-size: 10pt; */
-	  line-height: #{"min(3vh, 15pt)"}; /* TODO should this be vh? */
+	  line-height: #{"min(3vw, 15pt)"}; /* TODO should this be vh? */
 	}
 	code.sourceCode {
 	  /* shrink font to fit */
 	  /* TODO should this be vw? */
-	  font-size: #{"min(2vh, 15pt)"};
+	  font-size: #{"min(2vw, 15pt)"};
 	}
 }
 
