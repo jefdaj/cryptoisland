@@ -37,7 +37,7 @@ main = hakyllWith myHakyllConfig $ do
   match rootFiles $ route (toRoot Nothing) >> compile copyFileCompiler
 
   -- static files
-  match (("*/*.svg" .&&. complement "*/island*.svg" .&&. complement "aside/boat.svg") .||. "*/*.png" .||. postPng .||. postSvg .||. postTar .||. postSubDir .||. "fonts/*.ttf" .||. "about/jefdaj.asc") $ route idRoute >> compile copyFileCompiler
+  match (("*/*.svg" .&&. complement "*/island*.svg" .&&. complement "aside/boat.svg") .||. "*/*.png" .||. postPng .||. postSvg .||. postTar .||. postSubdirs .||. "fonts/*.ttf" .||. "about/jefdaj.asc") $ route idRoute >> compile copyFileCompiler
   match ("*/*.jpg" .||. postJpg) $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
   match("variables.scss") $ route idRoute >> compile copyFileCompiler
   match ("*.scss" .||. "*/*.scss") $ route (toRoot $ Just "css") >> compile (fmap compressCss <$> sassCompiler)
@@ -64,8 +64,8 @@ main = hakyllWith myHakyllConfig $ do
       toc   <- getMetadataField ident "toc"
       let readerSettings = defaultHakyllReaderOptions
           writerSettings = case toc of
-            Just "true" -> withToc -- TODO True?
-            _ -> defaultHakyllWriterOptions
+            Just "false" -> defaultHakyllWriterOptions
+            _ -> withToc -- default to adding it unless explicitly false
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
         >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
@@ -186,7 +186,7 @@ postPng = fromGlob $ postDir ++ "/*.png"
 postJpg = fromGlob $ postDir ++ "/*.jpg"
 postSvg = fromGlob $ postDir ++ "/*.svg"
 postTar = fromGlob $ postDir ++ "/*.tar"
-postSubDir = fromGlob $ postDir ++ "/**/*"
+postSubdirs = fromGlob $ postDir ++ "/**/*" -- TODO is that ok?
 
 ----------------
 -- root files --

@@ -1,7 +1,6 @@
 ---
 title: How I generated my GPG keys
 tags: security, gpg, encryption
-toc: true
 ...
 
 Everyone agrees that [GnuPG][gpg] has a difficult interface, and therefore you
