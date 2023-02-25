@@ -1,7 +1,7 @@
 ---
 title: Crypto Taxes the Hard Way
 tags: hledger, haskell, nix, taxes, accounting, reproducibility, git
-updated: 2023-02-22
+updated: 2023-02-25
 ...
 
 *Disclaimer 1: nothing on this blog is advice about the substance of your taxes!* I have no background in accounting and no idea whether this code will produce valid results. You need to verify everything yourself and then own your own mistakes or hire a tech-savvy [CPA][cpa] (or equivalent in your country) to go over it and fix any problems. That's what I'll be doing.
@@ -40,6 +40,7 @@ You'll probably invent some addons of your own too, and I'd love to hear about t
 
 [Here is a tarball of today's code][tarball] to use as a template.
 I'll assume you use git for simplicity, but nothing important relies on that.
+You can also read through it [on GitHub][gh].
 
 Installing dependencies will probably take at least a couple minutes.
 I use [Nix][nix] whenever I expect a project to involve more than one language. To try it that way run [the Nix install script][nis], then open a new terminal and start `nix-shell` inside the repo. Alternatively the full-fledged tutorial includes [a Dockerfile][df] with [a pre-built image][di] you can pull.
@@ -274,3 +275,4 @@ The general idea of plain text accounting is sound, so I think it makes sense to
 [make]: https://en.wikipedia.org/wiki/Make_(software)
 [tarball]: crypto-taxes-the-hard-way.tar
 [dea]: https://www.investopedia.com/terms/d/double-entry.asp
+[gh]: https://github.com/jefdaj/cryptoisland/tree/master/src/posts/2023/02/18/crypto-taxes-the-hard-way/crypto-taxes-the-hard-way

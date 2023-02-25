@@ -1,6 +1,7 @@
 ---
 title: "Crypto Taxes the Hard Way: Historical Prices"
 tags: hledger, haskell, taxes, accounting
+updated: 2023-02-25
 ...
 
 *Disclaimer: nothing on this blog is advice about the substance of your taxes! I have no background in accounting and no idea whether this code will produce valid results. You need to verify everything yourself and then own your own mistakes or hire a tech-savvy [CPA][cpa] (or equivalent in your country) to go over it and fix any problems.*
@@ -8,7 +9,7 @@ tags: hledger, haskell, taxes, accounting
 Today we'll be adding historical crypto price data to [hledger][hl] and using it to track portfolio value.
 It's also important for calculating taxes on staking income. I'll do a separate post on that.
 
-[Here is a tarball][tar] of the code.
+[Here is a tarball][tar] of the code, or you can [read it on GitHub][gh].
 The top-level files are one-off demos, but `import/coinpaprika` will slot into [the rest of the "full-fledged" system][ctthw] if you want it to.
 
 # Export from CoinPaprika
@@ -187,3 +188,4 @@ This might seem trivial because we got the same chart back at the end, but now w
 [ctthw]: /posts/2023/02/18/crypto-taxes-the-hard-way
 [tar]: historical-prices.tar
 [tv]: https://www.tidyverse.org/
+[gh]: https://github.com/jefdaj/cryptoisland/tree/master/src/posts/2023/02/23/crypto-taxes-the-hard-way-historical-prices/historical-prices
