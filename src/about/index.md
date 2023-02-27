@@ -6,14 +6,14 @@ title: About
 
 Welcome to <b>Crypto Island</b>!
 
-It's more or less your standard developer blog,
+It's your standard developer blog,
 totally unrelated to [any][ci2] of [these][ci3] [other][ci4] [crypto][ci5] [islands][ci6].
-I hope you'll come to associate mine with tutorials, open source, maybe bad drawings of pirates.
+I hope you'll come to associate mine with tutorials, open source, maybe some bad drawings of pirates.
 And if all goes well, the occasional utopian idea that won't come across as scammy or uncomfortably colonial.
 
 I go by *jefdaj* online. Here are some ways you can contact me:
 
-- Email (same handle at `protonmail.ch` or `berkeley.edu`)
+- Email (same handle at `protonmail.ch`)
 - [Github](https://github.com/jefdaj)
 * [StackExchange](https://stackoverflow.com/users/429898/jefdaj)
 * [Reddit](https://www.reddit.com/user/jefdaj)
