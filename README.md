@@ -1,5 +1,5 @@
-CryptoIs.land
-=============
+CryptoIsland
+============
 
 Source code for my blog, [Crypto Island][cryptoisland].
 
