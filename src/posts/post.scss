@@ -17,7 +17,6 @@
   border-bottom: 1px solid black;
   font-weight: bold;
   margin: 10px;
-  margin-top: -30px; /* TODO why is this needed? */
   margin-left: 20px;
 }
 
@@ -25,6 +24,10 @@ div.info {
     color: #555;
     font-size: 14px;
     font-style: italic;
+}
+
+center.pic > img {
+  max-width: 70%;
 }
 
 div.toc {
@@ -107,5 +110,12 @@ th {
   }
   div.toc > div.header {
     margin-top: 0px;
+  }
+}
+
+/* TODO will this fail at exactly the mobile breakpoint width? */
+@media screen and (min-width: $mobile-breakpoint) {
+  center.pic > img {
+	  margin-top: -100px;
   }
 }

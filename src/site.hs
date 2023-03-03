@@ -62,10 +62,11 @@ main = hakyllWith myHakyllConfig $ do
     compile $ do
       ident <- getUnderlying
       toc   <- getMetadataField ident "toc"
+      pic   <- getMetadataField ident "pic"
       let readerSettings = defaultHakyllReaderOptions
           writerSettings = case toc of
-            Just "false" -> defaultHakyllWriterOptions
-            _ -> withToc -- default to adding it unless explicitly false
+            Just "false" -> withNoToc pic
+            _ -> withToc pic -- default to adding it unless explicitly false
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
         >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
@@ -333,22 +334,33 @@ myFeedConfig = FeedConfiguration
 
 -- based on https://github.com/vaclavsvejcar/svejcar-dev/blob/master/src/Site/Pandoc.hs
 -- TODO load this from disk instead?
-tocTemplate :: PT.Template T.Text
-tocTemplate =
-  let tmpl = "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n</div>\n$body$"
+mkTemplate :: Bool -> Maybe String -> PT.Template T.Text
+mkTemplate bToc mPic =
+  let picTmpl = case mPic of
+                  Just p  -> "<center class=\"pic\"><img src=\"" `T.append` (T.pack p) `T.append` "\"></img></center>"
+                  Nothing -> ""
+      tocTmpl = if bToc
+                  then "\n<div class=\"toc\">" `T.append` picTmpl `T.append` "<div class=\"header\">Contents</div>\n$toc$\n</div>"
+                  else ""
+      bodTmpl = "\n$body$"
+      tmpl = tocTmpl `T.append` bodTmpl
   in case runIdentity $ PT.compileTemplate "" tmpl of
        Left  e -> error e
        Right t -> t
 
 -- from https://argumatronic.com/posts/2018-01-16-pandoc-toc.html
 -- and https://svejcar.dev/posts/2019/11/27/table-of-contents-in-hakyll/
-withToc :: WriterOptions
-withToc = defaultHakyllWriterOptions
+withToc :: Maybe String -> WriterOptions
+withToc mPic = defaultHakyllWriterOptions
   { writerTableOfContents = True
   , writerTOCDepth = 2
-  , writerTemplate = Just tocTemplate
+  , writerTemplate = Just $ mkTemplate True mPic
   }
 
+withNoToc :: Maybe String -> WriterOptions
+withNoToc mPic = defaultHakyllWriterOptions
+  { writerTemplate = Just $ mkTemplate False mPic
+  }
 
 transform :: String -> String
 transform url = case splitFileName url of
