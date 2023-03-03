@@ -115,7 +115,7 @@ th {
 
 /* TODO will this fail at exactly the mobile breakpoint width? */
 @media screen and (min-width: $mobile-breakpoint) {
-  center.pic > img {
-	  margin-top: -100px;
+  div.toc {
+	  margin-top: -70px;
   }
 }
