@@ -340,7 +340,7 @@ mkTemplate bToc mPic =
                   Just p  -> "<center class=\"pic\"><img src=\"" `T.append` (T.pack p) `T.append` "\"></img></center>"
                   Nothing -> ""
       tocTmpl = if bToc
-                  then "\n<div class=\"toc\">" `T.append` picTmpl `T.append` "<div class=\"header\">Contents</div>\n$toc$\n</div>"
+                  then "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" `T.append` picTmpl `T.append` "</div>"
                   else ""
       bodTmpl = "\n$body$"
       tmpl = tocTmpl `T.append` bodTmpl
