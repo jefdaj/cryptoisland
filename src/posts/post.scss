@@ -116,6 +116,6 @@ th {
 /* TODO will this fail at exactly the mobile breakpoint width? */
 @media screen and (min-width: $mobile-breakpoint) {
   div.toc {
-	  margin-top: -70px;
+	  margin-top: -30px;
   }
 }
