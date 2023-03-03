@@ -2,7 +2,7 @@
 title: About
 ---
 
-<img src="/about/boat.svg" style="margin-left: 50px"></img>
+<img src="/about/crab.png" style="margin-left: 25px; width: 150px"></img>
 
 Welcome to <b>Crypto Island</b>!
 
