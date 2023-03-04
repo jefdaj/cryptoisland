@@ -2,7 +2,7 @@
 title: Crypto Taxes the Hard Way
 tags: hledger, haskell, nix, taxes, accounting, reproducibility, git
 updated: 2023-02-25
-pic: taxbook.png
+reminder: taxbook.png
 ...
 
 *Disclaimer 1: nothing on this blog is advice about the substance of your taxes!* I have no background in accounting and no idea whether this code will produce valid results. You need to verify everything yourself and then own your own mistakes or hire a tech-savvy [CPA][cpa] (or equivalent in your country) to go over it and fix any problems. That's what I'll be doing.
