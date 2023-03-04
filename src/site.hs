@@ -60,13 +60,13 @@ main = hakyllWith myHakyllConfig $ do
     -- https://argumatronic.com/posts/2018-01-16-pandoc-toc.html
     -- TODO separate compiler fn
     compile $ do
-      ident <- getUnderlying
-      toc   <- getMetadataField ident "toc"
-      pic   <- getMetadataField ident "pic"
+      ident    <- getUnderlying
+      toc      <- getMetadataField ident "toc"
+      reminder <- getMetadataField ident "reminder"
       let readerSettings = defaultHakyllReaderOptions
           writerSettings = case toc of
-            Just "false" -> withNoToc pic
-            _ -> withToc pic -- default to adding it unless explicitly false
+            Just "false" -> withNoToc reminder
+            _ -> withToc reminder -- default to adding it unless explicitly false
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
         >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
@@ -336,11 +336,11 @@ myFeedConfig = FeedConfiguration
 -- TODO load this from disk instead?
 mkTemplate :: Bool -> Maybe String -> PT.Template T.Text
 mkTemplate bToc mPic =
-  let picTmpl = case mPic of
-                  Just p  -> "<center class=\"pic\"><img src=\"" `T.append` (T.pack p) `T.append` "\"></img></center>"
+  let reminderTmpl = case mPic of
+                  Just p  -> "<center class=\"reminder\"><img src=\"" `T.append` (T.pack p) `T.append` "\"></img></center>"
                   Nothing -> ""
       tocTmpl = if bToc
-                  then "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" `T.append` picTmpl `T.append` "</div>"
+                  then "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" `T.append` reminderTmpl `T.append` "</div>"
                   else ""
       bodTmpl = "\n$body$"
       tmpl = tocTmpl `T.append` bodTmpl
