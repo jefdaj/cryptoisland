@@ -37,7 +37,7 @@ main = hakyllWith myHakyllConfig $ do
   match rootFiles $ route (toRoot Nothing) >> compile copyFileCompiler
 
   -- static files
-  match (("*/*.svg" .&&. complement "*/island*.svg" .&&. complement "aside/boat.svg") .||. "*/*.png" .||. postPng .||. postSvg .||. postTar .||. postSubdirs .||. "fonts/*.ttf" .||. "about/jefdaj.asc") $ route idRoute >> compile copyFileCompiler
+  match (("*/*.svg" .&&. complement "*/island*.svg" .&&. complement "aside/boat.svg") .||. "*/*.png" .||. postPng .||. postSvg .||. postTar .||. postSubdirs .||. "about/jefdaj.asc") $ route idRoute >> compile copyFileCompiler
   match ("*/*.jpg" .||. postJpg) $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
   match("variables.scss") $ route idRoute >> compile copyFileCompiler
   match ("*.scss" .||. "*/*.scss") $ route (toRoot $ Just "css") >> compile (fmap compressCss <$> sassCompiler)
