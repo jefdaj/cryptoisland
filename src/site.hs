@@ -17,7 +17,7 @@ import qualified Text.Pandoc.Templates as PT
 import Control.Monad                  (forM)
 import Data.Aeson                     (ToJSON, encode)
 import Data.ByteString.Lazy.Internal  (unpackChars)
-import Data.List                      (intersect, isInfixOf, isPrefixOf)
+import Data.List                      (intersect, isInfixOf, isPrefixOf, nub)
 import Data.Maybe                     (fromMaybe, fromJust)
 import Data.Monoid                    ((<>))
 import Data.String.Utils              (replace)
@@ -101,7 +101,7 @@ main = hakyllWith myHakyllConfig $ do
   match ("*/index.md" .&&. complement "recent/index.md") $ do
     route (toRoot $ Just "html")
     compile $ pandocCompiler
-      >>= loadAndApplyTemplate "page.html" (siteCtx tags)
+      >>= loadAndApplyTemplate "page.html" (indexCtx tags)
       >>= relativizeAllUrls
 
   tagsRules tags $ \tag pattern -> do
@@ -240,80 +240,56 @@ relativizeAllUrls item = do
       -- in fmap (replace "SITEROOT" rootPath)
       in fmap (relativizeUrlsWith' rootPath postDir) item
 
+-- TODO how should this relate to Tags?
 data WordList = WordList { list :: [(String, Int)] }
   deriving (Generic, Show, ToJSON)
 
-indexTags :: Tags -> WordList
-indexTags tags = WordList { list = ("cryptoisland.blog", 1) : ("rss", 1) : counts }
+-- 1. make a list of posts that use one of the query tags
+-- 2. filter for tags that include one of those same posts
+relatedTags :: Tags -> [String] -> Tags
+relatedTags allTags queryTags = allTags { tagsMap = overlapMap }
   where
-    counts' = concat $ replicate 3 $ counts -- TODO remove once more tags
-    counts = map (\(t, is) -> (t, length is)) $ tagsMap tags
-
--- Starts from one tag and lists any others used in the same post(s)
--- 1. find posts that use the tag
--- 2. find tags that include one of those same posts
--- 3. pair tags with their normal post counts
-relatedTags :: Tags -> String -> WordList
-relatedTags tags tag = WordList { list = tagCounts }
-  where
-    mainMap     = tagsMap tags
-    withMainTag = fromMaybe [] $ lookup tag mainMap
-    overlapMap  = filter (\(_, is) -> not . null $ intersect is withMainTag) mainMap
-    tagCounts   = map (\(t, is) -> (t, length is)) overlapMap
-
--- postTags :: MonadMetadata m => Identifier -> m String
--- postTags post = do
---     tags <- fmap concat . getTags
---     return $ renderWordList $ WordList { list = ("cryptoisland.blog", 1) : map (\t -> (t, 1)) tags }
-
--- postTags :: Tags -> Identifier -> WordList
--- postTags tags post = WordList { list = ("cryptoisland.blog", 1) : tagCounts }
---   where
---     relevant = filter (\(t, is) -> post `elem` is) $ tagsMap tags
---     tagCounts = map (\(t, is) -> (t, length is)) relevant
+    allMap      = tagsMap allTags
+    queryMap    = filter (\(s, _) -> s `elem` queryTags) allMap
+    queryIdents = nub $ concat $ map snd queryMap
+    overlapMap  = filter (\(_, is) -> not . null $ intersect is queryIdents) allMap
 
 renderWordList :: WordList -> String
 renderWordList = unpackChars . encode
 
--- TODO hey should be able to entirely get rid of this, no?
-wordListCompiler :: Identifier -> WordList -> Compiler (Item String)
-wordListCompiler iden words = do
-  let item = Item iden $ unpackChars $ encode words
-  unsafeCompiler $ return item
+-- base context which should include anything needed across the whole site
+siteCtx :: Context String
+siteCtx = defaultContext
 
-siteCtx :: Tags -> Context String
-siteCtx tags = defaultContext
-  <> tagCloudField "tagcloud" 60 200 tags
+indexCtx :: Tags -> Context String
+indexCtx tags =
+  tagCloudField "tagcloud" 60 200 tags
+  <> siteCtx
 
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"
   <> listField "posts" (postCtx tags) (return posts)
-  <> constField "relatedtags" (renderWordList $ indexTags tags)
-  <> siteCtx tags
-
--- TODO generalize to word lists for tag, index pages if possible
-postTagsField :: String -> Context String
-postTagsField key = field key $ \item -> do
-  tags <- getTags $ itemIdentifier item
-  let words = WordList { list = map (\t -> (t, 1)) tags }
-  return $ renderWordList words
+  -- <> constField "relatedtags" (renderWordList $ indexTags tags)
+  <> tagCloudField "tagcloud" 60 200 tags
+  <> siteCtx
 
 -- TODO if the monad works, can just get tags too right?
 postCtx :: Tags -> Context String
 postCtx tags =
   dropIndexHtml "url" <>
   tagsField "tags" tags <>
-  postTagsField "relatedtags" <> -- TODO remove?
+  -- postTagsField "relatedtags" <> -- TODO remove?
   -- constField "relatedtags" (renderWordList $ postTags tags post) <>
   dateField "date" "%Y-%m-%d" <>
-  siteCtx tags
+  tagCloudField "tagcloud" 60 200 tags <> -- TODO get related tags working here too
+  siteCtx
 
 tagsCtx :: [Item String] -> Tags -> String -> Context String
 tagsCtx posts tags tag = constField "title" ("Posts tagged \"" ++ tag ++ "\":")
-  <> constField "tag" tag 
-  <> constField "relatedtags" (renderWordList $ relatedTags tags tag)
+  <> constField "tag" tag
   <> listField "posts" (postCtx tags) (return posts)
-  <> siteCtx tags
+  <> tagCloudField "tagcloud" 60 200 (relatedTags tags [tag]) -- works!
+  <> siteCtx
 
 myHakyllConfig :: Configuration
 myHakyllConfig = defaultConfiguration
