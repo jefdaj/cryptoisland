@@ -246,6 +246,12 @@ relativizeAllUrls item = do
 data WordList = WordList { list :: [(String, Int)] }
   deriving (Generic, Show, ToJSON)
 
+-- filter the tags map to include a specific list of tags only
+filterTags :: Tags -> [String] -> Tags
+filterTags allTags queryTags = allTags { tagsMap = matches }
+  where
+    matches = filter (\(s, _) -> s `elem` queryTags) $ tagsMap allTags
+
 -- 1. make a list of posts that use one of the query tags
 -- 2. filter for tags that include one of those same posts
 relatedTags :: Tags -> Maybe [String] -> Tags
@@ -289,7 +295,7 @@ tagsCtx posts tags mainTag postTags =
      constField "title" ("Posts tagged \"" ++ mainTag ++ "\":")
   <> constField "tag" mainTag
   <> listField "posts" (postCtx tags Nothing) (return posts) -- TODO is that tag thing right?
-  <> tagCloudField "tagcloud" 60 200 (relatedTags tags $ Just (mainTag:postTags)) -- works!
+  <> tagCloudField "tagcloud" 60 200 (filterTags tags postTags)
   <> siteCtx
 
 myHakyllConfig :: Configuration
