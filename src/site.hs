@@ -63,14 +63,15 @@ main = hakyllWith myHakyllConfig $ do
       ident    <- getUnderlying
       toc      <- getMetadataField ident "toc"
       reminder <- getMetadataField ident "reminder"
+      postTags <- getTags ident
       let readerSettings = defaultHakyllReaderOptions
           writerSettings = case toc of
             Just "false" -> withNoToc reminder
             _ -> withToc reminder -- default to adding it unless explicitly false
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
-        >>= loadAndApplyTemplate "posts/post.html" (postCtx tags)
-        >>= loadAndApplyTemplate "page.html" (postCtx tags)
+        >>= loadAndApplyTemplate "posts/post.html" (postCtx tags $ Just postTags)
+        >>= loadAndApplyTemplate "page.html"       (postCtx tags $ Just postTags)
         >>= relativizeAllUrls
 
   -- the recent posts page is special because we also use it to create index.html,
@@ -141,7 +142,7 @@ main = hakyllWith myHakyllConfig $ do
   whenAnyTagChanges $ create ["atom.xml"] $ do
     route idRoute
     compile $ do
-      let feedCtx = (postCtx tags) <> bodyField "description"
+      let feedCtx = (postCtx tags Nothing) <> bodyField "description"
       posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots postMd "content"
       posts' <- renderAtom myFeedConfig feedCtx posts
       -- return $ fmap (replace "SITEROOT" "") posts'
@@ -170,7 +171,7 @@ main = hakyllWith myHakyllConfig $ do
         ctx = mconcat
           [ constField "title" "404 - Not Found"
           , constField "body" body
-          , postCtx tags
+          , postCtx tags Nothing
           ]
       makeItem ""
         >>= loadAndApplyTemplate "page.html" ctx
@@ -246,8 +247,9 @@ data WordList = WordList { list :: [(String, Int)] }
 
 -- 1. make a list of posts that use one of the query tags
 -- 2. filter for tags that include one of those same posts
-relatedTags :: Tags -> [String] -> Tags
-relatedTags allTags queryTags = allTags { tagsMap = overlapMap }
+relatedTags :: Tags -> Maybe [String] -> Tags
+relatedTags allTags Nothing = allTags
+relatedTags allTags (Just queryTags) = allTags { tagsMap = overlapMap }
   where
     allMap      = tagsMap allTags
     queryMap    = filter (\(s, _) -> s `elem` queryTags) allMap
@@ -268,27 +270,24 @@ indexCtx tags =
 
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"
-  <> listField "posts" (postCtx tags) (return posts)
+  <> listField "posts" (postCtx tags Nothing) (return posts)
   -- <> constField "relatedtags" (renderWordList $ indexTags tags)
   <> tagCloudField "tagcloud" 60 200 tags
   <> siteCtx
 
--- TODO if the monad works, can just get tags too right?
-postCtx :: Tags -> Context String
-postCtx tags =
+postCtx :: Tags -> Maybe [String] -> Context String
+postCtx tags postTags =
   dropIndexHtml "url" <>
   tagsField "tags" tags <>
-  -- postTagsField "relatedtags" <> -- TODO remove?
-  -- constField "relatedtags" (renderWordList $ postTags tags post) <>
   dateField "date" "%Y-%m-%d" <>
-  tagCloudField "tagcloud" 60 200 tags <> -- TODO get related tags working here too
+  tagCloudField "tagcloud" 60 200 (relatedTags tags postTags) <>
   siteCtx
 
 tagsCtx :: [Item String] -> Tags -> String -> Context String
 tagsCtx posts tags tag = constField "title" ("Posts tagged \"" ++ tag ++ "\":")
   <> constField "tag" tag
-  <> listField "posts" (postCtx tags) (return posts)
-  <> tagCloudField "tagcloud" 60 200 (relatedTags tags [tag]) -- works!
+  <> listField "posts" (postCtx tags Nothing) (return posts) -- TODO is that tag thing right?
+  <> tagCloudField "tagcloud" 60 200 (relatedTags tags $ Just [tag]) -- works!
   <> siteCtx
 
 myHakyllConfig :: Configuration
