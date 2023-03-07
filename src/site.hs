@@ -254,7 +254,7 @@ relatedTags allTags (Just queryTags) = allTags { tagsMap = overlapMap }
     allMap      = tagsMap allTags
     queryMap    = filter (\(s, _) -> s `elem` queryTags) allMap
     queryIdents = nub $ concat $ map snd queryMap
-    overlapMap  = filter (\(_, is) -> not . null $ intersect is queryIdents) allMap
+    overlapMap  = filter (\(s, is) -> (s `elem` queryTags) || (not . null $ intersect is queryIdents)) allMap
 
 renderWordList :: WordList -> String
 renderWordList = unpackChars . encode
