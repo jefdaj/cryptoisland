@@ -109,7 +109,8 @@ main = hakyllWith myHakyllConfig $ do
       route idRoute
       compile $ do
         posts <- recentFirst =<< loadAll pattern
-        let ctx = tagsCtx posts tags tag
+        postTags <- fmap (nub . concat) $ mapM getTags $ map itemIdentifier posts
+        let ctx = tagsCtx posts tags tag postTags
         makeItem ""
           >>= loadAndApplyTemplate "tags/tag.html" ctx
           >>= loadAndApplyTemplate "page.html" ctx
@@ -283,11 +284,12 @@ postCtx tags postTags =
   tagCloudField "tagcloud" 60 200 (relatedTags tags postTags) <>
   siteCtx
 
-tagsCtx :: [Item String] -> Tags -> String -> Context String
-tagsCtx posts tags tag = constField "title" ("Posts tagged \"" ++ tag ++ "\":")
-  <> constField "tag" tag
+tagsCtx :: [Item String] -> Tags -> String -> [String] -> Context String
+tagsCtx posts tags mainTag postTags =
+     constField "title" ("Posts tagged \"" ++ mainTag ++ "\":")
+  <> constField "tag" mainTag
   <> listField "posts" (postCtx tags Nothing) (return posts) -- TODO is that tag thing right?
-  <> tagCloudField "tagcloud" 60 200 (relatedTags tags $ Just [tag]) -- works!
+  <> tagCloudField "tagcloud" 60 200 (relatedTags tags $ Just (mainTag:postTags)) -- works!
   <> siteCtx
 
 myHakyllConfig :: Configuration
