@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for csv in $@; do
+  hledger print --rules-file myimporter.rules -f $csv
+done
