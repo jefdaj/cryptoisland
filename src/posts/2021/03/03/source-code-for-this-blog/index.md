@@ -1,6 +1,6 @@
 ---
 title: Source code for this blog
-tags: blog, github, hakyll
+tags: blog, github, hakyll, haskell
 updated: 2021-03-29
 ...
 
