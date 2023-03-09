@@ -26,7 +26,7 @@ import Hakyll.Web.Html.RelativizeUrls (relativizeUrlsWith)
 import Hakyll.Web.Tags                (tagsDependency)
 import Hakyll.Web.Sass                (sassCompiler)
 import Text.Jasmine                   (minify)
-import System.FilePath                (takeDirectory, takeBaseName, takeFileName, takeExtension, splitFileName)
+import System.FilePath (takeDirectory, takeBaseName, takeFileName, takeExtension, splitFileName)
 
 import Hakyll.Images (loadImage, compressJpgCompiler)
 
@@ -37,14 +37,34 @@ main = hakyllWith myHakyllConfig $ do
   match rootFiles $ route (toRoot Nothing) >> compile copyFileCompiler
 
   -- static files
-  match (("*/*.svg" .&&. complement "*/island*.svg" .&&. complement "aside/boat.svg") .||. "*/*.png" .||. postPng .||. postSvg .||. postTar .||. postSubdirs .||. "about/jefdaj.asc") $ route idRoute >> compile copyFileCompiler
-  match ("*/*.jpg" .||. postJpg) $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
-  match("variables.scss") $ route idRoute >> compile copyFileCompiler
-  match ("*.scss" .||. "*/*.scss") $ route (toRoot $ Just "css") >> compile (fmap compressCss <$> sassCompiler)
+  let staticPng = "*/*.png" .||. postPng
+      staticJpg = "*/*.jpg" .||. postJpg
+      sassFiles = "*.scss" .||. "*/*.scss"
+      staticSvg =
+        ("*/*.svg" .||. postSvg) .&&.
+        complement ("*/island*.svg" .||. "aside/boat.svg")
+      toCopy =
+        staticSvg .||.
+        staticPng .||.
+        postTar .||.
+        postSubdirs .||.
+        "about/jefdaj.asc" .||.
+        "variables.scss"
+
+  match toCopy    $ route idRoute >> compile copyFileCompiler
+  match staticJpg $ route idRoute >> compile (loadImage >>= compressJpgCompiler 50)
+  match sassFiles $ route (toRoot $ Just "css") >> compile (fmap compressCss <$> sassCompiler)
 
   -- html templates used below
   -- note that we treat svg as html here because it includes clickable links
-  match ("page.html" .||. "posts.html" .||. "*/*.html" .||. "*/island*.svg" .||. "aside/boat.svg") $ compile templateCompiler
+  -- TODO does that contribute to it being removed from Tor Browser?
+  let templates =
+        "page.html" .||.
+        "posts.html" .||.
+        "*/*.html" .||.
+        "*/island*.svg" .||.
+        "aside/boat.svg"
+  match templates $ compile templateCompiler
 
   -- most of the rest is crudely updated whenever a tag changes
   tags <- buildTags postMd $ fromCapture "tags/*.html"
@@ -93,7 +113,9 @@ main = hakyllWith myHakyllConfig $ do
     route idRoute
     compile $ do
       posts <- recentFirst =<< loadAll postMd
-      let ctx = constField "title" "Home" <> recentCtx posts tags <> constField "extracss" "./index.css"
+      let ctx = constField "title" "Home" <>
+                recentCtx posts tags <>
+                constField "extracss" "./index.css"
       makeItem ""
         >>= loadAndApplyTemplate "recent/index.html" ctx
         >>= loadAndApplyTemplate "page.html" ctx
@@ -235,7 +257,9 @@ relatedTags allTags (Just queryTags) = allTags { tagsMap = overlapMap }
     allMap      = tagsMap allTags
     queryMap    = filter (\(s, _) -> s `elem` queryTags) allMap
     queryIdents = nub $ concat $ map snd queryMap
-    overlapMap  = filter (\(s, is) -> (s `elem` queryTags) || (not . null $ intersect is queryIdents)) allMap
+    overlapMap  = filter keep allMap
+    keep (s, is) = (s `elem` queryTags) ||
+                   (not $ null $ intersect is queryIdents)
 
 -- base context which should include anything needed across the whole site
 siteCtx :: Context String
@@ -264,7 +288,7 @@ tagsCtx :: [Item String] -> Tags -> String -> [String] -> Context String
 tagsCtx posts tags mainTag postTags =
      constField "title" ("Posts tagged \"" ++ mainTag ++ "\":")
   <> constField "tag" mainTag
-  <> listField "posts" (postCtx tags Nothing) (return posts) -- TODO is that tag thing right?
+  <> listField "posts" (postCtx tags Nothing) (return posts)
   <> tagCloudField "tagcloud" 60 200 (filterTags tags $ delete mainTag postTags)
   <> siteCtx
 
@@ -279,7 +303,7 @@ myHakyllConfig = defaultConfiguration
 myFeedConfig :: FeedConfiguration
 myFeedConfig = FeedConfiguration
   { feedTitle       = "Crypto Island"
-  , feedDescription = "Crypto Island"          -- TODO blank?
+  , feedDescription = "Crypto Island"        -- TODO blank?
   , feedAuthorName  = "jefdaj"               -- TODO blank?
   , feedAuthorEmail = "jefdaj@protonmail.ch" -- TODO blank?
   , feedRoot        = "https://cryptoisland.blog"
@@ -290,13 +314,13 @@ myFeedConfig = FeedConfiguration
 mkTemplate :: Bool -> Maybe String -> PT.Template T.Text
 mkTemplate bToc mPic =
   let reminderTmpl = case mPic of
-                  Just p  -> "<center class=\"reminder\"><img src=\"" `T.append` (T.pack p) `T.append` "\"></img></center>"
+                  Just p  -> "<center class=\"reminder\"><img src=\"" <> T.pack p <> "\"></img></center>"
                   Nothing -> ""
       tocTmpl = if bToc
-                  then "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" `T.append` reminderTmpl `T.append` "</div>"
+                  then "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" <> reminderTmpl <> "</div>"
                   else ""
       bodTmpl = "\n$body$"
-      tmpl = tocTmpl `T.append` bodTmpl
+      tmpl = tocTmpl <> bodTmpl
   in case runIdentity $ PT.compileTemplate "" tmpl of
        Left  e -> error e
        Right t -> t
