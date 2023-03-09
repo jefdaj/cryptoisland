@@ -314,11 +314,15 @@ myFeedConfig = FeedConfiguration
 mkTemplate :: Bool -> Maybe String -> PT.Template T.Text
 mkTemplate bToc mPic =
   let reminderTmpl = case mPic of
-                  Just p  -> "<center class=\"reminder\"><img src=\"" <> T.pack p <> "\"></img></center>"
                   Nothing -> ""
-      tocTmpl = if bToc
-                  then "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" <> reminderTmpl <> "</div>"
-                  else ""
+                  Just p  ->
+                    "<center class=\"reminder\"><img src=\"" <>
+                    T.pack p <>
+                    "\"></img></center>"
+      tocTmpl = if not bToc then "" else
+                  "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" <>
+                  reminderTmpl <>
+                  "</div>"
       bodTmpl = "\n$body$"
       tmpl = tocTmpl <> bodTmpl
   in case runIdentity $ PT.compileTemplate "" tmpl of
