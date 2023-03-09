@@ -116,28 +116,6 @@ main = hakyllWith myHakyllConfig $ do
           >>= loadAndApplyTemplate "page.html" ctx
           >>= relativizeAllUrls
 
-  -- TODO should this stay separate, or should you just use recentCtx for everything?
---   match "recent/index.md" $ do
---     route $ toRoot $ Just "html"
---     compile $ do
---       posts <- recentFirst =<< loadAll postMd
---       let ctx = recentCtx posts tags
---       getResourceBody
---         >>= applyAsTemplate ctx
---         >>= loadAndApplyTemplate "page.html" ctx
---         >>= relativizeAllUrls
-
---   match "index/index.md" $ do
---     route $ customRoute $ const "index.html"
---     compile $ do
---       posts <- recentFirst =<< loadAll postMd
---       let ctx = recentCtx posts tags
---       getResourceBody
---         >>= applyAsTemplate ctx
---         -- TODO factor out the centering stuff so it can be applied here
---         >>= loadAndApplyTemplate "page.html" ctx
---         >>= relativizeAllUrls
-
   -- TODO remove atom feed now that firefox doesn't support them anymore?
   -- TODO how to relativizeUrls in here?
   whenAnyTagChanges $ create ["atom.xml"] $ do
@@ -242,10 +220,6 @@ relativizeAllUrls item = do
       -- in fmap (replace "SITEROOT" rootPath)
       in fmap (relativizeUrlsWith' rootPath postDir) item
 
--- TODO how should this relate to Tags?
-data WordList = WordList { list :: [(String, Int)] }
-  deriving (Generic, Show, ToJSON)
-
 -- filter the tags map to include a specific list of tags only
 filterTags :: Tags -> [String] -> Tags
 filterTags allTags queryTags = allTags { tagsMap = matches }
@@ -263,9 +237,6 @@ relatedTags allTags (Just queryTags) = allTags { tagsMap = overlapMap }
     queryIdents = nub $ concat $ map snd queryMap
     overlapMap  = filter (\(s, is) -> (s `elem` queryTags) || (not . null $ intersect is queryIdents)) allMap
 
-renderWordList :: WordList -> String
-renderWordList = unpackChars . encode
-
 -- base context which should include anything needed across the whole site
 siteCtx :: Context String
 siteCtx = defaultContext
@@ -278,7 +249,6 @@ indexCtx tags =
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"
   <> listField "posts" (postCtx tags Nothing) (return posts)
-  -- <> constField "relatedtags" (renderWordList $ indexTags tags)
   <> tagCloudField "tagcloud" 60 200 tags
   <> siteCtx
 
