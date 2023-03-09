@@ -17,7 +17,7 @@ import qualified Text.Pandoc.Templates as PT
 import Control.Monad                  (forM)
 import Data.Aeson                     (ToJSON, encode)
 import Data.ByteString.Lazy.Internal  (unpackChars)
-import Data.List                      (intersect, isInfixOf, isPrefixOf, nub)
+import Data.List                      (intersect, isInfixOf, isPrefixOf, nub, delete)
 import Data.Maybe                     (fromMaybe, fromJust)
 import Data.Monoid                    ((<>))
 import Data.String.Utils              (replace)
@@ -295,7 +295,7 @@ tagsCtx posts tags mainTag postTags =
      constField "title" ("Posts tagged \"" ++ mainTag ++ "\":")
   <> constField "tag" mainTag
   <> listField "posts" (postCtx tags Nothing) (return posts) -- TODO is that tag thing right?
-  <> tagCloudField "tagcloud" 60 200 (filterTags tags postTags)
+  <> tagCloudField "tagcloud" 60 200 (filterTags tags $ delete mainTag postTags)
   <> siteCtx
 
 myHakyllConfig :: Configuration
