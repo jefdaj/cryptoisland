@@ -20,4 +20,6 @@ rm -rf ../.site
 # sudo sysctl -w net.ipv4.conf.all.route_localnet=1
 # sudo iptables -t nat -I PREROUTING -p tcp -d 10.0.0.0/24 --dport 8000 -j DNAT --to-destination 127.0.0.1:8000
 
+unset LC_ALL
+
 (runhaskell site.hs clean && runhaskell site.hs watch) || ghci site.hs
