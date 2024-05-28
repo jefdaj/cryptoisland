@@ -4,7 +4,9 @@ tags: hledger, haskell, taxes, accounting, ggplot, tidyverse
 updated: 2023-02-25
 ...
 
-*Disclaimer: nothing on this blog is advice about the substance of your taxes! I have no background in accounting and no idea whether this code will produce valid results. You need to verify everything yourself and then own your own mistakes or hire a tech-savvy [CPA][cpa] (or equivalent in your country) to go over it and fix any problems.*
+<small>
+*Disclaimer: nothing on this blog is advice about the substance of your taxes.* I have no background in accounting and no idea whether this code will produce valid results in your (or any!) tax situation.
+</small>
 
 Today we'll be adding historical crypto price data to [hledger][hl] and using it to track portfolio value.
 It's also important for calculating taxes on staking income. I'll do a separate post on that.
@@ -176,7 +178,6 @@ read_delim('portfolio.tsv') %>%
 
 This might seem trivial because we got the same chart back at the end, but now we're close to a general solution! With a few more tweaks this can keep track of a real portfolio as we buy/sell/transfer things over time. In future posts I'll explain how to make portfolio value a report in [the "full-fledged" system][ctthw] and how to add more detailed charts by currency, location (bank/exchange/wallet), or accounting category (assets/liabilities/income/expenses).
 
-[cpa]: https://www.investopedia.com/terms/c/cpa.asp
 [hl]: https://hledger.org/
 [ccph]: https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrencypricehistory
 [cghd]: https://www.coingecko.com/en/coins/bitcoin/historical_data

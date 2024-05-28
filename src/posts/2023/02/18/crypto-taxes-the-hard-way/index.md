@@ -5,10 +5,12 @@ updated: 2023-02-25
 reminder: taxbook.png
 ...
 
-*Disclaimer 1: nothing on this blog is advice about the substance of your taxes!* I have no background in accounting and no idea whether this code will produce valid results. You need to verify everything yourself and then own your own mistakes or hire a tech-savvy [CPA][cpa] (or equivalent in your country) to go over it and fix any problems. That's what I'll be doing.
+<small>
+*Disclaimer 1: nothing on this blog is advice about the substance of your taxes.* I have no background in accounting and no idea whether this code will produce valid results in your (or any!) tax situation.
 
 *Disclaimer 2: this really is the hard way.*
 If your taxes are relatively simple, consider trying one of the standard crypto tax subscription services or hiring a human instead. I would guess the break even point is probably around 5-10 different arcane data formats (including banks, exchanges, and wallets). If you're dealing with more than that, it might be worth setting this up.
+</small>
 
 With that out of the way, I've recently started treating my taxes as a software/data science pipeline! It hasn't been easy, but it has worked better so far than all the easier-sounding ways I've attempted to organize them before. Read on if you think you might be in the same boat...
 
@@ -270,7 +272,6 @@ The general idea of plain text accounting is sound, so I think it makes sense to
 [rules]: https://hledger.org/1.28/hledger.html#csv-format
 [ledger]: https://www.ledger-cli.org/
 [beancount]: https://github.com/beancount/beancount
-[cpa]: https://www.investopedia.com/terms/c/cpa.asp
 [shake]: https://shakebuild.com/
 [haskell]: https://www.haskell.org/
 [make]: https://en.wikipedia.org/wiki/Make_(software)

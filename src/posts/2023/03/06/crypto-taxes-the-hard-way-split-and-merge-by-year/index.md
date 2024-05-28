@@ -4,7 +4,9 @@ tags: hledger, haskell, python, taxes, accounting
 reminder: delta.png
 ...
 
-*Disclaimer: nothing on this blog is advice about the substance of your taxes! I have no background in accounting and no idea whether this code will produce valid results. You need to verify everything yourself and then own your own mistakes or hire a tech-savvy [CPA][cpa] (or equivalent in your country) to go over it and fix any problems.*
+<small>
+*Disclaimer: nothing on this blog is advice about the substance of your taxes.* I have no background in accounting and no idea whether this code will produce valid results in your (or any!) tax situation.
+</small>
 
 When using [the "full-fledged hledger" system][ffhl] (see [my intro][intro]) it's helpful to separate all the imported data by tax year. You can do it manually in a spreadsheet editor, setting up your files like this...
 
@@ -212,7 +214,6 @@ split-and-merge-by-year
 This time it's *not* a complete runnable example though. Just an outline. I assume if you're interested in this it means you're starting your own full-fledged repo. So go ahead and check out a temporary branch to try the split/merge thing on your own data!
 
 
-[cpa]: https://www.investopedia.com/terms/c/cpa.asp
 [ffhl]: https://github.com/adept/full-fledged-hledger
 [intro]: /posts/2023/02/18/crypto-taxes-the-hard-way
 [cpf]: /posts/2023/02/23/crypto-taxes-the-hard-way-historical-prices
