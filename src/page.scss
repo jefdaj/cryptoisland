@@ -159,3 +159,15 @@ code.sourceCode > span {
     margin-right: auto;
 	}
 }
+
+@media (prefers-color-scheme: dark) { 
+  // invert everything
+  html {
+    filter: invert(1) hue-rotate(180deg);
+    background: white; // not needed in ff, but is in chrome
+  }
+  // elements to double-invert (keep same):
+  #layer10 { filter: invert(1) hue-rotate(180deg); } // boat
+  // TODO fix "automatic dark mode"
+  // TODO fix background in chrome
+}
