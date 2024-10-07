@@ -160,6 +160,9 @@ code.sourceCode > span {
 	}
 }
 
+@media (prefers-color-scheme: light) { 
+}
+
 @media (prefers-color-scheme: dark) { 
   // invert everything
   html {
