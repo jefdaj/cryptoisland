@@ -92,7 +92,7 @@ img {
 div.sourceCode {
   /* better to have the whole block overflow right than weird breaks: */
   /* max-width: calc(100% - 10px); */
-	width: max-content;
+	width: fit-content;
 }
 
 pre {
@@ -133,8 +133,7 @@ code.sourceCode > span {
   }
 
 	pre {
-    /* font-size: 10pt; */
-	  line-height: #{"min(2vh, 8pt)"};
+	  line-height: #{"min(2.5vw, 2em)"};
 	}
 	code.sourceCode {
 	  /* shrink font to fit */
