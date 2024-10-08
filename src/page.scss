@@ -34,27 +34,27 @@ main {
 }
 
 body {
-  font-size: 16px;
+  font-size: 16.00px;
 }
 
 div#logo a {
     color: black;
     float: left;
-    font-size: 18px;
+    font-size: 18.00px;
     font-weight: bold;
     text-decoration: none;
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 20.00px;
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 18.00px;
 }
 
 h3 {
-    font-size: 14px;
+    font-size: 14.00px;
 }
 
 /* see https://css-tricks.com/hash-tag-links-padding/ */
@@ -138,7 +138,7 @@ code.sourceCode > span {
 	code.sourceCode {
 	  /* shrink font to fit */
 	  /* TODO should this be vw? */
-	  font-size: #{"min(2vw, 15pt)"};
+	  font-size: #{"min(2.00vw, 15.00pt)"};
 	}
 }
 

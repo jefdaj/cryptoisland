@@ -11,6 +11,14 @@ aside {
   background: url(/aside/background.png) no-repeat left center;
   background-size: cover;
 	pointer-events: none;
+
+  /* this interacts with the chrome min/max font size memory leak bug:
+     certain final sizes (this * tag cloud size in site.hs) freeze the browser!
+     so we want to control it separately from the main body font
+   */
+  font-size: 13.00pt;
+
+  line-height: 1.00em;
 }
 
 #island {
