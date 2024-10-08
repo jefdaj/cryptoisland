@@ -76,13 +76,14 @@ div.toc > ul {
 }
 
 table {
-  margin: 10px;
+  max-width: 100%;
 }
 
 td {
   padding: 10px;
   padding-bottom: 0px;
 	min-width: 6em; /* fits dates on recent page */
+  font-size: calc(min(12pt, 2.5vw)); /* shrink table text to fit */
 }
 
 img {
