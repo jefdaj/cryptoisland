@@ -85,19 +85,21 @@ blockquote p {
 }
 
 table {
+  width: 100%;
   border-collapse: collapse;
-}
-
-th, td {
-  padding: 10px;
-}
-
-table, th, td {
-  border: 1px solid #4a3304;
+  table-layout: fixed;
 }
 
 th {
 	background: #f9ede5;
+}
+
+td, th {
+  padding: 5px;
+}
+
+table, th, td {
+  border: 1px solid #4a3304;
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
