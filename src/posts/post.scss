@@ -92,7 +92,13 @@ table {
 
 th {
 	background: wheat;
+  font-size: calc(min(14pt, 2.5vw)); /* shrink table text to fit */
 }
+
+td {
+  font-size: calc(min(12pt, 2.5vw)); /* shrink table text to fit */
+}
+
 
 td, th {
   padding: 0.5em 10px;
@@ -100,6 +106,10 @@ td, th {
 
 table, th, td {
   border: 1px solid #4a3304;
+}
+
+table > caption {
+  margin: 5px;
 }
 
 tr.even {
