@@ -91,7 +91,7 @@ table {
 }
 
 th {
-	background: #f9ede5;
+	background: wheat;
 }
 
 td, th {
@@ -100,6 +100,10 @@ td, th {
 
 table, th, td {
   border: 1px solid #4a3304;
+}
+
+tr.even {
+  background: #f9ede5;
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
@@ -121,4 +125,8 @@ table, th, td {
   div.toc {
 	  margin-top: -30px;
   }
+}
+
+@media (prefers-color-scheme: dark) {
+	tr.even { background: #ffeadc; }
 }
