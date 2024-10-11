@@ -54,7 +54,7 @@ Now the "fun" part: the Benaloh challenge. You actually think of it as a chore, 
 
 You can audit as many times as you want, since it's important for the voting machine not to know when you'll cast your final vote. But you're already bored, and each time you have to wait a little longer in line. So you stick with just the one audit.
 
-OK, for real now. You finish circling your choices in the booklet. This time you fill the ballot out correctly and cast it. This also burns your vote-in-progress NFT. The voting machine responds by promising that it has also destroyed the temporary decryption key. There's no way to know for sure that it encrypted your vote honestly, but you expect that it did because it couldn't have known whether you would choose to audit again.
+OK, for real now. You finish circling your choices in the booklet. This time you fill the ballot out correctly and cast it. This also burns your vote-in-progress NFT. The voting machine responds by promising that it has destroyed the temporary decryption key. Now there's no way to know for sure that it encrypted your vote honestly. But you expect that it did because it couldn't have known whether you would choose to audit a second time.
 
 # Mint personal NFTs
 
@@ -62,8 +62,8 @@ OK, for real now. You finish circling your choices in the booklet. This time you
 
 The last line moves quickly. Another poll worker traces the history of your vote-in-progress NFT and sends "I voted!" + "I audited!" NFTs to your personal wallet. They thank you for voting.
 
-Besides getting \$10 off groceries, the "I voted!" NFT will also validate your parking, and prove to your boss that you were out for an approved reason today.
-In case you ever need to prove that you passed a state ID check, it'll work for that too.
+Besides getting \$10 off groceries, the NFTs will also validate your parking, and prove to your boss that you were out for an approved reason today.
+In case you ever need to prove that you passed a state ID check, they'll work for that too.
 
 # Verify the final tally
 
@@ -74,13 +74,13 @@ Instead you just watch the deadline come and go, and the confirmations pour in.
 
 # Vibe check
 
-So that's the general workflow from an imagined average voter's perspective. What's your reaction?
+So that's the general workflow from an imaginary average voter's perspective. What's your reaction?
 
 Personally, I would be annoyed with the gamification. But on reflection I would appreciate that incentives are necessary to get people to confirm that every aspect of the election is above board. There's still the choice not to vote, or to vote but not to bother with the NFTs, same as before. So it seems reasonable.
 
 More importantly, I think that skeptical--even conspiratorially minded--voters, with no unusual math skills, could be convinced that their votes were counted honestly using a cryptographic system like this. It acknowledges that their fears are reasonable, then definitively puts them to rest. That's a huge improvement over the status quo!
 
-(Remember, you're reading this in the future but it was posted 3 weeks before the 2024 US presidential election. It was a scary time! Almost everyone would have chosen to up with some extra bullshit in order to raise the odds of a peaceful transfer of power.)
+(Remember, you're reading this in the future but it was posted 3 weeks before the 2024 US presidential election. It was a scary time! Almost everyone would have chosen to put up with extra bullshit in order to raise the odds of a peaceful transfer of power.)
 
 # Time to build
 
