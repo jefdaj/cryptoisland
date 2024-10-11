@@ -5,11 +5,11 @@ toc: True
 reminder: election-day.png
 ...
 
-[eg-site]: https://electionguard.vote
+[eg-site]: https://www.electionguard.vote
 
-When you picture the voting workflow of the future, it's probably on your phone. Right?
+When you picture the voting system of the future, it's probably on your phone. Right?
 Unfortunately, although *blockchain* voting can be done securely today, *internet* voting is much harder.
-So I'll sketch out a less ambitious in-person setup using a hypothetical blockchain-enabled version of [ElectionGuard][eg-site].
+So I'll sketch out a less ambitious in-person setup using a hypothetical blockchain-enabled version of [ElectionGuard][eg-site] instead.
 It's a little different than the typical workflow today, but not that different. All the required tech already exists.
 Phones are involved, but they won't be allowed into the voting booth.
 
@@ -44,7 +44,7 @@ They mint a vote-in-progress NFT and send it to the wallet in your app. The numb
 You flip through the official paper voter's guide, and also browse one published by a local news website on your phone. You haven't finished deciding how to vote when you get to the front of the line, but that's OK. You know this first time through won't be your real vote anyway.
 
 You leave your phone in a lock box and step into a voting booth.
-You randomly tap out some choices on the touchscreen, making sure to wait a few seconds each time so it plausibly seems like you're making a real choice. Then you hit "submit", take your printed QR code, and go get back to your phone.
+You randomly tap out some choices on the touchscreen, making sure to wait a few seconds each time so it plausibly seems like you're thinking. Then you hit "submit", take your printed QR code, and get back to your phone.
 
 # Audit or cast?
 
@@ -60,25 +60,27 @@ OK, for real now. You finish circling your choices in the booklet. This time you
 
 <img src="i-voted-nfts.png" style="width: 300px;"></img>
 
-The last line moves quickly. Another poll worker traces the history of your vote-in-progress NFT and sends the proper "I voted!" + "I audited!" NFTs to your personal wallet. They thank you for voting.
+The last line moves quickly. Another poll worker traces the history of your vote-in-progress NFT and sends "I voted!" + "I audited!" NFTs to your personal wallet. They thank you for voting.
 
-Besides getting you \$5 off groceries, the "I voted!" NFT will also validate your parking, and prove to your boss that you were out for an approved reason today.
-And in case you ever need to prove that you passed a state ID check, they'll work for that too.
+Besides getting \$10 off groceries, the "I voted!" NFT will also validate your parking, and prove to your boss that you were out for an approved reason today.
+In case you ever need to prove that you passed a state ID check, it'll work for that too.
 
-# Verify final tally
+# Verify the final tally
 
-Nothing left to do now except get discounted groceries and watch the election play out on TV, or on one of the many dashboard websites. Their opinions vary, but they all agree on the numbers.
+Nothing left to do now except get discounted groceries and watch the election play out on TV, or on one of the many dashboard websites. (The commentary varies, but they all agree on the numbers.)
 
 Actually, you *could* verify the entire election yourself and post a proof of correctness to the blockchain relatively easily. But you don't bother. Only the first 100 done with each verifier implementation are eligible for "I verified" NFTs, up to 1000 total. And you know how people are---they'll post them seconds after the official tally is uploaded, just for the bragging rights.
+Instead you just watch the deadline come and go, and the confirmations pour in.
 
 # Vibe check
 
-So that's the general workflow from an imagined voter's perspective. What's your reaction?
+So that's the general workflow from an imagined average voter's perspective. What's your reaction?
 
 Personally, I would be annoyed with the gamification. But on reflection I would appreciate that incentives are necessary to get people to confirm that every aspect of the election is above board. There's still the choice not to vote, or to vote but not to bother with the NFTs, same as before. So it seems reasonable.
 
-More importantly, I think that skeptical--even conspiratorially minded--voters, with no unusual math skills, could be convinced that their votes were counted honestly using a cryptographic system like this. That's a huge improvement over the status quo!
-Remember, you're reading this in the future but it was posted 3 weeks before the 2024 US presidential election. It was a scary time, and almost everyone would have chosen to up with some extra bullshit in order to raise the odds of a peaceful transfer of power. 
+More importantly, I think that skeptical--even conspiratorially minded--voters, with no unusual math skills, could be convinced that their votes were counted honestly using a cryptographic system like this. It acknowledges that their fears are reasonable, then definitively puts them to rest. That's a huge improvement over the status quo!
+
+(Remember, you're reading this in the future but it was posted 3 weeks before the 2024 US presidential election. It was a scary time! Almost everyone would have chosen to up with some extra bullshit in order to raise the odds of a peaceful transfer of power.)
 
 # Time to build
 
