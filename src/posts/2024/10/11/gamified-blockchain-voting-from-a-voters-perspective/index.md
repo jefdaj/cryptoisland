@@ -1,6 +1,6 @@
 ---
 title: "Gamified blockchain voting from a voter's perspective"
-tags: electionguard, blockchain, voting, nft, incentives, fraud-proofs
+tags: electionguard, blockchain, voting, nft, incentives, fraud-proofs, brainstorm
 toc: True
 reminder: election-day.png
 ...
