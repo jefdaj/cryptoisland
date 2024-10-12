@@ -1,6 +1,6 @@
 ---
 title: "Gamified blockchain voting from a voter's perspective"
-tags: electionguard, blockchain, voting, utxo, cardano
+tags: electionguard, blockchain, voting, nft, incentives, fraud-proofs
 toc: True
 reminder: election-day.png
 ...
@@ -93,8 +93,8 @@ More importantly, I think that skeptical--even conspiratorially minded--voters, 
 
 Maybe things will feel different in the future? But I'm posting this 3 weeks before the 2024 US presidential election, and today everyone I know would gladly put up with some NFT bullshit if they thought it would raise the odds of a peaceful transfer of power.
 
-# Time to build
+# Time to build!
 
 There might be issues with the particular incentives imagined here, but IMO the major stumbling block is clearly the requirement for in-person voting. I hope we'll be able to tackle that soon.
 
-In the meantime, let's get going on the version we know we can build! We don't need any new cryptography first; at this point the most urgent research questions are around engineering, usability, incentives, and public education. And those are probably best answered via lots of small pilot studies.
+In the meantime, let's get going on the version we know we can build. We don't need any new cryptography first; at this point the most urgent research questions are around engineering, usability, incentives, and public education. And those are probably best answered via lots of small pilot studies.
