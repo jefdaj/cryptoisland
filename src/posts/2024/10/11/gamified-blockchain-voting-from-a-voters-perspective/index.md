@@ -6,6 +6,7 @@ reminder: election-day.png
 ...
 
 [eg-site]: https://www.electionguard.vote
+[benaloh-challenge]: https://youtu.be/2TGtpUCNFPs?t=1362
 
 When you picture the voting system of the future, it's probably on your phone. Right?
 Unfortunately, although *blockchain* voting can be done securely today, *internet* voting is much harder.
@@ -20,7 +21,7 @@ From a voter's perspective, the main changes are:
 * NFT gamification
 * live dashboards
 
-Of those, only the Benaloh challenge is a core part of the ElectionGuard system.
+Of those, only the [Benaloh challenge][benaloh-challenge] is a core part of the ElectionGuard system.
 The rest are interesting ideas that may or may not turn out to be worth adding.
 _The ElectionGuard authors haven't reviewed or endorsed this!
 Whether to do blockchain voting and whether to do it this way are separate questions._
@@ -57,7 +58,7 @@ You randomly tap out some choices on the touchscreen, making sure to wait a few 
 
 # Audit or cast?
 
-Now the "fun" part: the Benaloh challenge. You actually think of it as a chore, but you do it anyway because you want the "I audited!" NFT, worth \$10 off groceries. The app scans the QR code, confirms that your vote is on chain, and presents the choice: audit or cast? You choose audit. It signs a transaction to that effect and adds it to the chain. A few seconds later, the voting machine responds by publishing the decryption key. You  check that your (public, invalidated) ballot looks as expected. Sadly, it does---no fraud bounty today. You get back in the voting line for another round.
+Now the "fun" part: the [Benaloh challenge][benaloh-challenge]. You actually think of it as a chore, but you do it anyway because you want the "I audited!" NFT, worth \$10 off groceries. The app scans the QR code, confirms that your vote is on chain, and presents the choice: audit or cast? You choose audit. It signs a transaction to that effect and adds it to the chain. A few seconds later, the voting machine responds by publishing the decryption key. You  check that your (public, invalidated) ballot looks as expected. Sadly, it does---no fraud bounty today. You get back in the voting line for another round.
 
 <img src="check-ballot-before-challenge.png" style="width: 300px;"></img>
 
