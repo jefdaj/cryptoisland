@@ -14,6 +14,8 @@ Some will explain how it works now, and some will also include ways I think it c
 For a linear series of posts, click the "electionguard" tag at the top.
 To jump to particular topics instead, use the links below.
 
+For now I mainly want to emphasize that although blockchains and related tech aren't required to run a clean election, they could potentially be used to strengthen the security and trustworthiness of almost every step...
+
 Action|EG in Theory|EG in Practice|My Suggestion
 -----|------|--------|-------
 set election parameters|administrator via website + deployments |administrator via website + deployments|administrator via <b>blockchain</b>
@@ -35,6 +37,3 @@ decrypt votes during audits|quorum of independent guardians|quorum of loyal guar
 publish tally + audit results|administrator via website?|administrator via website?|<b>decentralized</b> guardians via <b>blockchain</b> + <b>IPFS</b>
 
 Table: Who's responsible for each part of an election, and which tools do they use?
-
-For now I mainly want to emphasize that although blockchains and related tech aren't required to run a clean election, they could potentially be used to strengthen the security and trustworthiness of almost every step.
-
