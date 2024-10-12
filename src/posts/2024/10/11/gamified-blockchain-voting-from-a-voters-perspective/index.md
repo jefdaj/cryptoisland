@@ -79,7 +79,7 @@ If you ever need to prove that you passed a state ID check, they'll work for tha
 Nothing left to do now except get groceries and watch the election play out on TV, or on one of the many dashboard websites. (The commentary varies, but at least they all agree on the numbers.)
 
 Actually, you *could* verify the entire election yourself and post a proof of correctness to the blockchain relatively easily. But you don't bother. Only the first 100 done with each verifier implementation are eligible for "I verified" NFTs, up to 1000 total. And you know how people are---they've got their collateral ready and will post verifications seconds after the official tally is uploaded, just for the bragging rights.
-Instead you cook dinner while the deadlines come and go, and watch the confirmations pour in.
+Instead you cook dinner while the deadline comes and goes, and watch the confirmations pour in.
 
 You won't find out what happened with the ~50 total alleged irregularities for a couple days. But you aren't concerned because none of them were self proving (fraudulent messages signed by a voting machine), and there aren't nearly enough to swing the election anyway.
 
