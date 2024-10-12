@@ -1,11 +1,12 @@
 ---
 title: A casual blockchain voting workflow
-tags: electionguard, blockchain, voting, irl, brainstorm
+tags: electionguard, blockchain, voting, irl, brainstorm, project-catalyst
 toc: True
 reminder: coolest-boat.png
 ...
 
 [benaloh-challenge]: https://youtu.be/2TGtpUCNFPs?t=1362
+[catalyst-idea]: https://cardano.ideascale.com/c/idea/127656
 
 Yesterday I laid out [a fairly hardcore workflow](../../11/gamified-blockchain-voting-from-a-voters-perspective/) that could be appropriate for nation state elections, and ended by suggesting that we should do lots of small pilot studies to start working out the incentives.
 
@@ -20,8 +21,6 @@ The "poll worker" (probably you) brings two devices:
 
 * one for checking IDs, shown as a phone here
 * one for filling out ballots
-
-The devices could be combined, and the ID check could be skipped if you know everyone.
 
 # Workflow
 
@@ -42,28 +41,30 @@ Mint them a vote-in-progress NFT, and explain that they'll fill out their ballot
 <img src="voting.png" style="width: 200px; "></img>
 
 In a door-to-door situation, hand the voter the tablet and watch while they make selections.
-In a casual meeting the tablet can be passed around the room.
+In a meeting the tablet can be passed around the room.
 Each voter makes their selections, confirms them, and then scans a QR code on their phone.
 Meanwhile you can answer questions, checks IDs, give a talk, etc.
 
 ## Audit or Cast
 
-The Beneloh challenge is the same as before: the voter confirms their vote, then decides whether to audit or cast. If cast, they're done. Otherwise they wait for the tablet to come back around and vote again. You might have to peer pressure an especially diligent auditor to give up at some point.
+The Beneloh challenge is the same as before: the voter confirms their vote, then decides whether to audit or cast. If cast, they're done. Otherwise they wait for the tablet to come back around and vote again.
 
+This is the most unfamiliar part of the process.
 You'll need to explain it and possibly show [the video][benaloh-challenge] or do a quick demo.
+You also might have to peer pressure an especially diligent auditor to give up at some point.
 
 <img src="challenge.png" style="width: 200px; "></img>
 
 ## Run tally
 
-Close out the voting period (presumably in the demo app) and have the guardians run the tally.
-Announce it publicly along with a URL to all the artifacts.
+Close out the voting period and have the guardians run the tally.
+Announce it publicly along with an IPFS link to the final artifacts.
 
 ## Mint participation NFTs
 
 Optional of course.
 The type of people who might want to try this might also be keen to start building an on-chain reputation.
-You can give an extra special one to anyone who downloads the artifacts and runs the verifier.
+You can give an extra special one to anyone who downloads the artifacts, runs the verifier, and posts the results on chain.
 
 # Infrastructure
 
@@ -79,6 +80,13 @@ The obvious thing to use here is a public testnet. It should be stable on short 
 
 If this is a somewhat-important vote, say for a corporate leadership position, it might be important to set up a set of proper decentralized guardians. They can be hired on chain, or designated through any process that voters agree sounds fair.
 
-If it's just a meetup, you might ask for a couple volunteers at the beginning to run the guardian app in addition to the voter app. Or you could forgo the process entirely, losing the normal voter privacy properties.
+If it's just a meetup, you might ask for a couple volunteers at the beginning to run the guardian app in addition to the voter app. Or you could run everything yourself, losing the normal voter privacy properties. Just be sure to explain that to voters.
 
-Door-to-door canvassing is a little harder. Hiring on chain seems like the best option, or having a couple people in your organization set up beforehand if possible.
+# Demo app?
+
+There isn't any demo app yet (as far as I'm aware), but someone should get on that!
+I'm currently [applying for money][catalyst-idea] to do a basic demo of "electionguard on a blockchain",
+which is related but not quite the same.
+I may also try to build out user-friendly demo apps at some point,
+but please do it first if you're able!
+Or contact me and we can work on it together.
