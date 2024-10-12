@@ -1,5 +1,5 @@
 ---
-title: A more casual blockchain voting workflow
+title: A casual blockchain voting workflow
 tags: electionguard, blockchain, voting, irl
 toc: True
 reminder: coolest-boat.png
