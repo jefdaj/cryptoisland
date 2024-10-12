@@ -77,7 +77,7 @@ The obvious thing to use here is a public testnet. It should be stable on short 
 
 ### Guardians
 
-If this is a somewhat-important vote, say for corporate leadership position, it might be important to set up a set of proper decentralized guardians. They can be hired on chain, or designated through any process that voters agree sounds fair.
+If this is a somewhat-important vote, say for a corporate leadership position, it might be important to set up a set of proper decentralized guardians. They can be hired on chain, or designated through any process that voters agree sounds fair.
 
 If it's just a meetup, you might ask for a couple volunteers at the beginning to run the guardian app in addition to the voter app. Or you could forgo the process entirely, losing the normal voter privacy properties.
 
