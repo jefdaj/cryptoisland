@@ -267,7 +267,7 @@ siteCtx = defaultContext
 
 indexCtx :: Tags -> Context String
 indexCtx tags =
-  tagCloudField "tagcloud" 67 150 tags
+  tagCloudField "tagcloud" 67 175 tags
   <> siteCtx
 
 -- TODO why do certain min:max font size ratios cause a chrome memory leak??
@@ -275,7 +275,7 @@ indexCtx tags =
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"
   <> listField "posts" (postCtx tags Nothing) (return posts)
-  <> tagCloudField "tagcloud" 65 150 tags
+  <> tagCloudField "tagcloud" 65 175 tags
   <> siteCtx
 
 postCtx :: Tags -> Maybe [String] -> Context String
@@ -283,7 +283,7 @@ postCtx tags postTags =
   dropIndexHtml "url" <>
   tagsField "tags" tags <>
   dateField "date" "%Y-%m-%d" <>
-  tagCloudField "tagcloud" 70 150 (relatedTags tags postTags) <>
+  tagCloudField "tagcloud" 70 175 (relatedTags tags postTags) <>
   siteCtx
 
 tagsCtx :: [Item String] -> Tags -> String -> [String] -> Context String
@@ -291,7 +291,7 @@ tagsCtx posts tags mainTag postTags =
      constField "title" ("Posts tagged \"" ++ mainTag ++ "\":")
   <> constField "tag" mainTag
   <> listField "posts" (postCtx tags Nothing) (return posts)
-  <> tagCloudField "tagcloud" 70 150 (filterTags tags $ delete mainTag postTags)
+  <> tagCloudField "tagcloud" 70 175 (filterTags tags $ delete mainTag postTags)
   <> siteCtx
 
 myHakyllConfig :: Configuration
