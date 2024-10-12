@@ -1,6 +1,6 @@
 ---
 title: Simple Cardano "batching bots" for concurrent DEX protocols
-tags: cardano, plutus, concurrency, utxo, brainstorm, dex
+tags: blockchain, cardano, plutus, concurrency, utxo, brainstorm, dex
 updated: 2021-09-11
 ...
 
