@@ -1,6 +1,6 @@
 ---
 title: ElectionGuard + blockchain integration ideas
-tags: electionguard, blockchain
+tags: electionguard, blockchain, voting
 updated: 2024-10-12
 reminder: please-lock-door.png
 toc: false
