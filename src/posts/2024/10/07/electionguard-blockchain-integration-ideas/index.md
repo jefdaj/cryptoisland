@@ -1,9 +1,9 @@
 ---
 title: ElectionGuard + blockchain integration ideas
 tags: electionguard, blockchain
-toc: False
 updated: 2024-10-12
-# TODO reminder: treasure-map.png
+reminder: please-lock-door.png
+toc: false
 ...
 
 [eg-site]: https://www.electionguard.vote/
@@ -11,10 +11,12 @@ updated: 2024-10-12
 Welcome to the first in an ongoing series of posts about [ElectionGuard][eg-site]!
 Some will explain how it works now, and some will also include ways I think it could be extended and integrated with a blockchain. I'll try to differentiate clearly between the two.
 
-For a linear series of posts, click the "electionguard" tag at the top.
+To read a linear series of posts, click the "electionguard" tag at the top.
 To jump to particular topics instead, use the links below.
 
-For now I mainly want to emphasize that although blockchains and related tech aren't required to run a clean election, they could potentially be used to strengthen the security and trustworthiness of almost every step...
+For now I mainly want to emphasize that although blockchains and related tech aren't required,
+they could be used to strengthen the security and trustworthiness of almost every step.
+When dealing with public elections, it's reasonable to add some redundant safeguards...
 
 Action|EG in Theory|EG in Practice|My Suggestion
 -----|------|--------|-------
