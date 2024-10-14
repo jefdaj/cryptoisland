@@ -81,12 +81,13 @@ main = hakyllWith myHakyllConfig $ do
     -- TODO separate compiler fn
     compile $ do
       ident    <- getUnderlying
-      toc      <- getMetadataField ident "toc"
       reminder <- getMetadataField ident "reminder"
+      toc      <- getMetadataField ident "toc"
       postTags <- getTags ident
       let readerSettings = defaultHakyllReaderOptions
           writerSettings = case toc of
             Just "false" -> withNoToc reminder
+            Just "False" -> withNoToc reminder
             _ -> withToc reminder -- default to adding it unless explicitly false
       pandocCompilerWith readerSettings writerSettings
         >>= saveSnapshot "content" -- for the atom feed
@@ -321,10 +322,15 @@ mkTemplate bToc mPic =
                     "<center class=\"reminder\"><img src=\"" <>
                     T.pack p <>
                     "\"></img></center>"
-      tocTmpl = if not bToc then "" else
-                  "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" <>
-                  reminderTmpl <>
-                  "</div>"
+      tocTmpl = if bToc
+                  then
+                    "\n<div class=\"toc\"><div class=\"header\">Contents</div>\n$toc$\n" <>
+                    reminderTmpl <>
+                    "</div>"
+                  else
+                    "\n<div class=\"toc\">\n" <>
+                    reminderTmpl <>
+                    "</div>"
       bodTmpl = "\n$body$"
       tmpl = tocTmpl <> bodTmpl
   in case runIdentity $ PT.compileTemplate "" tmpl of
