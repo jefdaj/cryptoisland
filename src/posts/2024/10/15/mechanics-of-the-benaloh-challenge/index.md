@@ -18,7 +18,7 @@ This can be done in any traditional way:
 * have a human help fill it out if needed
 * ...
 
-<img src="ballot.png" style="max-width:300px"></img>
+<img src="ballot.png" style="width:300px"></img>
 
 The important thing is that you end up with a paper ballot at the end.
 
@@ -32,7 +32,7 @@ and encrypts it. To prevent all the encrypted ballots with the same choices look
 
 Finally, the encrypted ballot is uploaded to the "public bulletin board" (normally a website run by the election administrator).
 
-<img src="submit-ballot-500.png" style="width:500px"></img>
+<img src="submit-ballot-500.png" style="width:400px"></img>
 
 ## Take confirmation code
 
@@ -63,12 +63,12 @@ I imagine, though, that any such challenge would be resolved by finding the orig
 
 Steps 1-3 are the same
 
-## Cast or audit via phone app
+## Cast & audit via phone app
 
 I know people these days want to shoehorn everything into being a phone app, and I normally hate that!
 But in this case there are some major advantages. The system I'm proposing is that you take your receipt after submitting the paper ballot, then instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone.
 
-## Certify audits and casts
+## Self-certify casts & audits
 
 Rather than communicating with the voting system locally via touchscreen or a poll worker, the choice to audit or cast should be publicly announced on chain. You control your own phone app and the blockchain is independent, so there's no plausible way for the voting system to interfere with your choice or know about it in advance.
 
@@ -78,7 +78,7 @@ It's important to note that you would *not* be signing your actual name or ident
 
 Instead, I'm proposing that the voting app generate a new wallet per election. After you show your ID at the check-in counter, the poll worker would send an "eligible voter" NFT to the new wallet authorizing it to vote. At the end, another poll worker could read the history of your vote wallet and send corresponding reward tokens to a real wallet of your choosing without linking it to the vote wallet.
 
-## Immediate decryption + self-certification of audited ballots
+## Immediate decryption of audited ballots
 
 One advantage of doing the challenge via phone app is that it can immediately download the encrypted ballot from the bulletin board website and/or blockchain. If the voting machine also publishes the nonce (random number) used to encrypt, the app can use that to "brute force" all possible ballot selections until it finds the one that matches the ciphertext. That way, you can confirm that the encrypted choices look right. You should then have the additional choice to publicly certify that they do, or publicly launch a dispute (have someone look at the paper ballot).
 
