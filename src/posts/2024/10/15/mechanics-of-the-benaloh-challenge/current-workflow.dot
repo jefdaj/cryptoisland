@@ -10,16 +10,17 @@ digraph current_workflow {
   }
   subgraph cluster_challenge {
     label="challenge station"
-    audit_or_cast -> {audit,cast}
-    rank=same {audit,cast}
+    audit_or_cast [shape=diamond]
   }
-  subgraph cluster_verify {
-    label="verify tally"
-    verify_vote_included
-  }
+  // TODO separate post
+  // subgraph cluster_verify {
+  //   label="verify tally"
+  //   verify_vote_included -> verify_tally
+  // }
   take_confirmation -> audit_or_cast
-  audit -> fill_out_ballot
-  cast -> verify_vote_included
-  verify_vote_included -> end
-  cast -> end
+  audit_or_cast -> fill_out_ballot [label="audit"]
+  // audit_or_cast -> verify_vote_included [label="cast"]
+  audit_or_cast -> end [label="cast"]
+  // verify_vote_included -> end
+  // verify_tally -> end
 }
