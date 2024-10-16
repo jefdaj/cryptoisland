@@ -31,7 +31,7 @@
 <text text-anchor="middle" x="113" y="-549.45" font-family="Times,serif" font-size="14.00">start</text>
 </g>
 <!-- id_check -->
-<g id="node2" class="node">
+<g id="node3" class="node">
 <title>id_check</title>
 <ellipse fill="none" stroke="black" cx="113" cy="-459" rx="44.19" ry="18"/>
 <text text-anchor="middle" x="113" y="-453.95" font-family="Times,serif" font-size="14.00">id_check</text>
@@ -42,8 +42,14 @@
 <path fill="none" stroke="black" d="M113,-536.35C113,-522.86 113,-503.78 113,-488.07"/>
 <polygon fill="black" stroke="black" points="116.5,-488.36 113,-478.36 109.5,-488.36 116.5,-488.36"/>
 </g>
+<!-- end -->
+<g id="node2" class="node">
+<title>end</title>
+<ellipse fill="none" stroke="black" cx="177" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="177" y="-12.95" font-family="Times,serif" font-size="14.00">end</text>
+</g>
 <!-- fill_out_ballot -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>fill_out_ballot</title>
 <ellipse fill="none" stroke="black" cx="113" cy="-363.5" rx="63.63" ry="18"/>
 <text text-anchor="middle" x="113" y="-358.45" font-family="Times,serif" font-size="14.00">fill_out_ballot</text>
@@ -55,7 +61,7 @@
 <polygon fill="black" stroke="black" points="116.5,-392.86 113,-382.86 109.5,-392.86 116.5,-392.86"/>
 </g>
 <!-- scan_submit_ballot -->
-<g id="node4" class="node">
+<g id="node5" class="node">
 <title>scan_submit_ballot</title>
 <ellipse fill="none" stroke="black" cx="99" cy="-290.5" rx="83.08" ry="18"/>
 <text text-anchor="middle" x="99" y="-285.45" font-family="Times,serif" font-size="14.00">scan_submit_ballot</text>
@@ -67,7 +73,7 @@
 <polygon fill="black" stroke="black" points="107.73,-318.66 102.36,-309.53 100.86,-320.02 107.73,-318.66"/>
 </g>
 <!-- take_confirmation -->
-<g id="node5" class="node">
+<g id="node6" class="node">
 <title>take_confirmation</title>
 <ellipse fill="none" stroke="black" cx="101" cy="-202" rx="78.99" ry="18"/>
 <text text-anchor="middle" x="101" y="-196.95" font-family="Times,serif" font-size="14.00">take_confirmation</text>
@@ -79,7 +85,7 @@
 <polygon fill="black" stroke="black" points="103.87,-231.43 100.6,-221.35 96.87,-231.27 103.87,-231.43"/>
 </g>
 <!-- audit_or_cast -->
-<g id="node6" class="node">
+<g id="node7" class="node">
 <title>audit_or_cast</title>
 <polygon fill="none" stroke="black" points="177,-124.5 91.35,-106.5 177,-88.5 262.65,-106.5 177,-124.5"/>
 <text text-anchor="middle" x="177" y="-101.45" font-family="Times,serif" font-size="14.00">audit_or_cast</text>
@@ -90,25 +96,19 @@
 <path fill="none" stroke="black" d="M114.94,-183.85C127.02,-168.99 144.6,-147.36 157.97,-130.91"/>
 <polygon fill="black" stroke="black" points="161.31,-133.35 164.9,-123.38 155.88,-128.94 161.31,-133.35"/>
 </g>
-<!-- audit_or_cast&#45;&gt;fill_out_ballot -->
-<g id="edge6" class="edge">
-<title>audit_or_cast&#45;&gt;fill_out_ballot</title>
-<path fill="none" stroke="black" d="M183.48,-123.52C196.79,-159.15 223.39,-246.69 191,-308.5 183.49,-322.84 170.24,-334.13 156.77,-342.6"/>
-<polygon fill="black" stroke="black" points="155.36,-339.96 148.48,-348.01 158.88,-346 155.36,-339.96"/>
-<text text-anchor="middle" x="219.5" y="-241.2" font-family="Times,serif" font-size="14.00">audit</text>
-</g>
-<!-- end -->
-<g id="node7" class="node">
-<title>end</title>
-<ellipse fill="none" stroke="black" cx="177" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="177" y="-12.95" font-family="Times,serif" font-size="14.00">end</text>
-</g>
 <!-- audit_or_cast&#45;&gt;end -->
 <g id="edge7" class="edge">
 <title>audit_or_cast&#45;&gt;end</title>
 <path fill="none" stroke="black" d="M177,-88C177,-76.27 177,-60.58 177,-47.12"/>
 <polygon fill="black" stroke="black" points="180.5,-47.48 177,-37.48 173.5,-47.48 180.5,-47.48"/>
 <text text-anchor="middle" x="187.5" y="-57.2" font-family="Times,serif" font-size="14.00">cast</text>
+</g>
+<!-- audit_or_cast&#45;&gt;fill_out_ballot -->
+<g id="edge6" class="edge">
+<title>audit_or_cast&#45;&gt;fill_out_ballot</title>
+<path fill="none" stroke="black" d="M183.48,-123.52C196.79,-159.15 223.39,-246.69 191,-308.5 183.49,-322.84 170.24,-334.13 156.77,-342.6"/>
+<polygon fill="black" stroke="black" points="155.36,-339.96 148.48,-348.01 158.88,-346 155.36,-339.96"/>
+<text text-anchor="middle" x="219.5" y="-241.2" font-family="Times,serif" font-size="14.00">audit</text>
 </g>
 </g>
 </svg>

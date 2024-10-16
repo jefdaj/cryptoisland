@@ -1,4 +1,6 @@
 digraph current_workflow {
+  start
+  end
   start -> id_check
   subgraph cluster_votingbooth {
     label="voting booth"
