@@ -6,6 +6,10 @@ reminder: boring-card-trick.png
 
 _Warning: work in progress. Posted early so I can link here from the Catalyst idea._
 
+<img src=current-workflow.svg></img>
+
+<img src=proposed-workflow.svg></img>
+
 # Current mechanics
 
 ## Fill out a paper ballot
