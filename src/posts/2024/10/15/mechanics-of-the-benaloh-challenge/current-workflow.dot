@@ -4,7 +4,7 @@ digraph current_workflow {
   start -> id_check
   subgraph cluster_votingbooth {
     label="voting booth"
-    fill_out_ballot -> submit_ballot -> take_confirmation
+    fill_out_ballot -> submit_ballot -> take_code
   }
   subgraph cluster_checkin {
     label="check-in station"
@@ -19,7 +19,7 @@ digraph current_workflow {
   //   label="verify tally"
   //   verify_vote_included -> verify_tally
   // }
-  take_confirmation -> audit_or_cast
+  take_code -> audit_or_cast
   audit_or_cast -> fill_out_ballot [label="audit", weight=0]
   // audit_or_cast -> verify_vote_included [label="cast"]
   audit_or_cast -> end [label="cast"]

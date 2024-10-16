@@ -7,11 +7,11 @@ digraph proposed_workflow {
   }
   subgraph cluster_votingbooth {
     label="voting booth"
-    fill_out_ballot -> submit_ballot -> take_confirmation
+    fill_out_ballot -> submit_ballot -> take_code
   }
   subgraph cluster_phone {
     label="voting app"
-    take_confirmation -> confirm_hash -> audit_or_cast
+    take_code -> confirm_onchain -> audit_or_cast
     decrypt_ballot [shape=diamond]
     audit_or_cast [shape=diamond]
     rank=same {audit_or_cast,decrypt_ballot}
@@ -35,7 +35,7 @@ digraph proposed_workflow {
   // audit_or_cast -> mint_personal_nfts [label="cast"]
   audit_or_cast -> end [label="cast"]
   decrypt_ballot -> id_check [label="certify", weight=0]
-  decrypt_ballot -> id_check [label="dispute", weight=0]
+  decrypt_ballot -> id_check [label="dispute", weight=1]
   // id_check -> mint_personal_nfts [style="dashed"] // leave without voting
   // mint_personal_nfts -> verify_tally
   // mint_personal_nfts -> end
