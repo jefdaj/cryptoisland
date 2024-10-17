@@ -4,7 +4,9 @@ digraph proposed_workflow {
   node [shape=box, style="rounded,filled", fillcolor=lightgreen]
   // edge [color=grey]
 
-  start -> id_check
+  enter [shape=plain,fillcolor=transparent]
+  leave [shape=plain,fillcolor=transparent]
+  enter -> id_check
   subgraph cluster_checkin {
     label="check-in station"
     bgcolor="#fbeee0"
@@ -15,18 +17,22 @@ digraph proposed_workflow {
     label="voting booth"
     bgcolor="#fbeee0"
     fill_out_ballot
-    fill_out_ballot -> submit_ballot -> take_code
+    fill_out_ballot -> submit_ballot
   }
   subgraph cluster_phone {
     label="voting app"
     bgcolor="#fbeee0"
     node [fillcolor="#66ddff"] // blue
     confirm_onchain
-    take_code -> confirm_onchain -> audit_or_cast
+    submit_ballot -> confirm_onchain [label="S:publish\ncyphertext"]
+    confirm_onchain -> audit_or_cast
     decrypt_ballot
     audit_or_cast
     rank=same {audit_or_cast,decrypt_ballot}
-    audit_or_cast -> decrypt_ballot [label="audit"]
+    tmp1 [shape=point,style=invis]
+    audit_or_cast -> tmp1 [label="V:audit"]
+    tmp1 -> decrypt_ballot [label="S:publish\nnonce"]
+    rank=same {audit_or_cast,tmp1,decrypt_ballot}
   }
   // TODO separate post
   // subgraph cluster_checkout {
@@ -42,13 +48,15 @@ digraph proposed_workflow {
   //   label="verifier app"
   //   verify_tally -> mint_verifier_nft
   // }
-  id_check -> fill_out_ballot
+  id_check -> fill_out_ballot [label="S:vip"]
   // audit_or_cast -> mint_personal_nfts [label="cast"]
-  audit_or_cast -> end [label="cast"]
-  decrypt_ballot -> id_check [label="certify", weight=0]
-  decrypt_ballot -> id_check [label="dispute", weight=1]
+  tmp2 [shape=point,style=invis]
+  audit_or_cast -> tmp2 [label="V:cast"]
+  tmp2 -> leave [label="S:delete\nnonce"]
+  decrypt_ballot -> id_check [label="V:certify"]
+  decrypt_ballot -> id_check [label="V:dispute"]
   // id_check -> mint_personal_nfts [style="dashed"] // leave without voting
   // mint_personal_nfts -> verify_tally
-  // mint_personal_nfts -> end
-  // mint_verifier_nft -> end
+  // mint_personal_nfts -> leave
+  // mint_verifier_nft -> leave
 }
