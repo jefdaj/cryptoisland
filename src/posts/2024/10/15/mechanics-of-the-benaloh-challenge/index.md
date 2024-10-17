@@ -72,6 +72,10 @@ Steps 1-3 are the same
 I know people these days want to shoehorn everything into being a phone app, and I normally hate that!
 But in this case there are some major advantages. The system I'm proposing is that you take your receipt after submitting the paper ballot, then instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone.
 
+## Overall workflow
+
+<img src=proposed-workflow.svg></img>
+
 ## Self-certify casts & audits
 
 Rather than communicating with the voting system locally via touchscreen or a poll worker, the choice to audit or cast should be publicly announced on chain. You control your own phone app and the blockchain is independent, so there's no plausible way for the voting system to interfere with your choice or know about it in advance.
@@ -100,9 +104,5 @@ I think the cleanest way to do that is via live dashboards.
 
 <!-- TODO a simulation game where you try to cheat would also be a really good idea! -->
 <!-- TODO could also promote actual red teaming via hacker events, but not sure about that -->
-
-## Overall workflow
-
-<img src=proposed-workflow.svg></img>
 
 

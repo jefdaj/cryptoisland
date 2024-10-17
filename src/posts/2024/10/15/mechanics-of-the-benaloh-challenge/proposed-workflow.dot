@@ -1,29 +1,30 @@
 digraph proposed_workflow {
   rankdir=TB
   bgcolor=transparent
-  node [style=filled, fillcolor=white]
-  edge [color=grey]
+  node [shape=box, style="rounded,filled", fillcolor=lightgreen]
+  // edge [color=grey]
 
   start -> id_check
   subgraph cluster_checkin {
     label="check-in station"
     bgcolor="#fbeee0"
     // id_check -> mint_vip_nft
-    id_check [fillcolor="#66ddff"] // blue
+    id_check
   }
   subgraph cluster_votingbooth {
     label="voting booth"
     bgcolor="#fbeee0"
-    fill_out_ballot [fillcolor="#F6B657"] // orange
+    fill_out_ballot
     fill_out_ballot -> submit_ballot -> take_code
   }
   subgraph cluster_phone {
     label="voting app"
     bgcolor="#fbeee0"
-    confirm_onchain 
+    node [fillcolor="#66ddff"] // blue
+    confirm_onchain
     take_code -> confirm_onchain -> audit_or_cast
-    decrypt_ballot [shape=diamond]
-    audit_or_cast [shape=diamond]
+    decrypt_ballot
+    audit_or_cast
     rank=same {audit_or_cast,decrypt_ballot}
     audit_or_cast -> decrypt_ballot [label="audit"]
   }

@@ -1,12 +1,11 @@
 digraph current_workflow {
   rankdir=TB
   bgcolor=transparent
-  node [style=filled, fillcolor=white]
+  node [shape=box, style="rounded,filled", fillcolor=lightgreen]
   edge [color=grey]
 
   start
   end
-  start -> id_check
   subgraph cluster_votingbooth {
     bgcolor="#fbeee0"
     label="voting booth"
@@ -15,19 +14,19 @@ digraph current_workflow {
   subgraph cluster_checkin {
     bgcolor="#fbeee0"
     label="check-in station"
-    id_check [fillcolor=lightgreen]
     id_check -> fill_out_ballot
   }
   subgraph cluster_challenge {
     bgcolor="#fbeee0"
     label="challenge station"
-    audit_or_cast [shape=diamond]
+    audit_or_cast [fillcolor="#66ddff"] // blue
   }
   // TODO separate post
   // subgraph cluster_verify {
   //   label="verify tally"
   //   verify_vote_included -> verify_tally
   // }
+  start -> id_check
   take_code -> audit_or_cast
   audit_or_cast -> fill_out_ballot [label="audit", weight=0]
   // audit_or_cast -> verify_vote_included [label="cast"]
