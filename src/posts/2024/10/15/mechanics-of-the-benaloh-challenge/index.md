@@ -8,9 +8,12 @@ _Warning: work in progress. Posted early so I can link here from the Catalyst id
 
 # Current mechanics
 
+These can vary depending on the election, but generally there would be 3 stations.
+You go through them in a loop, exiting when you finally cast your real vote:
+
 <img src=current-workflow.svg></img>
 
-## Fill out a paper ballot
+## Fill out paper ballot
 
 This can be done in any traditional way:
 
@@ -24,7 +27,7 @@ This can be done in any traditional way:
 
 The important thing is that you end up with a paper ballot at the end.
 
-## Submit ballot
+## Scan & submit ballot
 
 The machine scans your ballot and keeps it. Keeping it is important, both for audits and to prevent you from showing someone how you voted later. You might optionally get a chance to confirm on screen that everything was scanned correctly.
 
@@ -41,7 +44,7 @@ Finally, the encrypted ballot is uploaded to the "public bulletin board" (normal
 The submission/scanner machine then prints a receipt that includes the hash of the final encrypted ballot. 
 Later, the voter can check that a ballot with that hash was included in the final tally.
 
-## Audit or cast?
+## Benaloh challenge: audit or cast?
 
 I believe this is sometimes at the same submission/scanning machine, and sometimes at a separate station.
 If done at a separate station, though, the stations need to be networked together, because if you choose to audit then the machine needs to publish the random number it used during encryption.
@@ -50,7 +53,8 @@ Perhaps the main advantage of a separate station is that a human can explain the
 
 ## Confirm tally and audit decryption
 
-Later, after the final tally is published, the voter checks on the bulletin board website that:
+This isn't part of the current polling place experience; diligent voters are encouraged to do it later from home.
+After the final tally is published, the voter checks on the bulletin board website that:
 
 #. Their final cast ballot was included in the tally
 #. Their audited ballots, if any, were decrypted as expected
@@ -63,13 +67,13 @@ I imagine, though, that any such challenge would be resolved by finding the orig
 
 # Proposed blockchain upgrades
 
-In the workflow I'm imagining, the first few steps would stay roughly the same:
+In the workflow I'm imagining, the first few steps would be roughly the same:
 
 1. Show ID at the check-in counter
 2. Fill out a paper ballot (possibly using a machine) in a voting booth
-3. Submit the ballot, and get a confirmation code (hash of the posted cyphertext)
+3. Submit the ballot and get a printed confirmation code (hash of the posted cyphertext)
 
-The only difference is that in my system you would get a "vote in progress" NFT after the ID check.
+The only difference so far is that in my system you would get a "vote in progress" NFT after the ID check.
 
 ## Cast & audit via phone app
 
@@ -109,11 +113,11 @@ The odds of a hack or deception being able to swing an election decrease dramati
 Because this is such an impressive effect, I think we should make it more obvious!
 I think the cleanest way to do that is via live dashboards.
 
-# Misc
+# Handling new complications
 
-## Privacy Preserved
+## On-chain privacy
 
-It's important to note that you would *not* be linking your identity to the ballot on chain. That could be dangerous if your vote is selected for decryption during a risk limiting audit.
+It's important to note that you would *not* be linking your identity to your voting actions on chain. That could be dangerous if your vote is selected for decryption during a risk limiting audit.
 
 Instead, I'm proposing that the voting app generate a new wallet/address per vote. After you show your ID at the check-in counter, the poll worker would send a "vote in progress" NFT to the wallet authorizing it to vote.
 
@@ -121,7 +125,15 @@ That's why in my version you have to revisit the check-in station each time you 
 On chain, everyone sees a series of anonymous-but-authorized NFTs going through the voting steps.
 They're created by the poll worker and burned by the voter during `cast`, `certify`, and `dispute` actions.
 
-## Dispute collateral
+Optionally, there could be a final "Mint Rewards" station where a poll worker reads the history of your voting actions from your app and sends rewards to your personal wallet without connecting them to anything else on chain: "I voted", "I audited", "\$10 reward", etc.
+
+## Dispute collateral?
+
+You could imagine a situation where disgruntled voters might "DDoS" the system by auditing and then baselessly disputing every ballot.
+To prevent that, you could simply limit the number of audits per person. That seems reasonable.
+But another possibility would be to have voters post collateral each time so frivolous disputes cost money.
+I don't think it would be fair to require people to pay to audit, but it might be reasonable to pay everyone for voting, and ask that they risk the reward money to launch a dispute. Of course, if they actually catch the system cheating there should be a much larger reward!
+I would have to think about this more before having a strong opinion about the best mechanism.
 
 <!-- TODO a simulation game where you try to cheat would also be a really good idea! -->
 <!-- TODO could also promote actual red teaming via hacker events, but not sure about that -->

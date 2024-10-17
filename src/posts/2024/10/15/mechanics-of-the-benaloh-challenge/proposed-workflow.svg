@@ -16,7 +16,7 @@
 <g id="clust2" class="cluster">
 <title>cluster_votingbooth</title>
 <polygon fill="#fbeee0" stroke="black" points="229,-399 229,-548.5 379,-548.5 379,-399 229,-399"/>
-<text text-anchor="middle" x="304" y="-531.2" font-family="Times,serif" font-size="14.00">voting Booth</text>
+<text text-anchor="middle" x="304" y="-531.2" font-family="Times,serif" font-size="14.00">Voting Booth</text>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_app</title>

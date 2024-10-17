@@ -14,7 +14,7 @@ digraph proposed_workflow {
     id_check [label="ID check"]
   }
   subgraph cluster_votingbooth {
-    label="voting Booth"
+    label="Voting Booth"
     bgcolor="#fbeee0"
     fill_out_ballot [label="Fill out paper ballot"]
     submit_ballot [label="Scan & submit ballot"]
