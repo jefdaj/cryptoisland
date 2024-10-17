@@ -29,20 +29,20 @@ The important thing is that you end up with a paper ballot at the end.
 
 ## Scan & submit ballot
 
+<!-- TODO focus on explainging the existing challng wll hr! -->
+
 The machine scans your ballot and keeps it. Keeping it is important, both for audits and to prevent you from showing someone how you voted later. You might optionally get a chance to confirm on screen that everything was scanned correctly.
-
-This is simple from the voter's perspective, but it's the submission/scanning machine is where a lot of the ElectionGuard magic happens.
-It reads the ballot, converts it to a vector of (mostly) zeros and ones,
-and encrypts it. To prevent all the encrypted ballots with the same choices looking the same,
-
-Finally, the encrypted ballot is uploaded to the "public bulletin board" (normally a website run by the election administrator).
+Then the ballot is encrypted + uploaded to the "public bulletin board" (normally a website run by the election administrator),
+and the machine prints you a confirmation code.
 
 <img src="submit-ballot-500.png" style="width:400px"></img>
 
-## Take confirmation code
+This is simple from the voter's perspective, but it's the where a lot of the ElectionGuard magic happens...
 
-The submission/scanner machine then prints a receipt that includes the hash of the final encrypted ballot. 
-Later, the voter can check that a ballot with that hash was included in the final tally.
+It reads the ballot, converts it to a vector of (mostly) zeros and ones,
+and encrypts it. To prevent all the encrypted ballots with the same choices looking the same,
+
+<!-- TODO explain nonce here with pic (or code? talk slide?) -->
 
 ## Benaloh challenge: audit or cast?
 
@@ -73,27 +73,32 @@ In the workflow I'm imagining, the first few steps would be roughly the same:
 2. Fill out a paper ballot (possibly using a machine) in a voting booth
 3. Submit the ballot and get a printed confirmation code (hash of the posted cyphertext)
 
+<!--
 The only difference so far is that in my system you would get a "vote in progress" NFT after the ID check.
+-->
 
 ## Cast & audit via phone app
 
-The system I'm proposing is that you take your receipt after submitting the paper ballot, then instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone---or laptop, I suppose.
+The main change I'm proposing is that after submitting the paper ballot, instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone---or laptop, I suppose.
 
-(I know, people these days want to shoehorn everything into being an app, and I normally hate that!
-But in this case there are some major advantages.)
+I know I know, people these days want to shoehorn everything into being an app, and I normally hate it!
+But in this case there are some major advantages.
 
 Now the voter now has a trusted device that can do cryptographic operations on their behalf, which means:
 
 1. We can add a second step to the Benaloh challenge where we immediately decrypt audited ballots, and either certify or dispute the result.
 2. We can broadcast each step in the protocol on chain, and watch everyone doing it in real time.
 
-It looks a little more complicated, but not too bad:
+The workflow becomes a little more complicated, but not too bad:
 
 <!-- TODO put labels at bottom of subgraphs? -->
 
 <img src=proposed-workflow.svg></img>
 
 `S:` means something is being posted on chain by the "system", and `V:` means something is posted on chain by the voter's trusted app.
+
+IMO this new challenge would be a fun step for voters and would probably cause the amount of challenges to rise dramatically.
+It would feel like doing something, having a real choice, challenging the state etc.
 
 ## Self-certify casts & audits
 

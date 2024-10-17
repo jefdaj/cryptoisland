@@ -10,13 +10,13 @@
 <title>proposed_workflow</title>
 <g id="clust1" class="cluster">
 <title>cluster_checkin</title>
-<polygon fill="#fbeee0" stroke="black" points="349,-77.5 349,-154 456,-154 456,-77.5 349,-77.5"/>
-<text text-anchor="middle" x="402.5" y="-136.7" font-family="Times,serif" font-size="14.00">Check&#45;in Station</text>
+<polygon fill="#fbeee0" stroke="black" points="306,-77.5 306,-154 413,-154 413,-77.5 306,-77.5"/>
+<text text-anchor="middle" x="359.5" y="-136.7" font-family="Times,serif" font-size="14.00">Check&#45;in Station</text>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_votingbooth</title>
-<polygon fill="#fbeee0" stroke="black" points="229,-399 229,-548.5 379,-548.5 379,-399 229,-399"/>
-<text text-anchor="middle" x="304" y="-531.2" font-family="Times,serif" font-size="14.00">Voting Booth</text>
+<polygon fill="#fbeee0" stroke="black" points="264,-399 264,-548.5 414,-548.5 414,-399 264,-399"/>
+<text text-anchor="middle" x="339" y="-531.2" font-family="Times,serif" font-size="14.00">Voting Booth</text>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_app</title>
@@ -32,14 +32,14 @@
 <!-- id_check -->
 <g id="node3" class="node">
 <title>id_check</title>
-<path fill="lightgreen" stroke="black" d="M423.75,-121.5C423.75,-121.5 382.25,-121.5 382.25,-121.5 376.25,-121.5 370.25,-115.5 370.25,-109.5 370.25,-109.5 370.25,-97.5 370.25,-97.5 370.25,-91.5 376.25,-85.5 382.25,-85.5 382.25,-85.5 423.75,-85.5 423.75,-85.5 429.75,-85.5 435.75,-91.5 435.75,-97.5 435.75,-97.5 435.75,-109.5 435.75,-109.5 435.75,-115.5 429.75,-121.5 423.75,-121.5"/>
-<text text-anchor="middle" x="403" y="-98.45" font-family="Times,serif" font-size="14.00">ID check</text>
+<path fill="lightgreen" stroke="black" d="M391.75,-121.5C391.75,-121.5 350.25,-121.5 350.25,-121.5 344.25,-121.5 338.25,-115.5 338.25,-109.5 338.25,-109.5 338.25,-97.5 338.25,-97.5 338.25,-91.5 344.25,-85.5 350.25,-85.5 350.25,-85.5 391.75,-85.5 391.75,-85.5 397.75,-85.5 403.75,-91.5 403.75,-97.5 403.75,-97.5 403.75,-109.5 403.75,-109.5 403.75,-115.5 397.75,-121.5 391.75,-121.5"/>
+<text text-anchor="middle" x="371" y="-98.45" font-family="Times,serif" font-size="14.00">ID check</text>
 </g>
 <!-- enter&#45;&gt;id_check -->
 <g id="edge1" class="edge">
 <title>enter&#45;&gt;id_check</title>
-<path fill="none" stroke="black" d="M476,-209.08C471.31,-198.54 461.64,-178 451,-162 443.65,-150.95 434.52,-139.56 426.21,-129.87"/>
-<polygon fill="black" stroke="black" points="428.4,-128.06 419.18,-122.84 423.14,-132.67 428.4,-128.06"/>
+<path fill="none" stroke="black" d="M476.62,-209.08C472.61,-198.16 463.71,-176.7 451,-162 439.62,-148.84 424.65,-137.06 410.75,-127.64"/>
+<polygon fill="black" stroke="black" points="413.1,-124.34 402.81,-121.8 409.27,-130.2 413.1,-124.34"/>
 </g>
 <!-- leave -->
 <g id="node2" class="node">
@@ -50,43 +50,43 @@
 <!-- fill_out_ballot -->
 <g id="node4" class="node">
 <title>fill_out_ballot</title>
-<path fill="lightgreen" stroke="black" d="M357,-516C357,-516 257,-516 257,-516 251,-516 245,-510 245,-504 245,-504 245,-492 245,-492 245,-486 251,-480 257,-480 257,-480 357,-480 357,-480 363,-480 369,-486 369,-492 369,-492 369,-504 369,-504 369,-510 363,-516 357,-516"/>
-<text text-anchor="middle" x="307" y="-492.95" font-family="Times,serif" font-size="14.00">Fill out paper ballot</text>
+<path fill="lightgreen" stroke="black" d="M392,-516C392,-516 292,-516 292,-516 286,-516 280,-510 280,-504 280,-504 280,-492 280,-492 280,-486 286,-480 292,-480 292,-480 392,-480 392,-480 398,-480 404,-486 404,-492 404,-492 404,-504 404,-504 404,-510 398,-516 392,-516"/>
+<text text-anchor="middle" x="342" y="-492.95" font-family="Times,serif" font-size="14.00">Fill out paper ballot</text>
 </g>
 <!-- id_check&#45;&gt;fill_out_ballot -->
 <g id="edge7" class="edge">
 <title>id_check&#45;&gt;fill_out_ballot</title>
-<path fill="none" stroke="black" d="M411.76,-121.77C421.83,-143.27 437,-181.39 437,-216 437,-426 437,-426 437,-426 437,-456.38 409.31,-473.84 379.49,-483.84"/>
-<polygon fill="black" stroke="black" points="378.87,-480.67 370.33,-486.95 380.92,-487.37 378.87,-480.67"/>
+<path fill="none" stroke="black" d="M389.38,-121.94C408.91,-142.43 437,-178.43 437,-216 437,-426 437,-426 437,-426 437,-447.4 421.34,-463.13 402.74,-474.26"/>
+<polygon fill="black" stroke="black" points="401.21,-471.65 394.12,-479.52 404.57,-477.79 401.21,-471.65"/>
 <text text-anchor="middle" x="461.38" y="-298.2" font-family="Times,serif" font-size="14.00">S:vote in</text>
 <text text-anchor="middle" x="461.38" y="-281.7" font-family="Times,serif" font-size="14.00">progress</text>
 </g>
 <!-- submit_ballot -->
 <g id="node5" class="node">
 <title>submit_ballot</title>
-<path fill="lightgreen" stroke="black" d="M358.5,-443C358.5,-443 249.5,-443 249.5,-443 243.5,-443 237.5,-437 237.5,-431 237.5,-431 237.5,-419 237.5,-419 237.5,-413 243.5,-407 249.5,-407 249.5,-407 358.5,-407 358.5,-407 364.5,-407 370.5,-413 370.5,-419 370.5,-419 370.5,-431 370.5,-431 370.5,-437 364.5,-443 358.5,-443"/>
-<text text-anchor="middle" x="304" y="-419.95" font-family="Times,serif" font-size="14.00">Scan &amp; submit ballot</text>
+<path fill="lightgreen" stroke="black" d="M393.5,-443C393.5,-443 284.5,-443 284.5,-443 278.5,-443 272.5,-437 272.5,-431 272.5,-431 272.5,-419 272.5,-419 272.5,-413 278.5,-407 284.5,-407 284.5,-407 393.5,-407 393.5,-407 399.5,-407 405.5,-413 405.5,-419 405.5,-419 405.5,-431 405.5,-431 405.5,-437 399.5,-443 393.5,-443"/>
+<text text-anchor="middle" x="339" y="-419.95" font-family="Times,serif" font-size="14.00">Scan &amp; submit ballot</text>
 </g>
 <!-- fill_out_ballot&#45;&gt;submit_ballot -->
 <g id="edge2" class="edge">
 <title>fill_out_ballot&#45;&gt;submit_ballot</title>
-<path fill="none" stroke="black" d="M306.27,-479.81C305.95,-472.05 305.55,-462.68 305.18,-453.95"/>
-<polygon fill="black" stroke="black" points="308.64,-453.87 304.72,-444.03 301.64,-454.17 308.64,-453.87"/>
+<path fill="none" stroke="black" d="M341.27,-479.81C340.95,-472.05 340.55,-462.68 340.18,-453.95"/>
+<polygon fill="black" stroke="black" points="343.64,-453.87 339.72,-444.03 336.64,-454.17 343.64,-453.87"/>
 </g>
 <!-- confirm_onchain -->
 <g id="node6" class="node">
 <title>confirm_onchain</title>
-<path fill="#66ddff" stroke="black" d="M263,-315.5C263,-315.5 157,-315.5 157,-315.5 151,-315.5 145,-309.5 145,-303.5 145,-303.5 145,-286.5 145,-286.5 145,-280.5 151,-274.5 157,-274.5 157,-274.5 263,-274.5 263,-274.5 269,-274.5 275,-280.5 275,-286.5 275,-286.5 275,-303.5 275,-303.5 275,-309.5 269,-315.5 263,-315.5"/>
-<text text-anchor="middle" x="210" y="-298.2" font-family="Times,serif" font-size="14.00">Download ciphertext</text>
-<text text-anchor="middle" x="210" y="-281.7" font-family="Times,serif" font-size="14.00">via QR code</text>
+<path fill="#66ddff" stroke="black" d="M184.5,-315.5C184.5,-315.5 99.5,-315.5 99.5,-315.5 93.5,-315.5 87.5,-309.5 87.5,-303.5 87.5,-303.5 87.5,-286.5 87.5,-286.5 87.5,-280.5 93.5,-274.5 99.5,-274.5 99.5,-274.5 184.5,-274.5 184.5,-274.5 190.5,-274.5 196.5,-280.5 196.5,-286.5 196.5,-286.5 196.5,-303.5 196.5,-303.5 196.5,-309.5 190.5,-315.5 184.5,-315.5"/>
+<text text-anchor="middle" x="142" y="-298.2" font-family="Times,serif" font-size="14.00">Scan QR code &amp;</text>
+<text text-anchor="middle" x="142" y="-281.7" font-family="Times,serif" font-size="14.00">find ciphertext</text>
 </g>
 <!-- submit_ballot&#45;&gt;confirm_onchain -->
 <g id="edge3" class="edge">
 <title>submit_ballot&#45;&gt;confirm_onchain</title>
-<path fill="none" stroke="black" d="M291.32,-406.74C275.88,-385.71 249.57,-349.88 231.06,-324.68"/>
-<polygon fill="black" stroke="black" points="233.37,-322.92 224.63,-316.93 227.73,-327.06 233.37,-322.92"/>
-<text text-anchor="middle" x="304.5" y="-375.7" font-family="Times,serif" font-size="14.00">S:publish</text>
-<text text-anchor="middle" x="304.5" y="-359.2" font-family="Times,serif" font-size="14.00">cyphertext</text>
+<path fill="none" stroke="black" d="M312.43,-406.74C278.79,-384.88 220.53,-347.03 181.63,-321.75"/>
+<polygon fill="black" stroke="black" points="183.96,-318.44 173.67,-315.93 180.15,-324.31 183.96,-318.44"/>
+<text text-anchor="middle" x="308.5" y="-375.7" font-family="Times,serif" font-size="14.00">S:publish</text>
+<text text-anchor="middle" x="308.5" y="-359.2" font-family="Times,serif" font-size="14.00">cyphertext</text>
 </g>
 <!-- audit_or_cast -->
 <g id="node7" class="node">
@@ -98,8 +98,8 @@
 <!-- confirm_onchain&#45;&gt;audit_or_cast -->
 <g id="edge4" class="edge">
 <title>confirm_onchain&#45;&gt;audit_or_cast</title>
-<path fill="none" stroke="black" d="M174.79,-274.03C158.17,-264.61 138.16,-253.25 120.5,-243.24"/>
-<polygon fill="black" stroke="black" points="122.4,-239.72 111.97,-237.83 118.94,-245.81 122.4,-239.72"/>
+<path fill="none" stroke="black" d="M124.66,-274.03C117.23,-265.48 108.43,-255.34 100.36,-246.05"/>
+<polygon fill="black" stroke="black" points="102.42,-244.09 93.22,-238.83 97.14,-248.68 102.42,-244.09"/>
 </g>
 <!-- tmp1 -->
 <!-- audit_or_cast&#45;&gt;tmp1 -->
@@ -127,16 +127,16 @@
 <!-- decrypt_ballot&#45;&gt;id_check -->
 <g id="edge10" class="edge">
 <title>decrypt_ballot&#45;&gt;id_check</title>
-<path fill="none" stroke="black" d="M309.71,-196.18C300.32,-186.05 293.27,-173.46 300,-162 312.98,-139.89 337.89,-125.66 359.96,-116.88"/>
-<polygon fill="black" stroke="black" points="361.01,-119.86 369.18,-113.11 358.58,-113.29 361.01,-119.86"/>
+<path fill="none" stroke="black" d="M310.11,-196.13C301.16,-186.19 294.37,-173.8 300,-162 306.42,-148.54 317.7,-137.21 329.41,-128.26"/>
+<polygon fill="black" stroke="black" points="331.25,-130.53 337.37,-121.88 327.19,-124.83 331.25,-130.53"/>
 <text text-anchor="middle" x="324" y="-165.2" font-family="Times,serif" font-size="14.00">V:certify</text>
 </g>
 <!-- decrypt_ballot&#45;&gt;id_check -->
 <g id="edge11" class="edge">
 <title>decrypt_ballot&#45;&gt;id_check</title>
-<path fill="none" stroke="black" d="M346.34,-196.07C357.6,-177.87 374.32,-150.85 386.68,-130.87"/>
-<polygon fill="black" stroke="black" points="390.07,-133.05 392.35,-122.7 384.12,-129.36 390.07,-133.05"/>
-<text text-anchor="middle" x="391.88" y="-165.2" font-family="Times,serif" font-size="14.00">V:dispute</text>
+<path fill="none" stroke="black" d="M341.62,-196.22C343.75,-190.53 346.02,-184.29 348,-178.5 353.18,-163.33 358.52,-146.25 362.75,-132.33"/>
+<polygon fill="black" stroke="black" points="366.35,-133.52 365.88,-122.93 359.65,-131.5 366.35,-133.52"/>
+<text text-anchor="middle" x="378.88" y="-165.2" font-family="Times,serif" font-size="14.00">V:dispute</text>
 </g>
 <!-- tmp1&#45;&gt;decrypt_ballot -->
 <g id="edge6" class="edge">
