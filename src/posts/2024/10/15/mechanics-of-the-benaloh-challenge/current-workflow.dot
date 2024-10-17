@@ -8,18 +8,21 @@ digraph current_workflow {
   leave [shape=plain,fillcolor=transparent]
   subgraph cluster_votingbooth {
     bgcolor="#fbeee0"
-    label="voting booth"
+    label="Voting Booth"
+    submit_ballot [label="Scan & submit ballot"]
     fill_out_ballot -> submit_ballot
   }
   subgraph cluster_checkin {
     bgcolor="#fbeee0"
-    label="check-in station"
+    label="Check-in Station"
+    id_check [label="ID check"]
+    fill_out_ballot [label="Fill out paper ballot"]
     id_check -> fill_out_ballot
   }
   subgraph cluster_challenge {
     bgcolor="#fbeee0"
-    label="challenge station"
-    audit_or_cast [fillcolor="#66ddff"] // blue
+    label="Challenge Station"
+    audit_or_cast [label="Benaloh challenge:\naudit or cast?",fillcolor="#66ddff"] // blue
   }
   // TODO separate post
   // subgraph cluster_verify {

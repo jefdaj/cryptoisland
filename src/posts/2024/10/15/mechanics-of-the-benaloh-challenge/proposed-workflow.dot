@@ -8,26 +8,27 @@ digraph proposed_workflow {
   leave [shape=plain,fillcolor=transparent]
   enter -> id_check
   subgraph cluster_checkin {
-    label="check-in station"
+    label="Check-in Station"
     bgcolor="#fbeee0"
     // id_check -> mint_vip_nft
-    id_check
+    id_check [label="ID check"]
   }
   subgraph cluster_votingbooth {
-    label="voting booth"
+    label="voting Booth"
     bgcolor="#fbeee0"
-    fill_out_ballot
+    fill_out_ballot [label="Fill out paper ballot"]
+    submit_ballot [label="Scan & submit ballot"]
     fill_out_ballot -> submit_ballot
   }
-  subgraph cluster_phone {
-    label="voting app"
+  subgraph cluster_app {
+    label="Trusted Voting App"
     bgcolor="#fbeee0"
     node [fillcolor="#66ddff"] // blue
-    confirm_onchain
+    confirm_onchain [label="Download ciphertext\nvia QR code"]
     submit_ballot -> confirm_onchain [label="S:publish\ncyphertext"]
     confirm_onchain -> audit_or_cast
-    decrypt_ballot
-    audit_or_cast
+    decrypt_ballot [label="Decrypt and check:\ndoes ballot look right?"]
+    audit_or_cast [label="Benaloh challenge:\naudit or cast?",fillcolor="#66ddff"] // blue
     rank=same {audit_or_cast,decrypt_ballot}
     tmp1 [shape=point,style=invis]
     audit_or_cast -> tmp1 [label="V:audit"]
@@ -48,7 +49,7 @@ digraph proposed_workflow {
   //   label="verifier app"
   //   verify_tally -> mint_verifier_nft
   // }
-  id_check -> fill_out_ballot [label="S:vip"]
+  id_check -> fill_out_ballot [label="S:vote in\nprogress"]
   // audit_or_cast -> mint_personal_nfts [label="cast"]
   tmp2 [shape=point,style=invis]
   audit_or_cast -> tmp2 [label="V:cast"]

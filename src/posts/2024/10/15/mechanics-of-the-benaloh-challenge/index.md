@@ -8,6 +8,8 @@ _Warning: work in progress. Posted early so I can link here from the Catalyst id
 
 # Current mechanics
 
+<img src=current-workflow.svg></img>
+
 ## Fill out a paper ballot
 
 This can be done in any traditional way:
@@ -58,33 +60,40 @@ Later, after the final tally is published, the voter checks on the bulletin boar
 I'm not sure if there's any standard process for disputing an audit result in the current workflow.
 I imagine, though, that any such challenge would be resolved by finding the original paper ballot and hand counting it under independent observation.
 
-## Overall workflow
-
-<img src=current-workflow.svg></img>
-
 
 # Proposed blockchain upgrades
 
-Steps 1-3 are the same
+In the workflow I'm imagining, the first few steps would stay roughly the same:
+
+1. Show ID at the check-in counter
+2. Fill out a paper ballot (possibly using a machine) in a voting booth
+3. Submit the ballot, and get a confirmation code (hash of the posted cyphertext)
+
+The only difference is that in my system you would get a "vote in progress" NFT after the ID check.
 
 ## Cast & audit via phone app
 
-I know people these days want to shoehorn everything into being a phone app, and I normally hate that!
-But in this case there are some major advantages. The system I'm proposing is that you take your receipt after submitting the paper ballot, then instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone.
+The system I'm proposing is that you take your receipt after submitting the paper ballot, then instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone---or laptop, I suppose.
 
-## Overall workflow
+(I know, people these days want to shoehorn everything into being an app, and I normally hate that!
+But in this case there are some major advantages.)
+
+Now the voter now has a trusted device that can do cryptographic operations on their behalf, which means:
+
+1. We can add a second step to the Benaloh challenge where we immediately decrypt audited ballots, and either certify or dispute the result.
+2. We can broadcast each step in the protocol on chain, and watch everyone doing it in real time.
+
+It looks a little more complicated, but not too bad:
+
+<!-- TODO put labels at bottom of subgraphs? -->
 
 <img src=proposed-workflow.svg></img>
+
+`S:` means something is being posted on chain by the "system", and `V:` means something is posted on chain by the voter's trusted app.
 
 ## Self-certify casts & audits
 
 Rather than communicating with the voting system locally via touchscreen or a poll worker, the choice to audit or cast should be publicly announced on chain. You control your own phone app and the blockchain is independent, so there's no plausible way for the voting system to interfere with your choice or know about it in advance.
-
-### Aside: Privacy
-
-It's important to note that you would *not* be signing your actual name or identifying information to the ballot. That's so that in the event of a risk-limiting audit, the randomly sampled ballots selected for decryption won't have names attached to them.
-
-Instead, I'm proposing that the voting app generate a new wallet per election. After you show your ID at the check-in counter, the poll worker would send an "eligible voter" NFT to the new wallet authorizing it to vote. At the end, another poll worker could read the history of your vote wallet and send corresponding reward tokens to a real wallet of your choosing without linking it to the vote wallet.
 
 ## Immediate decryption of audited ballots
 
@@ -99,6 +108,18 @@ As Dr Benaloh says, "the statistics are on our side": TODO CITE, TODO explain st
 The odds of a hack or deception being able to swing an election decrease dramatically as people audit ballots.
 Because this is such an impressive effect, I think we should make it more obvious!
 I think the cleanest way to do that is via live dashboards.
+
+# Misc
+
+## Privacy Preserved
+
+It's important to note that you would *not* be linking your identity to the ballot on chain. That could be dangerous if your vote is selected for decryption during a risk limiting audit.
+
+Instead, I'm proposing that the voting app generate a new wallet/address per vote. After you show your ID at the check-in counter, the poll worker would send a "vote in progress" NFT to the wallet authorizing it to vote.
+
+That's why in my version you have to revisit the check-in station each time you vote: you're getting a new NFT.
+On chain, everyone sees a series of anonymous-but-authorized NFTs going through the voting steps.
+They're created by the poll worker and burned by the voter during `cast`, `certify`, and `dispute` actions.
 
 ## Dispute collateral
 
