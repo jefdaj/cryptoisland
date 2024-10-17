@@ -6,10 +6,6 @@ reminder: boring-card-trick.png
 
 _Warning: work in progress. Posted early so I can link here from the Catalyst idea._
 
-<img src=current-workflow.svg></img>
-
-<img src=proposed-workflow.svg></img>
-
 # Current mechanics
 
 ## Fill out a paper ballot
@@ -62,6 +58,10 @@ Later, after the final tally is published, the voter checks on the bulletin boar
 I'm not sure if there's any standard process for disputing an audit result in the current workflow.
 I imagine, though, that any such challenge would be resolved by finding the original paper ballot and hand counting it under independent observation.
 
+## Overall workflow
+
+<img src=current-workflow.svg></img>
+
 
 # Proposed blockchain upgrades
 
@@ -100,3 +100,9 @@ I think the cleanest way to do that is via live dashboards.
 
 <!-- TODO a simulation game where you try to cheat would also be a really good idea! -->
 <!-- TODO could also promote actual red teaming via hacker events, but not sure about that -->
+
+## Overall workflow
+
+<img src=proposed-workflow.svg></img>
+
+
