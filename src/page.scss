@@ -133,12 +133,13 @@ code.sourceCode > span {
   }
 
 	pre {
-    line-height: #{"min(2vh, 15pt)"};
+    line-height: #{"min(2.5vw, 15pt)"};
 	}
 	code.sourceCode {
 	  /* shrink font to fit */
 	  /* TODO should this be vw? */
-	  font-size: #{"min(2.00vw, 15.00pt)"};
+	  font-size: #{"min(2.50vw, 15.00pt)"};
+    line-height: 1.5em;
 	}
 }
 
