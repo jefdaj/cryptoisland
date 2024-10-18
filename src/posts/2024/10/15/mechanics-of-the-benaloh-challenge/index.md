@@ -136,19 +136,18 @@ The "gotcha!" is that the machine also has to include a random number (called a 
 because otherwise there would only be so many possible permutations of the ballot (2 in my pirate example),
 and people could generate all of them as a map to "decrypt" votes without having the private key:
 
-```
+~~~{ .txt }
 encrypt("Blackbeard" , guardians_pubkey) = 408756345
 encrypt("Squawks III", guardians_pubkey) = 673209582
-```
+~~~
 
 The nonce prevents that by making all the encryptions different, even when they encode the same choices:
 
-```
+~~~{ .txt }
 encrypt( ("Blackbeard", 8273423), guardians_pubkey ) = 408756345
 encrypt( ("Blackbeard", 7823942), guardians_pubkey ) = 984729344
 encrypt( ("Blackbeard", 1982131), guardians_pubkey ) = 982374823
-...
-```
+~~~
 
 <!-- TODO is it really standard GPG style, or is there any more nuance to it? -->
 
