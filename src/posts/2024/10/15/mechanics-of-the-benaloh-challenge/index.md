@@ -2,6 +2,7 @@
 title: Mechanics of the Benaloh Challenge
 tags: electionguard, blockchain, voting, incentives, brainstorm
 reminder: boring-card-trick.png
+updated: 2024-10-18
 ...
 
 [eg-video]: ?
@@ -125,14 +126,13 @@ This step is simple from the voter's perspective, but it's where a lot of the El
 This is the most confusing part.
 There's a vulnerability in the encryption step,
 and by solving it we also end up discovering a way to verify audited ballots.
-We'll just go over the first half of the story for now;
-later you'll see why it was worth getting into the details.
+We'll just go over the first half of the story for now...
 
 After converting the ballot to a vector of `0`s and `1`s representing empty and marked bubbles respectively,
 the scan & submit machine uses public key encryption (think GPG) to encrypt it.
 Only a quorum of guardians (see separate post) will be able to decrypt it using their private key shares.
 
-The "gotcha!" is that the machine also has to include a random number (called a "nonce" for "number used once"),
+The "gotcha!" is that the machine also has to include a random number (called a nonce for "number used once"),
 because otherwise there would only be so many possible permutations of the ballot (2 in my pirate example),
 and people could generate all of them as a map to "decrypt" votes without having the private key:
 
@@ -156,18 +156,21 @@ encrypt( ("Blackbeard", 1982131), guardians_pubkey ) = 982374823
 
 ## Benaloh challenge: audit or cast?
 
-At this point the voting machine already publicly committed to your encrypted vote, but you haven't said whether you want to audit or cast it. (Note that you should have decided it for yourself *before* filling out the ballot! Otherwise you'll be publishing your real choices as part of the audit.)
+Challenge time!
+At this point the voting machine already publicly committed to your encrypted vote, but you haven't said whether you want to audit or cast it. (Note that you should have decided it for yourself *before* filling out the ballot. Otherwise you'll be publishing your real choices as part of the audit.)
 
 I believe this step is sometimes done at the same scan & submit machine, and sometimes at a separate station networked to the first one. Perhaps the main advantage of a separate station is that a human can explain the choice, and then either direct you out of the voting area or back into line depending whether you audit?
 
-Either way, now we get to the other half of the "nonce" story: if you choose to audit, the scan & submit machine will also publish the nonce on the bulletin board. The rule is that any ballot whose nonce was published should be individually decrypted during the final tally, and *not* counted as a vote.
+Either way, now we get to the other half of the nonce story: if you choose to audit, the scan & submit machine will also publish the nonce on the bulletin board. The rule is that any ballot whose nonce was published should be individually decrypted during the final tally, and *not* counted as a real vote.
 
 ## Audit verification
 
 Why publish the nonce rather than just a message saying not to count that ballot? It provides a nifty mechanism for voters to decrypt the audited ballot for themselves before the final tally: they just try encrypting all permutations with that nonce until they find one that matches the published ciphertext. The bug becomes a feature!
 
 This isn't part of the current polling place experience; diligent voters are encouraged to do it from home.
-_Note that in v1 of ElectionGuard, I don't think it's implemented at all. It's planned for v2 though._
+In fact I don't think v1 of ElectionGuard implements at all. It's planned for v2 though.
+
+<!-- TODO cite that -->
 
 ## End-to-end verification
 
@@ -176,12 +179,15 @@ After the official election results are published, the diligent voter can also d
 #. All ballots were well-formed
 #. The final tally is correct
 #. Their own cast ballot was included in the tally
-#. Their audited ballots were decrypted as expected
+#. All audited ballots were decrypted, and their own look as expected
 
-## Dispute audited ballot encryptions?
+I won't linger on it here, but verification is a huge advantage over traditional elections!
+Even without any of the "upgrades" I'm going to go on about, it's 100% worth implementing ElectionGuard or something similar at scale to get these properties.
 
-I'm not sure if there's any standard process for disputing an audit result in the current workflow.
-I imagine, though, that any such challenge would be resolved by finding the original paper ballot and hand counting it under independent observation.
+## How are disputes handled?
+
+I'm not sure if there's any standard process for disputing an audit result or a missing ballot ciphertext in the current workflow.
+I imagine, though, that any such challenge would have to be resolved by going to the press, pressuring the election authority to address it, and eventually doing a recount of the original paper ballot under independent supervision.
 
 
 # Proposed blockchain upgrades
@@ -200,7 +206,7 @@ The only difference so far is that in my system you would get a "vote in progres
 
 The main change I'm proposing is that after submitting the paper ballot, instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone---or laptop, I suppose.
 
-I know I know, people these days want to shoehorn everything into being an app, and I normally hate it!
+I know I know, everything has to be an app these days. I normally hate that!
 But in this case there are some major advantages.
 
 Now the voter now has a trusted device that can do cryptographic operations on their behalf, which means:
