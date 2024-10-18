@@ -284,7 +284,7 @@ postCtx tags postTags =
   dropIndexHtml "url" <>
   tagsField "tags" tags <>
   dateField "date" "%Y-%m-%d" <>
-  tagCloudField "tagcloud" 70 175 (relatedTags tags postTags) <>
+  tagCloudField "tagcloud" 50 175 (relatedTags tags postTags) <>
   siteCtx
 
 tagsCtx :: [Item String] -> Tags -> String -> [String] -> Context String
