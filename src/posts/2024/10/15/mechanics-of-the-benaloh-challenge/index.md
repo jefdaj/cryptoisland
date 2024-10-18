@@ -4,60 +4,179 @@ tags: electionguard, blockchain, voting, incentives, brainstorm
 reminder: boring-card-trick.png
 ...
 
+[eg-video]: ?
+[eg-site]: https://www.electionguard.vote
+
 _Warning: work in progress. Posted early so I can link here from the Catalyst idea._
+
+# Motivation
+
+The Benaloh challenge is a clever answer to the question
+"How can voters check that their votes were encrypted honestly, without also being able to show how they voted to others?"
+
+If you're thinking about this for the first time, you might have another question now: why do we care if they show how they voted?
+Let's deal with that first, then get back to how it can be done.
+
+## Why do we care?
+
+Strong ballot secrecy (being unable to show your vote to others) might sound like a minor issue,
+but it turns out to be essential for overall election integrity.
+Without it voters are vulnerable to all sorts of coersion:
+
+* mob bosses deciding how neighborhoods will vote
+* company bosses pressuring employees
+* family members pressuring each other
+* social media harassment campaigns
+* retaliation by an incoming or outgoing government
+
+Basically, unless votes are kept private, people tend to vote for their own immediate personal safety rather than for good government.
+
+## How is it done?
+
+The best way I've seen it explained is [as a boring card trick][eg-video].
+Here's the algorithm:
+
+1. Ask the voter if they'd like to vote "red" or "black" this time.
+2. Give them a card of the chosen color, face-down, and ask whether they want to audit or cast that vote.
+3. If they audit, flip the card over (decrypt it) to prove it was the right color, and start again at step 1.
+4. If they cast, they're done. The face-down card is their real vote.
+
+The voter can't be certain that the final card represents their choice,
+but they can tell that the dealer would have a hard time reliably cheating without being caught.
+
+In a real election, the dealer (voting system) would be caught in at least one lie with overwhelming probability if it tried to change enough votes to alter the results.
+The statistics are very impressive! I'll do another post about them specifically.
+So although each voter only gets a weak guarantee that own their vote was correct, they can have strong confidence in the overall election outcome.
 
 # Current mechanics
 
-These can vary depending on the election, but generally there would be 3 stations.
-You go through them in a loop, exiting when you finally cast your real vote:
+## Overview
+
+OK, that's a very neat abstract trick!
+How can it be implemented as part of the voting process?
+This varies because [ElectionGuard][eg-site] is a toolkit that can be used in flexible ways,
+but generally there would be 3 stations set up at the polling place.
+You start with an ID check,
+then go through the voting + challenge stations as many times as you want,
+finishing you when choose to cast your real vote:
 
 <img src=current-workflow.svg></img>
 
+In practice most voters decline to do even one audit,
+so they sail straight through without much additional friction compared to the regular (unencrypted) voting experience.
+
+<!--
+Whether you audit or not, each vote comes with a confirmation code that can be used to look it up on the election website later.
+Voters can verify that their real vote was included in the final tally.
+Audited ballots are decrypted + posted publicly instead, so everyone can see what they would have been if cast.
+-->
+
+The next few subsections go through how each step works now in more detail.
+Then I'll explain some blockchain upgrades that I think would improve them,
+and finally deal with a couple new complications those upgrades would introduce.
+
+## ID check
+
+This is done the traditional way, by checking your name against a state database.
+The poll worker confirms you're an eligible voter who hasn't already voted in this election.
+
 ## Fill out paper ballot
 
-This can be done in any traditional way:
+This can be done in any of the traditional ways, or new ones:
 
-* fill it out by hand
-* select options on a touchscreen and have the machine print it
-* listen to audio instructions
-* have a human help fill it out if needed
+* fill it out manually
+* select options on a touchscreen
+* audio instructions + voice recognition
+* get help from a human
 * ...
 
 <img src="ballot.png" style="width:300px"></img>
 
-The important thing is that you end up with a paper ballot at the end.
+The important thing is that you end up with a paper record that can be used to settle any disputes about the electronic process.
+
+It should be done in a "publicly private" setting to guard against others seeing your choices,
+as well as against yourself recording them on video.
+That's also traditional.
 
 ## Scan & submit ballot
 
-<!-- TODO focus on explainging the existing challng wll hr! -->
+This should also be done in a publicly private setting.
+It could be the same booth but is probably separate for efficiency.
+(Filling out the ballots takes longer, so there should be more stations for that.)
 
-The machine scans your ballot and keeps it. Keeping it is important, both for audits and to prevent you from showing someone how you voted later. You might optionally get a chance to confirm on screen that everything was scanned correctly.
-Then the ballot is encrypted + uploaded to the "public bulletin board" (normally a website run by the election administrator),
-and the machine prints you a confirmation code.
+From the voter's perspective this step is fast: a machine scans your ballot, keeps it, and prints a confirmation code.
+You might optionally get a chance to confirm on screen that everything was scanned correctly first.
+
+Keeping it is important, both for disputes and to prevent you from showing someone how you voted later.
+
+The ballot is encrypted + uploaded to the "public bulletin board" (normally a website run by the election administrator).
+The confirmation code includes a hash of the posted ciphertext, so you can check later that it hasn't been altered.
 
 <img src="submit-ballot-500.png" style="width:400px"></img>
 
-This is simple from the voter's perspective, but it's the where a lot of the ElectionGuard magic happens...
+_Note that I made up this particular machine. What they look like varies by jurisdiction._
 
-It reads the ballot, converts it to a vector of (mostly) zeros and ones,
-and encrypts it. To prevent all the encrypted ballots with the same choices looking the same,
+<!--
+This step is simple from the voter's perspective, but it's where a lot of the ElectionGuard magic happens.
+-->
+
+### Gotcha: encryption nonce
+
+This is the most confusing part.
+There's a vulnerability in the encryption step,
+and by solving it we also end up discovering a way to verify audited ballots.
+We'll just go over the first half of the story for now;
+later you'll see why it was worth getting into the details.
+
+After converting the ballot to a vector of `0`s and `1`s representing empty and marked bubbles respectively,
+the scan & submit machine uses public key encryption (think GPG) to encrypt it.
+Only a quorum of guardians (see separate post) will be able to decrypt it using their private key shares.
+
+The "gotcha!" is that the machine also has to include a random number (called a "nonce" for "number used once"),
+because otherwise there would only be so many possible permutations of the ballot (2 in my pirate example),
+and people could generate all of them as a map to "decrypt" votes without having the private key:
+
+```
+encrypt("Blackbeard" , guardians_pubkey) = 408756345
+encrypt("Squawks III", guardians_pubkey) = 673209582
+```
+
+The nonce prevents that by making all the encryptions different, even when they encode the same choices:
+
+```
+encrypt( ("Blackbeard", 8273423), guardians_pubkey ) = 408756345
+encrypt( ("Blackbeard", 7823942), guardians_pubkey ) = 984729344
+encrypt( ("Blackbeard", 1982131), guardians_pubkey ) = 982374823
+...
+```
+
+<!-- TODO is it really standard GPG style, or is there any more nuance to it? -->
 
 <!-- TODO explain nonce here with pic (or code? talk slide?) -->
 
 ## Benaloh challenge: audit or cast?
 
-I believe this is sometimes at the same submission/scanning machine, and sometimes at a separate station.
-If done at a separate station, though, the stations need to be networked together, because if you choose to audit then the machine needs to publish the random number it used during encryption.
+At this point the voting machine already publicly committed to your encrypted vote, but you haven't said whether you want to audit or cast it. (Note that you should have decided it for yourself *before* filling out the ballot! Otherwise you'll be publishing your real choices as part of the audit.)
 
-Perhaps the main advantage of a separate station is that a human can explain the choice, and then either direct you out of the voting area or back into line depending whether you audit?
+I believe this step is sometimes done at the same scan & submit machine, and sometimes at a separate station networked to the first one. Perhaps the main advantage of a separate station is that a human can explain the choice, and then either direct you out of the voting area or back into line depending whether you audit?
 
-## Confirm tally and audit decryption
+Either way, now we get to the other half of the "nonce" story: if you choose to audit, the scan & submit machine will also publish the nonce on the bulletin board. The rule is that any ballot whose nonce was published should be individually decrypted during the final tally, and *not* counted as a vote.
 
-This isn't part of the current polling place experience; diligent voters are encouraged to do it later from home.
-After the final tally is published, the voter checks on the bulletin board website that:
+## Audit verification
 
-#. Their final cast ballot was included in the tally
-#. Their audited ballots, if any, were decrypted as expected
+Why publish the nonce rather than just a message saying not to count that ballot? It provides a nifty mechanism for voters to decrypt the audited ballot for themselves before the final tally: they just try encrypting all permutations with that nonce until they find one that matches the published ciphertext. The bug becomes a feature!
+
+This isn't part of the current polling place experience; diligent voters are encouraged to do it from home.
+_Note that in v1 of ElectionGuard, I don't think it's implemented at all. It's planned for v2 though._
+
+## End-to-end verification
+
+After the official election results are published, the diligent voter can also download all the artifacts from the bulletin board and use independent verifier software to further confirm that:
+
+#. All ballots were well-formed
+#. The final tally is correct
+#. Their own cast ballot was included in the tally
+#. Their audited ballots were decrypted as expected
 
 ## Dispute audited ballot encryptions?
 
@@ -97,26 +216,29 @@ The workflow becomes a little more complicated, but not too bad:
 
 `S:` means something is being posted on chain by the "system", and `V:` means something is posted on chain by the voter's trusted app.
 
-IMO this new challenge would be a fun step for voters and would probably cause the amount of challenges to rise dramatically.
-It would feel like doing something, having a real choice, challenging the state etc.
-
 ## Self-certify casts & audits
 
 Rather than communicating with the voting system locally via touchscreen or a poll worker, the choice to audit or cast should be publicly announced on chain. You control your own phone app and the blockchain is independent, so there's no plausible way for the voting system to interfere with your choice or know about it in advance.
 
-## Immediate decryption of audited ballots
+IMO this new version would be fun for voters and would probably cause the amount of challenges to rise dramatically.
+It would feel like doing something, having a real choice, challenging the state etc.
 
-One advantage of doing the challenge via phone app is that it can immediately download the encrypted ballot from the bulletin board website and/or blockchain. If the voting machine also publishes the nonce (random number) used to encrypt, the app can use that to "brute force" all possible ballot selections until it finds the one that matches the ciphertext. That way, you can confirm that the encrypted choices look right. You should then have the additional choice to publicly certify that they do, or publicly launch a dispute (have someone look at the paper ballot).
+## Immediate, public audit results
+
+Another advantage is that you can immediately download the encrypted ballot from the bulletin board website and/or blockchain. If the voting machine also publishes the nonce (random number) used to encrypt, the app can use that to "brute force" all possible ballot selections until it finds the one that matches the ciphertext. That way, you can confirm that the encrypted choices look right. You should then have the additional choice to publicly certify that they do, or publicly launch a dispute (have someone look at the paper ballot). Being able to see everyone else doing this on chain will raise confidence in the system.
 
 ## Live statistics
 
-All these self certifications on chain add up to vastly improved real-time data, which can be published fast enough to head off any misinformation about the election. In my opinion that's the real secret sauce! Reliable, immediate proof that there's no large scale fraud that could plausibly be changing the results of the election.
+All these certifications on chain add up to vastly improved real-time data, which can be published fast enough to head off any misinformation about the election. In my opinion that's the real secret sauce! Reliable, immediate proof that there's no large scale fraud that could plausibly be changing the results of the election.
 
+I'll leave it at that for now, because it's such an important point that it deserves its own post.
+
+<!--
 As Dr Benaloh says, "the statistics are on our side": TODO CITE, TODO explain stats?
 
 The odds of a hack or deception being able to swing an election decrease dramatically as people audit ballots.
 Because this is such an impressive effect, I think we should make it more obvious!
-I think the cleanest way to do that is via live dashboards.
+-->
 
 # Handling new complications
 

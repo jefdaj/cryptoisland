@@ -4,8 +4,8 @@ digraph current_workflow {
   node [shape=box, style="rounded,filled", fillcolor=lightgreen]
   edge [color=grey]
 
-  enter [shape=plain,fillcolor=transparent]
-  leave [shape=plain,fillcolor=transparent]
+  Enter [shape=plain,fillcolor=transparent]
+  Leave [shape=plain,fillcolor=transparent]
   subgraph cluster_votingbooth {
     bgcolor="#fbeee0"
     label="Voting Booth"
@@ -29,11 +29,11 @@ digraph current_workflow {
   //   label="verify tally"
   //   verify_vote_included -> verify_tally
   // }
-  enter -> id_check
-  submit_ballot -> audit_or_cast [label="publish\ncyphertext"]
-  audit_or_cast -> fill_out_ballot [label="audit", weight=0]
+  Enter -> id_check
+  submit_ballot -> audit_or_cast [label="Publish\ncyphertext"]
+  audit_or_cast -> fill_out_ballot [label="Audit", weight=0]
   // audit_or_cast -> verify_vote_included [label="cast"]
-  audit_or_cast -> leave [label="cast"]
-  // verify_vote_included -> leave
-  // verify_tally -> leave
+  audit_or_cast -> Leave [label="Cast"]
+  // verify_vote_included -> Leave
+  // verify_tally -> Leave
 }
