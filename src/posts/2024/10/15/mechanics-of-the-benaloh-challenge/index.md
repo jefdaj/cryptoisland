@@ -5,7 +5,7 @@ reminder: boring-card-trick.png
 updated: 2024-10-18
 ...
 
-[eg-video]: ?
+[eg-video]: https://youtu.be/2TGtpUCNFPs?t=1583
 [eg-site]: https://www.electionguard.vote
 
 _Warning: work in progress. Posted early so I can link here from the Catalyst idea._
