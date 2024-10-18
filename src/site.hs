@@ -276,7 +276,7 @@ indexCtx tags =
 recentCtx :: [Item String] -> Tags -> Context String
 recentCtx posts tags = constField "title" "Recent"
   <> listField "posts" (postCtx tags Nothing) (return posts)
-  <> tagCloudField "tagcloud" 65 175 tags
+  <> tagCloudField "tagcloud" 50 155 tags
   <> siteCtx
 
 postCtx :: Tags -> Maybe [String] -> Context String
