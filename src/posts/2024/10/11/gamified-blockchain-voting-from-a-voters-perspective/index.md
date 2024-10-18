@@ -3,10 +3,12 @@ title: "Gamified blockchain voting from a voter's perspective"
 tags: electionguard, blockchain, voting, nft, incentives, fraud-proofs, brainstorm
 toc: True
 reminder: election-day.png
+updated: 2024-10-18
 ...
 
 [eg-site]: https://www.electionguard.vote
 [benaloh-challenge]: https://youtu.be/2TGtpUCNFPs?t=1362
+[paper-ballot]: /posts/2024/10/15/mechanics-of-the-benaloh-challenge/#fill-out-paper-ballot
 
 When you picture the voting system of the future, it's probably on your phone. Right?
 Unfortunately, although *blockchain* voting can be done securely today, *internet* voting is much harder.
@@ -55,6 +57,8 @@ You flip through the official paper voter's guide, and also browse one published
 
 You leave your phone in a lock box and step into a voting booth.
 You randomly tap out some choices on the touchscreen, making sure to wait a few seconds each time so it plausibly seems like you're thinking. Then you hit "submit", take your printed QR code, and get back to your phone.
+
+_Update: This machine should probably be split in two: one that generates a human-readable paper ballot, and one that scans + keeps the ballot in case of audits. See [this post][paper-ballot]._
 
 # Audit or cast?
 
