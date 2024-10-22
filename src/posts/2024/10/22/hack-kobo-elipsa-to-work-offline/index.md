@@ -23,7 +23,7 @@ But here are the steps that worked for me:
    See the last step at the bottom for an example `tar` command.
 
 3. Factory reset, select "don't have wifi", connect to computer.
-Note that this will delete your book index + anntations.
+Note that this will delete your book index + annotations.
 
 # Edit SQLite DB
 
