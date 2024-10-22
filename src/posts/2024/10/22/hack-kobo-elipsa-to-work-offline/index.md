@@ -16,10 +16,9 @@ Just want to document it here in case it helps someone.
 # Factory Reset
 
 I haven't tried, but you could probably skip it and do the hack without the reset to keep them.
-
 Here are the steps that worked for me:
 
-1. Back up your current db first if you have anything important.
+1. Back up your current settings first if you have anything important.
    See the last step at the bottom for an example `tar` command.
 
 3. Factory reset, select "don't have wifi", connect to computer.
@@ -55,8 +54,8 @@ select * from user;
 
 # Turn off wireless features
 
-Under the settings -> accounts menu, you should see "bar@baz.com" signed in.
-Disable wifi, bluetooth, automatic sync, & "automatically share data about features".
+Under the settings &rarr; accounts menu, you should see `bar@baz.com` signed in.
+Disable wifi, bluetooth, automatic sync, & `automatically share data about features`.
 
 # Back up settings
 
@@ -68,5 +67,18 @@ $ cd /media/jefdaj/KOBOeReader
 $ tar -cvf /tmp/2024-01-09_dot-kobo-hack-success.tar. .kobo/
 ~~~~
 
+# Use it offline
+
+Maybe this is obvious, but I mount it as a USB drive and copy EPUBs and PDFs to/from the computer.
+
+You can manage books via drag-and-drop or using something like [Calibre][calibre].
+If you read a lot of academic papers you can also sync them via [ZotFile][zotfile].
+There's probably an equivalent for [Mendeley][mendeley] too.
+
+Finally, I export my notebooks to PDF (individually via the kobo menu) and `rsync --delete` the `Exported Notebooks` folder to the PC as a backup.
+
 [ko]: https://kobo-offline.virgulilla.com/
 [tr]: https://www.linuxquestions.org/questions/linux-hardware-18/kobo-touch-cannot-get-past-welcome-to-kobo-4175695159/page2.html
+[calibre]: https://calibre-ebook.com/
+[zotfile]: https://zotfile.com/
+[mendeley]: https://www.mendeley.com/
