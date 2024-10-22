@@ -1,0 +1,49 @@
+blog post!
+
+did it by combining two pages of advice:
+sqlite3 code from here: https://kobo-offline.virgulilla.com/
+idea of adding a 2nd row here: https://www.linuxquestions.org/questions/linux-hardware-18/kobo-touch-cannot-get-past-welcome-to-kobo-4175695159/page2.html
+
+
+back up fresh db first of course
+
+reset/sign out, "don't have wifi", connect to computer,
+then what i finally did that worked:
+
+[nix-shell:/media/user/KOBOeReader]$ sqlite3 /media/user/KOBOeReader/.kobo/KoboReader.sqlite 
+SQLite version 3.34.1 2021-01-20 14:10:07
+Enter ".help" for usage hints.
+sqlite> INSERT INTO 'user' (UserID, UserKey, UserDisplayName, UserEmail)
+sqlite> VALUES (3, '', 'Foo', 'bar@baz.qux');
+sqlite> INSERT INTO 'user' (UserID, UserKey, UserDisplayName, UserEmail)
+sqlite> VALUES (4, '', 'FooFoo', 'bar@baz.com');
+sqlite> .save /media/user/KOBOeReader/.kobo/KoboReader.sqlite
+sqlite> .quit
+
+final values:
+
+[nix-shell:~]$ sqlite3 /media/user/KOBOeReader/.kobo/KoboReader.sqlite 
+SQLite version 3.34.1 2021-01-20 14:10:07
+Enter ".help" for usage hints.
+sqlite> .tables
+AbTest                 KoboPlusAssets         Wishlist             
+Achievement            OverDriveCards         WordList             
+Activity               OverDriveCheckoutBook  content              
+AnalyticsEvents        OverDriveLibrary       content_keys         
+Authors                Reviews                content_settings     
+BookAuthors            Rules                  ratings              
+Bookmark               Shelf                  shortcover_page      
+DbVersion              ShelfContent           user                 
+DropboxItem            SubscriptionProducts   volume_shortcovers   
+Event                  SyncQueue              volume_tabs          
+KoboPlusAssetGroup     Tab                  
+sqlite> select * from user;
+3||Foo|bar@baz.qux|||0|0|0|||||1||0||||||-1.0|||||0
+4||FooFoo|bar@baz.com|||0|0|0|||||1||0||||||-1.0|||||0
+
+
+back em up:
+[nix-shell:/media/user/KOBOeReader]$ tar --lzop -cvf /tmp/2024-01-09_dot-kobo-hack-success.tar.lzo .kobo/
+
+in settings -> accounts menu, can now see "bar@baz.com" signed in.
+remember to disable wifi, bluetooth, automatic sync, automatically share data about features

@@ -1,0 +1,72 @@
+---
+title: "Hack the Kobo Elipsa for offline use"
+tags: offline, databases, sql, privacy, book, hack
+reminder: island-reading.png
+...
+
+There's a semi-standard method for getting Kobo devices to work offline by adding a row to their internal SQLite database.
+But I tried and failed to apply it to a first gen Elipsa.
+I finally got it to work by combining the sqlite3 code from [kobo-offline][ko]
+with the idea of adding a second user from [a LinuxQuestions thread][tr].
+
+Perhaps it also works on the rest of the current (Feb 2024) lineup?
+In the 8 months since then I haven't tried to do anything online and haven't been prompted to either.
+Just want to document it here in case it helps someone.
+
+# Factory Reset
+
+I haven't tried, but you could probably skip it and do the hack without the reset to keep them.
+
+Here are the steps that worked for me:
+
+1. Back up your current db first if you have anything important.
+   See the last step at the bottom for an example `tar` command.
+
+3. Factory reset, select "don't have wifi", connect to computer.
+Note that this will delete your book index + anntations.
+
+# Edit SQLite DB
+
+Insert new data using sqlite:
+
+~~~{ .bash }
+$ nix-shell -p sqlite3
+[nix-shell]$ sqlite3 /media/jefdaj/KOBOeReader/.kobo/KoboReader.sqlite 
+SQLite version 3.34.1 2021-01-20 14:10:07
+Enter ".help" for usage hints.
+~~~
+
+~~~{ .sql }
+sqlite> INSERT INTO 'user' (UserID, UserKey, UserDisplayName, UserEmail)
+sqlite> VALUES (3, '', 'Foo', 'bar@baz.qux');
+sqlite> INSERT INTO 'user' (UserID, UserKey, UserDisplayName, UserEmail)
+sqlite> VALUES (4, '', 'FooFoo', 'bar@baz.com');
+sqlite> .save /media/jefdaj/KOBOeReader/.kobo/KoboReader.sqlite
+sqlite> .quit
+~~~
+
+Double check that you ended up with two rows like so:
+
+~~~{ .sql }
+select * from user;
+3||Foo|bar@baz.qux|||0|0|0|||||1||0||||||-1.0|||||0
+4||FooFoo|bar@baz.com|||0|0|0|||||1||0||||||-1.0|||||0
+~~~
+
+# Turn off wireless features
+
+Under the settings -> accounts menu, you should see "bar@baz.com" signed in.
+Disable wifi, bluetooth, automatic sync, & "automatically share data about features".
+
+# Back up settings
+
+This is optional.
+I just want to be able to factory reset and then restore the freshly hacked DB quickly if needed.
+
+~~~{ .bash }
+$ cd /media/jefdaj/KOBOeReader
+$ tar -cvf /tmp/2024-01-09_dot-kobo-hack-success.tar. .kobo/
+~~~~
+
+[ko]: https://kobo-offline.virgulilla.com/
+[tr]: https://www.linuxquestions.org/questions/linux-hardware-18/kobo-touch-cannot-get-past-welcome-to-kobo-4175695159/page2.html
