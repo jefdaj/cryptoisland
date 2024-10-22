@@ -6,10 +6,11 @@ reminder: island-reading.png
 
 There's a semi-standard method for getting Kobo devices to work offline by adding a row to their internal SQLite database.
 But I tried and failed to apply it to a first gen Elipsa.
+
 I finally got it to work by combining the sqlite3 code from [kobo-offline][ko]
 with the idea of adding a second user from [a LinuxQuestions thread][tr].
-
 Perhaps it also works on the rest of the current (Feb 2024) lineup?
+
 In the 8 months since then I haven't tried to do anything online and haven't been prompted to either.
 Just want to document it here in case it helps someone.
 
