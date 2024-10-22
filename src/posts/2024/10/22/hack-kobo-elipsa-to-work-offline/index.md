@@ -16,8 +16,8 @@ Just want to document it here in case it helps someone.
 
 # Factory Reset
 
-I haven't tried, but you could probably skip it and do the hack without the reset to keep them.
-Here are the steps that worked for me:
+You could probably skip step #2 here and keep your current settings.
+But here are the steps that worked for me:
 
 1. Back up your current settings first if you have anything important.
    See the last step at the bottom for an example `tar` command.
