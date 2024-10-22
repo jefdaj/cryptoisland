@@ -56,7 +56,7 @@ select * from user;
 # Turn off wireless features
 
 Under the settings &rarr; accounts menu, you should see `bar@baz.com` signed in.
-Disable wifi, bluetooth, automatic sync, & `automatically share data about features`.
+Disable wifi, bluetooth, automatic sync, & "automatically share data about features".
 
 # Back up settings
 
