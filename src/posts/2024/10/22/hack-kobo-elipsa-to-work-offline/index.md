@@ -61,7 +61,7 @@ Disable wifi, bluetooth, automatic sync, & "automatically share data about featu
 # Back up settings
 
 This is optional.
-I just want to be able to factory reset and then restore the freshly hacked DB quickly if needed.
+I want to be able to factory reset and then restore the freshly hacked DB quickly if needed.
 
 ~~~{ .bash }
 $ cd /media/jefdaj/KOBOeReader
@@ -70,7 +70,7 @@ $ tar -cvf /tmp/2024-01-09_dot-kobo-hack-success.tar. .kobo/
 
 # Use it offline
 
-Maybe this is obvious, but I mount it as a USB drive and copy EPUBs and PDFs to/from the computer.
+I mount it as a USB drive and copy EPUBs and PDFs to/from the computer.
 
 You can manage books via drag-and-drop or using something like [Calibre][calibre].
 If you read a lot of academic papers you can also sync them via [ZotFile][zotfile].
