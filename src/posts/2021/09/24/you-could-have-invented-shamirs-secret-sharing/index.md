@@ -2,6 +2,8 @@
 title: You could have invented Shamir's secret sharing
 tags: cryptography, security, secret-sharing, math, python, horcrux
 updated: 2021-09-25
+
+reminder: lock-3-of-5.png
 ...
 
 Suppose you have some secret code---a master password or
