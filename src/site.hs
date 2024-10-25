@@ -268,7 +268,7 @@ siteCtx = defaultContext
 
 indexCtx :: Tags -> Context String
 indexCtx tags =
-  tagCloudField "tagcloud" 77 175 tags
+  tagCloudField "tagcloud" 67 165 tags
   <> siteCtx
 
 -- TODO why do certain min:max font size ratios cause a chrome memory leak??
