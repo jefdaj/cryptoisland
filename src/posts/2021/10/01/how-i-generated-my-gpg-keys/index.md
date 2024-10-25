@@ -1,6 +1,6 @@
 ---
 title: How I generated my GPG keys
-tags: security, gpg, encryption
+tags: security, gpg, encryption, tutorial
 ...
 
 Everyone agrees that [GnuPG][gpg] has a difficult interface, and therefore you

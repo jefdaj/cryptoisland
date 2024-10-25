@@ -1,6 +1,6 @@
 ---
 title: You could have invented Shamir's secret sharing
-tags: cryptography, security, secret-sharing, math, python, horcrux
+tags: cryptography, security, secret-sharing, math, python, horcrux, tutorial
 updated: 2021-09-25
 
 reminder: lock-3-of-5.png

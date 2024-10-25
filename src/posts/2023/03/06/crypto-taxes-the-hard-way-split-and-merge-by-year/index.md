@@ -1,6 +1,6 @@
 ---
 title: "Crypto Taxes the Hard Way: Split and Merge by Year"
-tags: hledger, haskell, python, taxes, accounting
+tags: hledger, haskell, python, taxes, accounting, tutorial
 reminder: delta.png
 ...
 

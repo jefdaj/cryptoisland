@@ -1,6 +1,6 @@
 ---
 title: "Hack the Kobo Elipsa for offline use"
-tags: offline, databases, sql, privacy, book, hack
+tags: offline, databases, sql, privacy, book, hack, tutorial
 reminder: island-reading.png
 ...
 

@@ -1,6 +1,6 @@
 ---
 title: Crypto Taxes the Hard Way
-tags: hledger, haskell, nix, taxes, accounting, reproducibility, git
+tags: hledger, haskell, nix, taxes, accounting, reproducibility, git, tutorial
 updated: 2023-02-25
 reminder: taxbook.png
 ...
