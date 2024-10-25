@@ -2,6 +2,7 @@
 title: Source code for this blog
 tags: blog, github, hakyll, haskell, html, css, javascript, git, browsers
 updated: 2024-10-25
+reminder: sand-castle.png
 ...
 
 This site is built with [Hakyll][hakyll].
@@ -71,8 +72,9 @@ I have a pre-push hook as suggested [here][nopush]:
 
 ~~~{ .bash }
 # .git/hooks/pre-push
-if [[ `grep 'draft'` ]]; then 
-  echo "You really don't want to push the drafts branch. Aborting."
+url="$2"
+if [[ `grep 'draft'`&& "$url" =~ github ]]; then
+  echo "Don't push the drafts branch to github! Aborting."
   exit 1
 fi
 ~~~
@@ -81,12 +83,14 @@ I also remove them in `publish.sh` and `.gitignore`:
 
 ~~~{ .bash }
 # publish.sh
-# Just in case, remove accidentally-added draft posts
-rm -rf posts/2099
+# Just in case, remove accidentally-added draft posts before publishing
+rm -rf .site/posts/2099
 ~~~
 
 ~~~{ .bash }
 # .gitignore
+# Ignore draft posts
+# (This should be commented out of .gitinore on the drafts branch)
 src/posts/2099
 ~~~
 
