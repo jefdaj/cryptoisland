@@ -2,6 +2,7 @@
 title: "Crypto Taxes the Hard Way: Historical Prices"
 tags: hledger, haskell, taxes, accounting, ggplot, tidyverse
 updated: 2023-02-25
+reminder: money-changer.png
 ...
 
 <small>
