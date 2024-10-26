@@ -1,8 +1,14 @@
 <table>
     $for(posts)$
         <tr>
-								<td>$date$</td>
-								<td><a class="postLink" href="$url$">$title$</a></td>
+                <td>
+                  $if(updated)$
+                    $updated$
+                  $else$
+                    $date$
+                  $endif$
+                </td>
+                <td><a class="postLink" href="$url$">$title$</a></td>
         </tr>
     $endfor$
 </table>
