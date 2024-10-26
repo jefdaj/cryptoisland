@@ -2,6 +2,7 @@
 title: Simple Cardano "batching bots" for concurrent DEX protocols
 tags: blockchain, cardano, plutus, concurrency, utxo, brainstorm, dex
 updated: 2021-09-11
+reminder: many-arm-robot.png
 ...
 
 Everyone seems so interested in [Cardano][cardano]'s [concurrency problem][problem]
