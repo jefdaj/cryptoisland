@@ -20,6 +20,7 @@ in pkgs.mkShell {
   buildInputs = with pkgs; [
     myGhc
     rsync
+    graphviz
   ];
   shellHook = ''
     export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive"

@@ -4,6 +4,8 @@
 
 import Hakyll
 import Text.Pandoc.Options
+import Text.Pandoc (Pandoc(..), Block(..), Format(..))
+import Text.Pandoc.Walk (walkM)
 -- import Text.DocTemplates hiding (Context)
 
 -- import Hakyll.Web.Pandoc
@@ -95,7 +97,7 @@ main = hakyllWith myHakyllConfig $ do
             Just "false" -> withNoToc reminder
             Just "False" -> withNoToc reminder
             _ -> withToc reminder -- default to adding it unless explicitly false
-      pandocCompilerWith readerSettings writerSettings
+      pandocCompilerWithTransformM readerSettings writerSettings graphViz
         >>= saveSnapshot "content" -- for the atom feed
         >>= loadAndApplyTemplate "posts/post.html" (postCtx tags $ Just postTags)
         >>= loadAndApplyTemplate "page.html"       (postCtx tags $ Just postTags)
@@ -413,3 +415,30 @@ getItemUTC' locale id' = do
         , "%B %e, %Y"
         , "%b %d, %Y"
         ]
+
+{-
+Render dot-as-svg blocks in posts.
+They need lang="dot-as-svg", like this:
+
+~~~{lang="dot:as-svg"}
+digraph test1 {
+  A -> B -> C
+}
+~~~
+
+based on:
+  https://github.com/enter-haken/hakyll-dot-demo/blob/master/site.hs
+  https://github.com/enter-haken/hakyll-dot-demo/pull/1/files
+-}
+
+graphViz :: Pandoc -> Compiler Pandoc
+graphViz = walkM codeBlock
+
+codeBlock :: Block -> Compiler Block
+codeBlock (CodeBlock (_id, _classes, namevals) contents)
+    | ("lang", "dot-as-svg") `elem` namevals
+    = RawBlock (Format "html") <$> svg contents
+codeBlock x = return x
+
+svg :: T.Text -> Compiler T.Text
+svg contents = T.pack <$> unixFilter "dot" ["-Tsvg"] (T.unpack contents)
