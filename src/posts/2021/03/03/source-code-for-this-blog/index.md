@@ -1,18 +1,19 @@
 ---
 title: Source code for this blog
 tags: blog, github, hakyll, haskell, html, css, javascript, git, browsers
-updated: 2024-10-25
+updated: 2024-10-26
 reminder: sand-castle.png
 ...
 
 This site is built with [Hakyll][hakyll].
 I've had a great experience with that so far!
 It uses Haskell to generate a static HTML + CSS site, and doesn't require the user to enable JS.
-_Update: 3.5 years later, I would do it the same way again if starting over._
-
 Here I'll do a quick overview of how I manage it in case you want to try something similar.
 Most of it is based on [this tutorial][tutorial],
 but I switched to self-hosting on a VPS rather than via Github Pages.
+
+_Update: 3.5 years later, I would do it the same way again if starting over.
+Added some details on my current workflow._
 
 # Branches
 
