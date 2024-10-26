@@ -117,6 +117,13 @@ tr.even {
   background: #f9ede5;
 }
 
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   div.toc {
     float: none;

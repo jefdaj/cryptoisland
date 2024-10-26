@@ -61,7 +61,47 @@ You start with an ID check,
 then go through the voting + challenge stations as many times as you want,
 finishing you when choose to cast your real vote:
 
-<img src=current-workflow.svg></img>
+~~~{ lang="dot-as-svg" }
+digraph current_workflow {
+  rankdir=TB
+  bgcolor=transparent
+  node [shape=box, style="rounded,filled", fillcolor=lightgreen]
+  edge [color=grey]
+
+  Enter [shape=plain,fillcolor=transparent]
+  Leave [shape=plain,fillcolor=transparent]
+  subgraph cluster_votingbooth {
+    bgcolor="#fbeee0"
+    label="Voting Booth"
+    submit_ballot [label="Scan & submit ballot"]
+    fill_out_ballot -> submit_ballot
+  }
+  subgraph cluster_checkin {
+    bgcolor="#fbeee0"
+    label="Check-in Station"
+    id_check [label="ID check"]
+    fill_out_ballot [label="Fill out paper ballot"]
+    id_check -> fill_out_ballot
+  }
+  subgraph cluster_challenge {
+    bgcolor="#fbeee0"
+    label="Challenge Station"
+    audit_or_cast [label="Benaloh challenge:\naudit or cast?",fillcolor="#66ddff"] // blue
+  }
+  // TODO separate post
+  // subgraph cluster_verify {
+  //   label="verify tally"
+  //   verify_vote_included -> verify_tally
+  // }
+  Enter -> id_check
+  submit_ballot -> audit_or_cast [label="Publish\ncyphertext"]
+  audit_or_cast -> fill_out_ballot [label="Audit", weight=0]
+  // audit_or_cast -> verify_vote_included [label="cast"]
+  audit_or_cast -> Leave [label="Cast"]
+  // verify_vote_included -> Leave
+  // verify_tally -> Leave
+}
+~~~
 
 In practice most voters decline to do even one audit,
 so they sail straight through without much additional friction compared to the regular (unencrypted) voting experience.
@@ -217,7 +257,71 @@ The workflow becomes a little more complicated, but not too bad:
 
 <!-- TODO put labels at bottom of subgraphs? -->
 
-<img src=proposed-workflow.svg></img>
+~~~{ lang="dot-as-svg" }
+digraph proposed_workflow {
+  rankdir=TB
+  bgcolor=transparent
+  node [shape=box, style="rounded,filled", fillcolor=lightgreen]
+  // edge [color=grey]
+
+  Enter [shape=plain,fillcolor=transparent]
+  Leave [shape=plain,fillcolor=transparent]
+  Enter -> id_check
+  subgraph cluster_checkin {
+    label="Check-in Station"; labelloc="b"
+    bgcolor="#fbeee0"
+    // id_check -> mint_vip_nft
+    id_check [label="ID check"]
+  }
+  subgraph cluster_votingbooth {
+    label="Voting Booth"
+    bgcolor="#fbeee0"
+    fill_out_ballot [label="Fill out paper ballot"]
+    submit_ballot [label="Scan & submit ballot"]
+    fill_out_ballot -> submit_ballot
+  }
+  subgraph cluster_app {
+    label="Trusted Voting App"; labelloc="b"
+    bgcolor="#fbeee0"
+    node [fillcolor="#66ddff"] // blue
+    confirm_onchain [label="Scan QR code &\nfind ciphertext"]
+    submit_ballot -> confirm_onchain [label="S:Publish\ncyphertext"]
+    confirm_onchain -> audit_or_cast
+    decrypt_ballot [label="Decrypt & check:\ndoes ballot look right?"]
+    audit_or_cast [label="Benaloh challenge:\naudit or cast?",fillcolor="#66ddff"] // blue
+    rank=same {audit_or_cast,decrypt_ballot}
+    tmp1 [shape=point,style=invis]
+    audit_or_cast -> tmp1 [label="V:Audit"]
+    tmp1 -> decrypt_ballot [label="S:Publish\nnonce"]
+    rank=same {audit_or_cast,tmp1,decrypt_ballot}
+  }
+  // TODO separate post
+  // subgraph cluster_checkout {
+  //   label="check-out station"
+  //   mint_personal_nfts
+  // }
+  // subgraph cluster_dispute {
+  //   label="arbitration"
+  //   dispute -> open_ballot_box -> id_check
+  // }
+  // TODO separate post
+  // subgraph cluster_verify {
+  //   label="verifier app"
+  //   verify_tally -> mint_verifier_nft
+  // }
+  id_check -> fill_out_ballot [label="S:Vote in\nprogress"]
+  // audit_or_cast -> mint_personal_nfts [label="cast"]
+  tmp2 [shape=point,style=invis]
+  audit_or_cast -> tmp2 [label="V:Cast"]
+  tmp2 -> Leave [label="S:Delete\nnonce"]
+  decrypt_ballot -> id_check [label="V:Certify"]
+  decrypt_ballot -> id_check [label="V:Dispute"]
+  // id_check -> mint_personal_nfts [style="dashed"] // Leave without voting
+  // mint_personal_nfts -> verify_tally
+  // mint_personal_nfts -> Leave
+  // mint_verifier_nft -> Leave
+}
+~~~
 
 `S:` means something is being posted on chain by the "system", and `V:` means something is posted on chain by the voter's trusted app.
 
