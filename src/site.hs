@@ -14,21 +14,27 @@ import           Data.Functor.Identity          ( runIdentity )
 import qualified Data.Text as T
 import qualified Text.Pandoc.Templates as PT
 
-import Control.Monad                  (forM)
+import Control.Monad                  (forM, liftM, msum)
 import Data.Aeson                     (ToJSON, encode)
 import Data.ByteString.Lazy.Internal  (unpackChars)
-import Data.List                      (intersect, isInfixOf, isPrefixOf, nub, delete)
+import Data.List                      (intersect, intercalate, isInfixOf, isPrefixOf, nub, delete, sortBy, tails)
 import Data.Maybe                     (fromMaybe, fromJust)
 import Data.Monoid                    ((<>))
+import Data.Ord                       (comparing)
 import Data.String.Utils              (replace)
 import GHC.Generics                   (Generic)
 import Hakyll.Web.Html.RelativizeUrls (relativizeUrlsWith)
 import Hakyll.Web.Tags                (tagsDependency)
 import Hakyll.Web.Sass                (sassCompiler)
 import Text.Jasmine                   (minify)
-import System.FilePath (takeDirectory, takeBaseName, takeFileName, takeExtension, splitFileName)
+import System.FilePath (takeDirectory, takeBaseName, takeFileName, takeExtension, splitFileName,
+                        splitDirectories, dropExtension)
 
 import Hakyll.Images (loadImage, compressJpgCompiler)
+
+import           Data.Time.Clock               (UTCTime (..))
+import           Data.Time.Format              (TimeLocale, parseTimeM)
+import           Data.Time.Locale.Compat       (defaultTimeLocale)
 
 main :: IO ()
 main = hakyllWith myHakyllConfig $ do
@@ -101,7 +107,7 @@ main = hakyllWith myHakyllConfig $ do
   create ["recent.html"] $ do
     route idRoute
     compile $ do
-      posts <- recentFirst =<< loadAll postMd
+      posts <- updatedFirst =<< loadAll postMd
       let ctx = recentCtx posts tags
       makeItem ""
         >>= loadAndApplyTemplate "recent/index.html" ctx
@@ -113,7 +119,7 @@ main = hakyllWith myHakyllConfig $ do
   create ["index.html"] $ do
     route idRoute
     compile $ do
-      posts <- recentFirst =<< loadAll postMd
+      posts <- updatedFirst =<< loadAll postMd
       let ctx = constField "title" "Home" <>
                 recentCtx posts tags <>
                 constField "extracss" "./index.css"
@@ -131,7 +137,7 @@ main = hakyllWith myHakyllConfig $ do
   tagsRules tags $ \tag pattern -> do
       route idRoute
       compile $ do
-        posts <- recentFirst =<< loadAll pattern
+        posts <- updatedFirst =<< loadAll pattern
         postTags <- fmap (nub . concat) $ mapM getTags $ map itemIdentifier posts
         let ctx = tagsCtx posts tags tag postTags
         makeItem ""
@@ -145,7 +151,7 @@ main = hakyllWith myHakyllConfig $ do
     route idRoute
     compile $ do
       let feedCtx = (postCtx tags Nothing) <> bodyField "description"
-      posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots postMd "content"
+      posts <- fmap (take 10) . updatedFirst =<< loadAllSnapshots postMd "content"
       posts' <- renderAtom myFeedConfig feedCtx posts
       -- return $ fmap (replace "SITEROOT" "") posts'
       return posts'
@@ -155,7 +161,7 @@ main = hakyllWith myHakyllConfig $ do
   whenAnyTagChanges $ match "index.html" $ do
     route idRoute
     compile $ do
-      posts <- recentFirst =<< loadAll postMd
+      posts <- updatedFirst =<< loadAll postMd
       let ctx = recentCtx posts tags
       getResourceBody
         >>= applyAsTemplate ctx
@@ -361,3 +367,49 @@ dropIndexHtml key = mapContext transform (urlField key) where
     transform url = case splitFileName url of
                         (p, "index.html") -> takeDirectory p
                         _                 -> url
+
+-- recentFirst from Hakyll, slightly edited to pull from "updated" first
+updatedFirst :: (MonadMetadata m, MonadFail m) => [Item a] -> m [Item a]
+updatedFirst = liftM reverse . chronological'
+
+-- support fn for updatedFirst
+chronological' :: (MonadMetadata m, MonadFail m) => [Item a] -> m [Item a]
+chronological' =
+    sortByM $ getItemUTC' defaultTimeLocale . itemIdentifier
+  where
+    sortByM :: (Monad m, Ord k) => (a -> m k) -> [a] -> m [a]
+    sortByM f xs = liftM (map fst . sortBy (comparing snd)) $
+                   mapM (\x -> liftM (x,) (f x)) xs
+
+-- support fn for updatedFirst
+getItemUTC' :: (MonadMetadata m, MonadFail m)
+            => TimeLocale        -- ^ Output time locale
+            -> Identifier        -- ^ Input page
+            -> m UTCTime         -- ^ Parsed UTCTime
+getItemUTC' locale id' = do
+    metadata <- getMetadata id'
+    let tryField k fmt = lookupString k metadata >>= parseTime' fmt
+        paths          = splitDirectories $ (dropExtension . toFilePath) id'
+
+    maybe empty' return $ msum $
+        [tryField "updated"   fmt | fmt <- formats] ++ -- <- the only actual change
+        [tryField "published" fmt | fmt <- formats] ++
+        [tryField "date"      fmt | fmt <- formats] ++
+        [parseTime' "%Y-%m-%d" $ intercalate "-" $ take 3 $ splitAll "-" fnCand | fnCand <- reverse paths] ++
+        [parseTime' "%Y-%m-%d" $ intercalate "-" $ fnCand | fnCand <- map (take 3) $ reverse . tails $ paths]
+  where
+    empty'     = fail $ "Hakyll.Web.Template.Context.getItemUTC: " ++
+        "could not parse time for " ++ show id'
+    parseTime' = parseTimeM True locale
+    formats    =
+        [ "%a, %d %b %Y %H:%M:%S %Z"
+        , "%a, %d %b %Y %H:%M:%S"
+        , "%Y-%m-%dT%H:%M:%S%Z"
+        , "%Y-%m-%dT%H:%M:%S"
+        , "%Y-%m-%d %H:%M:%S%Z"
+        , "%Y-%m-%d %H:%M:%S"
+        , "%Y-%m-%d"
+        , "%B %e, %Y %l:%M %p"
+        , "%B %e, %Y"
+        , "%b %d, %Y"
+        ]
