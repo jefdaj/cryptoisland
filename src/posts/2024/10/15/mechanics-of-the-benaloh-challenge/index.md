@@ -8,8 +8,6 @@ updated: 2024-10-29
 [eg-video]: https://youtu.be/2TGtpUCNFPs?t=1583
 [eg-site]: https://www.electionguard.vote
 
-_Warning: work in progress. Posted early so I can link here from the Catalyst idea._
-
 # Motivation
 
 In [ElectionGuard][eg-site] and related end-to-end encrypted voting systems,
