@@ -27,8 +27,7 @@ div.info {
 }
 
 center.reminder > img {
-  max-width:  300px;
-  max-height: 300px;
+  max-width: 300px;
   margin: 15px;
 }
 
@@ -117,7 +116,7 @@ tr.even {
   background: #f9ede5;
 }
 
-svg {
+img,svg {
   max-width: 100%;
   height: auto;
   display: block;
