@@ -342,11 +342,11 @@ Another advantage is that you can immediately download the encrypted ballot from
 
 ## Live statistics
 
-<img src="dashboard.png" style="width:300px"></img>
-
 All these certifications on chain add up to vastly improved real-time data, which can be published fast enough to head off any misinformation about the election. In my opinion that's the real secret sauce! Reliable, immediate proof that there's no large scale fraud that could plausibly be changing the results of the election.
 
 I'll leave it at that for now, because it's such an important point that it deserves its own post.
+
+<img src="dashboard.png" style="width:300px"></img>
 
 # Handling new complications
 
