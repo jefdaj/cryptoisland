@@ -1,8 +1,8 @@
 ---
 title: Mechanics of the Benaloh Challenge
-tags: electionguard, blockchain, voting, incentives, brainstorm
+tags: electionguard, blockchain, voting, incentives, brainstorm, encryption
 reminder: boring-card-trick.png
-updated: 2024-10-18
+updated: 2024-10-29
 ...
 
 [eg-video]: https://youtu.be/2TGtpUCNFPs?t=1583
@@ -12,7 +12,8 @@ _Warning: work in progress. Posted early so I can link here from the Catalyst id
 
 # Motivation
 
-The Benaloh challenge is a clever answer to the question
+In [ElectionGuard][eg-site] and related end-to-end encrypted voting systems,
+the Benaloh challenge is a clever answer to the question
 "How can voters check that their votes were encrypted honestly, without also being able to show how they voted to others?"
 
 If you're thinking about this for the first time, you might have another question now: why do we care if they show how they voted?
@@ -166,15 +167,17 @@ This step is simple from the voter's perspective, but it's where a lot of the El
 This is the most confusing part.
 There's a vulnerability in the encryption step,
 and by solving it we also end up discovering a way to verify audited ballots.
-We'll just go over the first half of the story for now...
+This is the first half of the story:
 
 After converting the ballot to a vector of `0`s and `1`s representing empty and marked bubbles respectively,
 the scan & submit machine uses public key encryption (think GPG) to encrypt it.
-Only a quorum of guardians (see separate post) will be able to decrypt it using their private key shares.
+Only a quorum of guardians (see separate post) will be able to decrypt it using their private key shares,
+and they've agreed to do that only as part of an audit---either an individual voter's audit as described below, or an official risk-limiting statistical audit of the whole election.
 
+So the vote should be unreadable under normal circumstances.
 The "gotcha!" is that the machine also has to include a random number (called a nonce for "number used once"),
 because otherwise there would only be so many possible permutations of the ballot (2 in my pirate example),
-and people could generate all of them as a map to "decrypt" votes without having the private key:
+and people could generate a lookup table to "decrypt" votes without having the private key:
 
 ~~~{ .txt }
 encrypt("Blackbeard" , guardians_pubkey) = 408756345
@@ -196,7 +199,7 @@ encrypt( ("Blackbeard", 1982131), guardians_pubkey ) = 982374823
 ## Benaloh challenge: audit or cast?
 
 Challenge time!
-At this point the voting machine already publicly committed to your encrypted vote, but you haven't said whether you want to audit or cast it. (Note that you should have decided it for yourself *before* filling out the ballot. Otherwise you'll be publishing your real choices as part of the audit.)
+At this point the voting machine already publicly committed to your encrypted vote, but you haven't said whether you want to audit or cast it. (Note that you should have decided that for yourself *before* filling out the ballot. Otherwise you'll be publishing your real choices as part of the audit.)
 
 I believe this step is sometimes done at the same scan & submit machine, and sometimes at a separate station networked to the first one. Perhaps the main advantage of a separate station is that a human can explain the choice, and then either direct you out of the voting area or back into line depending whether you audit?
 
@@ -220,6 +223,8 @@ After the official election results are published, the diligent voter can also d
 #. Their own cast ballot was included in the tally
 #. All audited ballots were decrypted, and their own look as expected
 
+<img src="home-laptop.png" style="width: 250px;"></img>
+
 I won't linger on it here, but verification is a huge advantage over traditional elections!
 Even without any of the "upgrades" I'm going to go on about, it's 100% worth implementing ElectionGuard or something similar at scale to get these properties.
 
@@ -231,7 +236,7 @@ I imagine, though, that any such challenge would have to be resolved by going to
 
 # Proposed blockchain upgrades
 
-In the workflow I'm imagining, the first few steps would be roughly the same:
+In the workflow I'm imagining, the first few steps would be roughly the same as above:
 
 1. Show ID at the check-in counter
 2. Fill out a paper ballot (possibly using a machine) in a voting booth
@@ -243,19 +248,22 @@ The only difference so far is that in my system you would get a "vote in progres
 
 ## Cast & audit via phone app
 
-The main change I'm proposing is that after submitting the paper ballot, instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone---or laptop, I suppose.
+The main change I'm proposing is that after submitting the paper ballot, instead of going to a "challenge station" or finishing that on the same scan/submit machine, you scan the QR code and finish the process on your own phone---or laptop, I suppose. It would be done using the voter's favorite of hopefully many independently developed and audited voting apps.
 
 I know I know, everything has to be an app these days. I normally hate that!
 But in this case there are some major advantages.
-
 Now the voter now has a trusted device that can do cryptographic operations on their behalf, which means:
 
 1. We can add a second step to the Benaloh challenge where we immediately decrypt audited ballots, and either certify or dispute the result.
-2. We can broadcast each step in the protocol on chain, and watch everyone doing it in real time.
+2. We can broadcast each step in the protocol on chain, and watch everyone else doing it in real time.
 
-The workflow becomes a little more complicated, but not too bad:
+From the voter's perspective the challenge workflow is still pretty simple:
 
-<!-- TODO put labels at bottom of subgraphs? -->
+<img src="audit-certify-dispute.png" style="width: 600px;"></img>
+
+The back end protocol becomes a little more complicated, but not too bad.
+`S:` here means something is being posted on chain by the "system", and `V:` means something is posted on chain by the voter's trusted app.
+
 
 ~~~{ lang="dot-as-svg" }
 digraph proposed_workflow {
@@ -323,8 +331,6 @@ digraph proposed_workflow {
 }
 ~~~
 
-`S:` means something is being posted on chain by the "system", and `V:` means something is posted on chain by the voter's trusted app.
-
 ## Self-certify casts & audits
 
 Rather than communicating with the voting system locally via touchscreen or a poll worker, the choice to audit or cast should be publicly announced on chain. You control your own phone app and the blockchain is independent, so there's no plausible way for the voting system to interfere with your choice or know about it in advance.
@@ -338,16 +344,11 @@ Another advantage is that you can immediately download the encrypted ballot from
 
 ## Live statistics
 
+<img src="dashboard.png" style="width:300px"></img>
+
 All these certifications on chain add up to vastly improved real-time data, which can be published fast enough to head off any misinformation about the election. In my opinion that's the real secret sauce! Reliable, immediate proof that there's no large scale fraud that could plausibly be changing the results of the election.
 
 I'll leave it at that for now, because it's such an important point that it deserves its own post.
-
-<!--
-As Dr Benaloh says, "the statistics are on our side": TODO CITE, TODO explain stats?
-
-The odds of a hack or deception being able to swing an election decrease dramatically as people audit ballots.
-Because this is such an impressive effect, I think we should make it more obvious!
--->
 
 # Handling new complications
 
@@ -373,5 +374,3 @@ I would have to think about this more before having a strong opinion about the b
 
 <!-- TODO a simulation game where you try to cheat would also be a really good idea! -->
 <!-- TODO could also promote actual red teaming via hacker events, but not sure about that -->
-
-
