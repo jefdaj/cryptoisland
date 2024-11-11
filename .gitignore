@@ -10,3 +10,6 @@ src/.hakyll-cache
 
 # blog
 src/posts/2099
+
+# direnv
+.direnv
