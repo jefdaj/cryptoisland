@@ -138,7 +138,7 @@ b2 <- c(1,0 , 1,0,0)
 b3 <- c(0,1 , 1,0,0)
 b4 <- c(0,1 , 0,1,0)
 b5 <- c(0,1 , 0,1,0)
-n6 <- c(0,1 , 0,0,1)
+b6 <- c(0,1 , 0,0,1)
 
 # encryption done by voting machines
 e1 <- encrypt(b1)
