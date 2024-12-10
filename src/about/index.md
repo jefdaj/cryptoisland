@@ -4,21 +4,26 @@ title: About
 
 <img src="/about/crab.png" style="margin-left: 25px; width: 150px"></img>
 
-Welcome to <b>Crypto Island</b>!
+Welcome to **Crypto Island**!
 
 It's your standard developer blog,
 totally unrelated to [any][ci2] of [these][ci3] [other][ci4] [crypto][ci5] [islands][ci6].
 I hope you'll come to associate mine with tutorials, open source, maybe some bad drawings of pirates.
 And if all goes well, the occasional utopian idea that won't come across as scammy or uncomfortably colonial.
 
-I go by *jefdaj* online. Here are some ways you can contact me:
+I go by **jefdaj** online. Here are some ways you can contact me:
 
-- Email (same handle at `protonmail.ch`)
+<img src="/about/watercolor.png" style="height:10em; float:left; margin-right:30px"></img>
+
+- [BlueSky](https://bsky.app/profile/jefdaj.bsky.social)
+- [Mastodon](https://mastodon.social/@jefdaj)
+- Farcaster (coming soon!)
 - [Github](https://github.com/jefdaj)
-* [StackExchange](https://stackoverflow.com/users/429898/jefdaj)
 * [Reddit](https://www.reddit.com/user/jefdaj)
-- [Twitter](https://twitter.com/jefdaj)
-- Meetup
+* [StackExchange](https://stackoverflow.com/users/429898/jefdaj)
+- [X](https://x.com/jefdaj)
+- Email (`protonmail.ch`)
+<!-- Meetup? -->
 <!-- TODO bitmessage? -->
 
 Encrypted emails aren't required of course, but I like them!
