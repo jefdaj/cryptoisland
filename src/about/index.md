@@ -4,7 +4,7 @@ title: About
 
 <img src="/about/crab.png" style="margin-left: 25px; width: 150px"></img>
 
-Welcome to **Crypto Island**!
+Welcome to beautiful **Crypto Island**!
 
 It's your standard developer blog,
 totally unrelated to [any][ci2] of [these][ci3] [other][ci4] [crypto][ci5] [islands][ci6].
