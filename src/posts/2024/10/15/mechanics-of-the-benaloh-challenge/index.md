@@ -293,13 +293,14 @@ digraph proposed_workflow {
     confirm_onchain [label="Scan QR code &\nfind ciphertext"]
     submit_ballot -> confirm_onchain [label="S:Publish\ncyphertext"]
     confirm_onchain -> audit_or_cast
-    decrypt_ballot [label="Decrypt & check:\ndoes ballot look right?"]
     audit_or_cast [label="Benaloh challenge:\naudit or cast?",fillcolor="#66ddff"] // blue
+    decrypt_ballot [label="Decrypt & check:\ndoes ballot look right?"]
     rank=same {audit_or_cast,decrypt_ballot}
     tmp1 [shape=point,style=invis]
     audit_or_cast -> tmp1 [label="V:Audit"]
     tmp1 -> decrypt_ballot [label="S:Publish\nnonce"]
     rank=same {audit_or_cast,tmp1,decrypt_ballot}
+    tmp2 [shape=point,style=invis]
   }
   // TODO separate post
   // subgraph cluster_checkout {
@@ -317,7 +318,6 @@ digraph proposed_workflow {
   // }
   id_check -> fill_out_ballot [label="S:Vote in\nprogress"]
   // audit_or_cast -> mint_personal_nfts [label="cast"]
-  tmp2 [shape=point,style=invis]
   audit_or_cast -> tmp2 [label="V:Cast"]
   tmp2 -> Leave [label="S:Delete\nnonce"]
   decrypt_ballot -> id_check [label="V:Certify"]
