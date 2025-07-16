@@ -55,6 +55,7 @@ main = hakyllWith myHakyllConfig $ do
         staticSvg .||.
         staticPng .||.
         postTar .||.
+        postPy .||.
         postSubdirs .||.
         "about/jefdaj.asc" .||.
         "variables.scss"
@@ -198,6 +199,7 @@ postPng = fromGlob $ postDir ++ "/*.png"
 postJpg = fromGlob $ postDir ++ "/*.jpg"
 postSvg = fromGlob $ postDir ++ "/*.svg"
 postTar = fromGlob $ postDir ++ "/*.tar"
+postPy = fromGlob $ postDir ++ "/*.py"
 postSubdirs = fromGlob $ postDir ++ "/**/*" -- TODO is that ok?
 
 ----------------
