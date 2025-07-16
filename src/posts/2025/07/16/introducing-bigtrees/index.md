@@ -146,8 +146,8 @@ sys     0m53.310s
 ## Using a `.bigtree` file
 
 These save the directory structure as well as the hash of each file and folder.
-They can be used to compare the same folder at different times, or folders on
-different computers. The `dupes` command could equivalently be written like this:
+They're used when you want to hash files once once and use the results
+multiple times. The command above could equivalently be written like so:
 
 ```.bash
 $ bigtrees hash test-files --output test-files.bigtree
