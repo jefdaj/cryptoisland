@@ -191,7 +191,7 @@ my workflow.
 Interactive use is a bit like `find` or `tar --list`.
 
 ```.bash
-$ bigtrees find test-files-v15.bigtree --search-regex '/old.*\.jpg$'
+$ bigtrees find test-files.bigtree --search-regex '/old.*\.jpg$'
 
 test-files/josef-friedrichj/test-files-master/jpg/old-house.jpg
 test-files/josef-friedrichj-dupe1/test-files-master/jpg/old-house.jpg
