@@ -4,10 +4,6 @@ tags: bigtrees, github, haskell, python, backups, data-structures, hashes, my-pr
 reminder: bigtrees.png
 ...
 
-<style>
-  .reminder > img { max-height: 200px; }
-</style>
-
 [fdupes]: https://github.com/adrianlopezroche/fdupes
 [bigtrees]: https://jefdaj.github.io/bigtrees
 [linux]: https://github.com/torvalds/linux
