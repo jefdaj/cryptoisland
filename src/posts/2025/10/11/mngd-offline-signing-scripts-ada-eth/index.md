@@ -1,6 +1,6 @@
 ---
 title: "Midnight Glacier Drop offline signing scripts for ADA and ETH"
-tags: cardano, ethereum, midnight, bash, javascript, nix, nixos, offline, airgapped
+tags: cardano, ethereum, midnight, airdrop, bash, javascript, nix, nixos, offline, airgapped
 reminder: pocketwatch.png
 ...
 
@@ -47,7 +47,7 @@ It would also be fine to set a different destination address if you want to gath
 The claims should look like this.
 
 ```.txt
-STAR XXXXX to addr1qXXX...XXX 31a6bab50a84b8439adcfb786bb2020f6807e6e8fda629b424110fc7bb1c6b8b
+STAR XXXXX to addr1qXXX...XXX 31a...b8b
 ```
 
 Put them on some removable media to move to your offline signing environment.
@@ -123,7 +123,7 @@ cp /your/usb/drive/ada-claims/*-claim.txt ./claims/
 ./3-portal.sh
 
 # transfer files out
-cp portal/*-claim-info.txt /your/usb/drive/
+cp portal/*-portal-info.txt /your/usb/drive/
 
 # optionally clean up before rebooting
 ./4-shred.sh
@@ -142,7 +142,7 @@ If you use a different destination address each time,
 make sure it isn't auto-filling the previous one.
 Double check that everything matches before submitting: destination address, allocation, claim message, stake key.
 
-Each claim info file should look like this.
+Each portal info file should look like this.
 
 ```.txt
 midnight glacier drop claim info for WALLETNAME wallet
@@ -154,7 +154,7 @@ destination addr:
 addr1qXXX...XXX
 
 claim message:
-STAR XXXXX to addr1qXXX...XXX 31a6bab50a84b8439adcfb786bb2020f6807e6e8fda629b424110fc7bb1c6b8b
+STAR XXXXX to addr1qXXX...XXX 31a...b8b
 
 signature:
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXX...
@@ -201,13 +201,13 @@ cp /your/usb/drive/eth-claims/*-claim.txt ./claims/
 ./1-main.sh
 
 # transfer files out
-cp portal/*-claim-info.txt /your/usb/drive/
+cp portal/*-portal-info.txt /your/usb/drive/
 
 # optionally clean up before rebooting
 ./2-shred.sh
 ```
 
-Claim info files should look like this.
+Portal info files should look like this.
 
 ```.txt
 midnight glacier drop claim info for WALLETNAME wallet
@@ -222,7 +222,7 @@ destination address:
 addr1qXXX...XXX
 
 claim message:
-STAR XXXXX to addr1qXXX...XXX 31a6bab50a84b8439adcfb786bb2020f6807e6e8fda629b424110fc7bb1c6b8b
+STAR XXXXX to addr1qXXX...XXX 31a...b8b
 
 signature:
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXX...
