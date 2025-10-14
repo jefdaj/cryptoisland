@@ -9,6 +9,7 @@ reminder: pocketwatch.png
 [ethjs]: https://docs.ethers.org/v6/
 [code-ada]: ./mngd-offline-sign-ada.tar
 [code-eth]: ./mngd-offline-sign-eth.tar
+[post]: /posts/2025/10/14/offline-ada-addresses
 
 
 Today we'll be signing Glacier Drop claims offline with [cardano-signer][csign] and/or [ethers][ethjs].
@@ -21,7 +22,7 @@ Maybe you still use Daedalus and don't want to additionally trust a web wallet w
 
 _If you *only* have the seed phrases and no wallet set up,
 you'll need to make a wallet or calculate a suitable destination address before making a claim message.
-That's out of scope for this post but I'll write an update explaining it if anyone asks._
+~~That's out of scope for this post but I'll write an update explaining it if anyone asks.~~ See [this post][post] for instructions._
 
 You'll need two USB drives.
 
