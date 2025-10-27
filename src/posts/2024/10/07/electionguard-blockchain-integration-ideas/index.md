@@ -1,7 +1,7 @@
 ---
 title: ElectionGuard + blockchain integration ideas
 tags: electionguard, blockchain, voting, incentives
-updated: 2024-10-18
+updated: 2025-10-27
 reminder: please-lock-door.png
 toc: false
 ...
@@ -18,7 +18,8 @@ To jump to particular topics instead, use the links below.
 
 For now I mainly want to emphasize that although blockchains and related tech aren't required,
 they could be used to strengthen the security and trustworthiness of almost every step.
-When dealing with public elections, it's reasonable to add some redundant safeguards, after all...
+
+When dealing with public elections, it's reasonable to add some redundant safeguards!
 
 Action|EG in Theory|EG in Practice|My Suggestion
 -----|------|--------|-------
