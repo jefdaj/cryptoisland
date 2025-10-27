@@ -2,6 +2,7 @@
 title: Introducing BigTrees!
 tags: bigtrees, github, haskell, python, backups, data-structures, hashes, my-projects
 reminder: bigtrees.png
+updated: 2025-10-27
 ...
 
 [fdupes]: https://github.com/adrianlopezroche/fdupes
@@ -142,7 +143,7 @@ sys     0m53.310s
 ## Using a `.bigtree` file
 
 These save the directory structure as well as the hash of each file and folder.
-They're used when you want to hash files once once and use the results
+They're used when you want to hash files once and use the results
 multiple times. The command above could equivalently be written like so:
 
 ```.bash

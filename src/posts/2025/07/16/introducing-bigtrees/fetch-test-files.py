@@ -11,8 +11,12 @@ TEST_FILE_URLS = {
 }
 
 # This can be anywhere you have 18G+ free space
-[[ -z "$TMPDIR" ]] && TMPDIR=.
-TEST_FILES_DIR = "$TMPDIR/test-files"
+try:
+    TMPDIR = os.environ['TMPDIR']
+except KeyError:
+    TMPDIR = '/tmp'
+TEST_FILES_DIR = os.path.join(TMPDIR, 'test-files')
+os.makedirs(TEST_FILES_DIR, exist_ok=True)
 
 def download_test_file(name, url, retries=3, delay=5):
     out_path = os.path.join(TEST_FILES_DIR, name + '.zip')
