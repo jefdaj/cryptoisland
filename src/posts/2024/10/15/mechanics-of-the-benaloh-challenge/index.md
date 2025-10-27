@@ -250,7 +250,7 @@ The main change I'm proposing is that after submitting the paper ballot, instead
 
 I know I know, everything has to be an app these days. I normally hate that!
 But in this case there are some major advantages.
-Now the voter now has a trusted device that can do cryptographic operations on their behalf, which means:
+Now the voter has a trusted device that can do cryptographic operations on their behalf, which means:
 
 1. We can add a second step to the Benaloh challenge where we immediately decrypt audited ballots, and either certify or dispute the result.
 2. We can broadcast each step in the protocol on chain, and watch everyone else doing it in real time.
