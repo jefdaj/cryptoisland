@@ -107,10 +107,10 @@ Now, there are a couple more nuances that aren't hard to add to our example...
 
 # Multiple options per ballot
 
-Each ballot is really a vector with an encrypted number per candidate/option.
+Each ballot is really a data structure with an encrypted number per candidate/option.
 The main election config says which ones belong to which contests.
 Let's say our ballot has two contests, one with two options and one with three.
-It could be represented in R like this:
+It could be represented in R using a vector:
 
 ~~~{ .txt }
 c(n,n , n,n,n)
