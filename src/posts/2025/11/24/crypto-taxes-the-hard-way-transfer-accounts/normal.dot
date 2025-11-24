@@ -1,0 +1,12 @@
+digraph normal {
+  rankdir=LR
+  bgcolor=transparent
+  node [style=filled, fillcolor=white]
+  edge [color=grey,dir="both"]
+
+  BigBank [fillcolor="darkolivegreen3"]
+  MockEx [fillcolor="cornflowerblue"]
+  Wallet [fillcolor="orange"]
+  BigBank -> MockEx [label="USD"]
+  MockEx -> Wallet [label="BTC"]
+}

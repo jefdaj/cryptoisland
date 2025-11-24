@@ -1,0 +1,34 @@
+digraph implicit_split {
+  rankdir=LR
+  bgcolor=transparent
+  node [style=filled, fillcolor=white]
+  edge [color=grey,dir="both"]
+
+  // order matters here: graphviz displays them in reverse (LOL)
+  Wallet [fillcolor="orange"]
+  MockEx [fillcolor="cornflowerblue"]
+  BigBank [fillcolor="darkolivegreen3"]
+  tbtc1 [shape=plain,fillcolor=transparent,label="transfers:BTC"]
+  tbtc2 [shape=plain,fillcolor=transparent,label="transfers:BTC"]
+  tusd1 [shape=plain,fillcolor=transparent,label="transfers:USD"]
+  tusd2 [shape=plain,fillcolor=transparent,label="transfers:USD"]
+
+  subgraph cluster_bb {
+    shape=box; style=filled; color=transparent; fillcolor="#f9ede5"
+    label="bigbank.csv"; fontcolor="brown"
+    BigBank -> tusd1
+  }
+
+  subgraph cluster_me {
+    shape=box; style=filled; color=transparent; fillcolor="#f9ede5"
+    label="mockex.csv"; fontcolor="brown"
+    MockEx -> tusd2
+    MockEx -> tbtc1
+  }
+
+  subgraph cluster_w {
+    shape=box; style=filled; color=transparent; fillcolor="#f9ede5"
+    label="wallet.csv"; fontcolor="brown"
+    Wallet -> tbtc2
+  }
+}

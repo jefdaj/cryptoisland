@@ -1,0 +1,18 @@
+digraph implicit {
+  rankdir=TB
+  bgcolor=transparent
+  node [style=filled, fillcolor=white]
+  edge [color=grey,dir="both"]
+
+  BigBank [fillcolor="darkolivegreen3"]
+  MockEx [fillcolor="cornflowerblue"]
+  Wallet [fillcolor="orange"]
+  rank=1 {BigBank, MockEx, Wallet}
+
+  "transfers:USD" [shape=plain,fillcolor=transparent]
+  "transfers:BTC" [shape=plain,fillcolor=transparent]
+  rank=2 {"transfers:USD", "transfers:BTC"}
+
+  BigBank -> "transfers:USD" -> MockEx
+  MockEx -> "transfers:BTC" -> Wallet
+}
