@@ -95,7 +95,7 @@ and Nix flakes enabled, you can run the referendum.
 ```bash
 cd electionguard-cardano/milestone1/election
 nix develop
-./election.py
+./election.sh
 ```
 
 When it asks for your password, that's only to delete `./data` and possibly to enable Docker commands.
@@ -310,16 +310,16 @@ When hacking on `election.py`, it might be helpful to run one step in the electi
 
 ```bash
 nix develop
-./election.py --single-step setup
-./election.py --single-step build_manifest
-./election.py --single-step ...
-./election.py --single-step teardown
+./election.sh --single-step setup
+./election.sh --single-step build_manifest
+./election.sh --single-step ...
+./election.sh --single-step teardown
 ```
 
 There's also a `--pause-to-explain` option, which I wrote for the video but also use to inspect the generated files as it runs.
 
 ```bash
 nix develop
-./election.py --pause-to-explain
+./election.sh --pause-to-explain
 ```
 
