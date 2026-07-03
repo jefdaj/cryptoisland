@@ -234,7 +234,7 @@ relativizeUrlsWith' root path = withUrls rel
     -- isRel x = "/" `isPrefixOf` x && not ("//" `isPrefixOf` x)
     rel x | "http" `isPrefixOf` x = x
     rel x |  "/" `isPrefixOf` x = root ++ x
-    rel x | "./" `isPrefixOf` x = root ++ "/" ++ path ++ tail x
+    rel x | "./" `isPrefixOf` x = root ++ "/" ++ path ++ drop 1 x
     rel x | otherwise = root ++ "/" ++ path ++ "/" ++ x
     -- rel x = if isRel x then root ++ x else x
 
