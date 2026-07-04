@@ -1,7 +1,7 @@
 ---
 title: "ElectionGuard + Cardano Dev Update #7: Publish + Verify"
 tags: electionguard, cardano, catalyst, fund13, elections, python, docker, dev-update
-# reminder: ogre.png
+reminder: publish-and-verify.png
 ...
 
 [aktypes]: https://github.com/jefdaj/electionguard-cardano/tree/trunk/milestone2/publish-and-verify/onchain/validators/election/types
