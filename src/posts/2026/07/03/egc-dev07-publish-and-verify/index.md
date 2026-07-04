@@ -71,7 +71,7 @@ def admin_tx2(
 
 The structure also matches the previous [Aiken tests](https://github.com/jefdaj/electionguard-cardano/blob/trunk/milestone2/publish-and-verify/onchain/validators/tests/integration/happy_election.ak) reasonably well. The main difference is that this time the tests have to be ordered chronologically rather than only by channel, because the nodes are actually talking to each other. Whereas in Aiken tests, only inputs and outputs matter.
 
-I got pytest to reliably order them by making every TX a fixture and depending on it in the next one(s). For example you can see above that `admin_tx1` isn't used anywhere in `admin_tx2`, but it needs to come first so I make it a fixture arugment.
+I got pytest to reliably order them by making every TX a fixture and depending on it in the next one(s). For example you can see above that `admin_tx1` isn't used anywhere in `admin_tx2`, but it needs to come first so I make it a fixture argument.
 
 ## `verify.sh`
 
@@ -86,10 +86,11 @@ I started out trying to "tack it on" in a fairly lazy way, but actually ended up
 - [one line to upload the files before posting them to the blockchain](https://github.com/jefdaj/electionguard-cardano/blob/f138f0908bd8431bfaa94240afd2b1d471d26c4e/milestone2/publish-and-verify/offchain/egc/core/node.py#L170)
 - a callback system in the subscriber that makes it [easy](https://github.com/jefdaj/electionguard-cardano/blob/f138f0908bd8431bfaa94240afd2b1d471d26c4e/milestone2/publish-and-verify/offchain/subscribe.py#L51) to print out events as they happen and download the files
 
-Here's the minimal code you can add to a subscriber to have it fetch everything:
+Here's the minimal code you can add to a subscriber to have it fetch everything.
+It's a little cleaner than the version in the actual script:
 
 ```python
-PUB_DIR = './data/whatever'
+PUB_DIR = './data/verifier2/public'
 
 def fetch_to_static_records_dir(event: ChannelEvent):
     if not event.output_state:
@@ -99,13 +100,17 @@ def fetch_to_static_records_dir(event: ChannelEvent):
     ipfs_fetch_records_to_file_sync(new_records, PUB_DIR)
 ```
 
-After fetching all the files, the last step is just to run the old M1 verifier script. It did't require any changes, which is very reassuring!
+After fetching files, the last step is just to run the old M1 verifier script. It did't require any changes, which is very reassuring.
 
+``` bash
+sudo docker exec publish-and-verify-verifier2-1 \
+    poetry run /scripts/verifier.py verify \
+    --public-dir /data/public \
+    --verifier-id verifier2 \
+    --logfile /data/private/verify.log
 ```
-sudo docker exec publish-and-verify-verifier2-1 poetry run /scripts/verifier.py verify --public
--dir /data/public --verifier-id verifier2 --logfile /data/private/verify.log
-+ set +x
 
+```txt
 Verifying announcement:
 ✅ manifest
 ✅ ceremony_details
