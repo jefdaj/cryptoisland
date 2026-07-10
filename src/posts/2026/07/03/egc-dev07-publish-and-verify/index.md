@@ -2,6 +2,7 @@
 title: "ElectionGuard + Cardano Dev Update #7: Publish + Verify"
 tags: electionguard, cardano, catalyst, fund13, elections, python, docker, dev-update
 reminder: publish-and-verify.png
+updated: 2026-07-10
 ...
 
 [aktypes]: https://github.com/jefdaj/electionguard-cardano/tree/trunk/milestone2/publish-and-verify/onchain/validators/election/types
@@ -180,8 +181,6 @@ I also did at least one questionable thing that I'm NOT sure was helpful:
 
 You may have a better time if you lean in to PyCardano's idea of `__repr__` being to/from JSON instead?
 
-Not sure what to say... maybe the most important thing is that having gone through a lot of effort to get all the pieces set up (see below), I surprised myself by really liking how simple the overall data flow turned out. It's like an idealized web framework: many events &rarr; central state &rarr; updated view. It worked the first time. And it's certainly much simpler than writing a distributed system that would converge to a central state reliably on my own without a blockchain.
+Not sure what else to say... maybe the most important thing is that having gone through a lot of effort to get all the pieces set up, I surprised myself by really liking how simple the overall data flow turned out. It's like an idealized web framework: many events &rarr; central state &rarr; updated view. It worked the first time. And it's certainly much simpler than writing a distributed system that would converge to a central state reliably on my own without a blockchain.
 
 So don't lose heart! This really is a good way of doing things, even if it's difficult sometimes.
-
-
